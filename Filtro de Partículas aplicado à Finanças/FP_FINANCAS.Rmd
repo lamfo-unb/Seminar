@@ -1,0 +1,755 @@
+---
+title: "Estudo empírico de Asset Princing Theory"
+author: "Igor Ferreira do Nascimento"
+date: "14 de junho de 2017"
+output:
+  html_document: default
+bibliography: bibliography.bib
+---
+
+# Introdução
+
+O presente trabalho tem por objetivo apresentar uma análise empírica instigada pela discussão do artigo @Roll1977, apresentado no início da disciplina. O artigo apresenta uma revisão sobre os estudos empíricos relativos ao modelo Sharpe-Lintner (SL) de *Asset Pricing Theory* (APT), proveniente, originalmente, dos trabalhos @LITNER e @Sharpe64.
+
+Nesse trabalho, o autor analisa os trabalhos empíricos @BJS, @FM e @BF e aprensenta uma argumentação teórica lastreada por um *background* matemático evidenciando pontos conflitantes de tais autores, indícios da refutação da da formulação teórica de Lintner-Sharpe.
+
+
+Esse modelo estabelece uma relação linear específica entre os ativos de um portfolio e seu *benchmark*, analisados com relação ao excesso sobre o ativo livre de risco. O modelo é especificado como:
+
+$$ E(R_i) - R_f= \beta_i[E(R_m) - R_f] $$
+
+Sendo $E(R_i)$ a expectivativa de retorno do ativo $i$, $R_f$ o ativo livre de risco e $E(R_m)$ a expectativa de retorno para o portfolio *benchmark*, denominado portfolio de mercado. A principal suposição para o modelo SL é que os portifólios são média-variância eficientes.
+
+O autor revisor apresenta um resumo da APT com 2 parâmetros:
+
+  * nenhum teste não ambiguo e correto apareceu na literatura
+  * não há a possibilidade que tais testes possam ser aplicáveis no futuro (ex ante fact)
+  * a relação linear entre o retorno esperado e $\beta$ depende de eficiência dos portifólios
+  * a **proxy** de mercado utilizado poder ser eficiente, mesmo que o verdadeiro porfolio de mercado não seja
+  * a alta correlação entre a **proxy** e o verdadeiro portfolio não garante a eficiência e impacta nas inferências
+
+Os trabalhos analisados testaram o modelo:
+
+$$ E(R_i) - R_f=\gamma_0 + \gamma_1  \beta_i$$
+
+
+O modelo de SL é verificado testando se o intercepto de tal modelo é:
+
+$$ H_0: \gamma_0 = 0 $$
+
+Todos os estudos empíricos apresentaram evidências para **refutar** o modelo SL.
+
+Ao final, o autor afirma que nunhum paper testou, efetivamente, o modelo de SL, principalmente, por ignorarem a proximidade do *proxy* utilizada como portfolio de mercado.
+Mais do que isso, trabalho de @Roll1977 apresentou discussão teórica que, condicionada as premissas respectivas, garante a veracidade do modelo SL. 
+ 
+Dessa forma, intuitivamente, o primeiro passo para garantir um trabalho empírico para testar o modelo SL apresentado evidência sobre a eficiência do portfolio utilizado como *proxy* de mercado.
+
+Esse artigo está organizado da seguinte forma. No primeiro capítulo é definido o que é um portfolio de mercado eficiente e quais os recursos matemáticos necessários que comprovar tal eficiência. O segundo são apresentadas as metodologias utilizadas para estimação do vetor de médias e matriz de covariância.
+
+
+
+Esse relatório técnico detalha o processo de acesso e tratamento dos dados utilizado no artigo. O objetivo desse documento é apresentar todas as informações necessárias para sua replicação.
+
+# Portfolio de Mercado
+
+Considere que um investidor tenha a quantia inicial de $W_0$ para investir em dois tipos de ativo: ativo livre de risco, com taxa de retorno de $R_f$, e um ativo arriscado, com taxa de $R_m$. A função que define a riqueza ao final do primeiro período final de análise é:
+
+$$\tilde{W}  = (W_0 - M ) R_f + M R_m$$
+
+Considere, então, um função utilidade $U(.)$ estritamente côncova, o problema de alocação ótima dos ativos é obtido por:
+$$ \underset{L}{\text{Max}} \hspace{.25cm} E(U(\tilde{W})) $$
+
+Utilizando os resultados de @Merton1969 e @Guo2012 e considerando $\tilde{W}^{'}\pmb{1}=1$, isto é, todo o montante é investido em ativos arriscados, tem-se que a alocação ótima $\tilde{W}_m$ é dada por:
+
+$$ \tilde{W}_m = \frac{\Sigma^{-1}  \mu}{\mu^{'} \Sigma^{-1} \pmb{1}} $$
+
+
+Sendo $\mu$ o vetor de média dos ativos que compõe a carteira de mercado, $\Sigma^{-1}$ o inverso da matriz de covariância de tais ativos e $\pmb{1}$ um vetor de valores 1.
+
+A garantia que esse portfolio é eficiente foi demonstrado por @Guo2012 utilizando Lagrangian para minimizar o risco de tal investimento. Além disso, utilizado o corolário 3 de @Roll1977, que diz, a menos do portfolio de variância mínima, todos os portfolios possuem um relativo, também na fronteira ótima,  com covariância igual a zero, tem-se que o retorno esperado do portfolio relativo ao de mercado $\tilde{W}_m$ é igual ao ativo livre de risco @Roll1977. Isso reforça a existência do modelo proposto por SL.
+
+A seção a seguir apresenta as informações dos dados utilizados para o teste empírico do modelo.
+
+
+# Estudo empírico
+
+Foram utilizadas informações financeiras relacionada à bolsa de valores de São Paulo, acessas e baixadas por meio da plataforma Bloomberg.
+
+O trabalho de @Boda2014 apresenta um estudo empírico para avaliar o modelo de SP. Para isso, testa o modelo em uma empresa de $10$ setores GICS:
+
+  * Consumo
+  * Energia
+  * Financeiro
+  * Cuidades de saúde
+  * Indústria
+  * Tecnologia da Informação
+  * Materiais
+  * Telecomunicações
+  * Utilidades
+
+No  entanto, os autores utilizaram como ativo livre de risco os valores de treasures bills americadas de 1 ano. Para o portfolio de mercado foi considerado os retornos mensais de índices S\&P $500$. Os resultados indicam havaer  evidências de não aderência com a teoria de SL para algumas empresas.
+
+Com base no exposto, o presente trabalho apresentará um método para o estudo empírico do modelo SL para a situação brasileira. 
+
+Seguindo as sugestões da literatura referênciada, o portfolio de mercado será composto pela combinação de indicadores setorais do bolsa de valores de São Paulo. Dessa forma, supomos que a heterogeneidade disponível nessa fonte de dados garante a abrangência necessária para definir o *benchmark* de mercado. Foi a Letra do Tesouro Nacional (LTN) como ativo livre de risco, e, para cada período mensal, foi considerado a letra com data de referência mais próximo da data de referência em 1 ano. Essas bases de dados estão disponíveis para acesso em [link](https://drive.google.com/open?id=0BzM6ed7utvh9aC02NjlZaG00MVE).
+
+
+```{r controle, include = F, eval = T,message= FALSE,warning=FALSE}
+rm(list = ls())
+gc()
+
+mostra_prog <- FALSE
+
+```
+
+
+```{r packages, include = T, eval = T,message= FALSE,warning=FALSE , echo = mostra_prog}
+
+library(data.table)
+library(dplyr)
+library(bit64)
+library(stringr)
+library(readxl)
+library(reshape2)
+library(knitr)
+library(ggplot2)
+library(plyr)
+library(gplots)
+library(lubridate)
+library(tcltk)
+library(googlesheets)
+library(gsheet)
+library(corrplot)
+library(xtable)
+
+## desabilitando notação científica
+options(scipen = 8)
+
+```
+
+Para estimar a carteira de mercado é composta pelas informações setoriais a seguir:
+
+  * IFN:  índice setor financeiro
+  * IMOB: índice do setor imobiliário
+  * ICON: índice de consumo
+  * IEE:  ínice de energia
+  * INDX: índice da indústria
+  * IBOV: índice geral da bolsa de São Paulo
+
+```{r read_data_index, include = T, eval = T , warning=FALSE , echo = mostra_prog}
+
+
+# base_temp <- as.data.table(gsheet2tbl('https://drive.google.com/open?id=1Z7NDPmvIQ5ogNaLJP-ZmMnWB7C-kfksx2807kgNPfmw'))
+# 
+# indplan <- gsheet2tbl('https://drive.google.com/open?id=1d5Ro0mFnWGrozgSiybD6vZY3nQGvLgiDfmBHmewC6ZQ')
+# 
+# 
+path_base <- "C:\\Users\\Igor\\Documents\\Doutorado\\Finanças Corporativas\\Estudo Empírico"
+## importação dos dados
+file_input <- file.path(path_base,"bases","indices_gerais.xlsx")
+sheets <- excel_sheets(file_input)[1]
+base_temp <- read_excel(file_input,sheet = sheets) %>% data.table
+
+## ajuste dos nomes
+setnames(base_temp,names(base_temp)[(1:(ncol(base_temp)/2))*2-1],
+         paste0(names(base_temp)[(1:(ncol(base_temp)/2))*2],"_dt"))
+base_temp <- base_temp[-1,]
+setnames(base_temp,names(base_temp),gsub(" ","_",names(base_temp)))
+nomes <- unique(gsub("_dt","",names(base_temp)))
+
+## Criando base de dados
+base <- data.table()
+for(i in nomes){
+  basei <- dplyr::select(base_temp,one_of(c(grep(i,names(base_temp),value=T))))
+  setnames(basei,grep("_dt",names(basei),value=T),"dt")
+  variavel <- grep("[^_dt]",names(basei),value=T)
+  setnames(basei,variavel,"valor")
+  basei <- basei[,var := variavel]
+  base <- rbindlist(list(base,basei),fill=T)
+  rm(basei)
+}
+
+rm(base_temp)
+base <- base[,valor := as.numeric(valor)]
+base <- base[!is.na(valor) & !is.na(dt),]
+base <- data.table(dcast(base, dt ~ var , value.var = "valor"))
+base <- base[,dtf := as.Date(as.numeric(dt),origin = "1899-12-30")]
+base <- base[,`:=`(year = year(dtf),
+                month = month(dtf),
+                day = day(dtf))]
+
+base <- base[,last_day := max(day), by = .(year,month)]
+base <- base[(day == last_day),]
+base <- base[order(dt)]
+
+# Calculando retorno dos ativos
+base <- base[, c(nomes):=lapply(.SD, function(x) (x/shift(x, 1)-1)*100),.SDcols = nomes]
+base <- base[,DT:=as.Date(paste0(day,"/",month,"/",year),format ="%d/%m/%Y")]
+
+
+```
+
+Da tabela anterior nota-se que o índice IBOVESPA e IBOVIEE, índice do setor energético, são as séries mais antigas, todas começando em abril de $1997$. Em contrapartida, o indicador com menor número de dados é o IMOB, relativo a investimentos imobiliários, iniciando o registro dos valoes em fevereiro de $2008$. Dessa forma, caso fosse incorporado ao modelo, os dados possuiriam, aproximadamente, $108$ registros. Também são acessadas a evolução do retorno do ativo livre de risco, conforme detalhado em seções anteriores.
+
+
+```{r juntando_bases, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+nomes_analise <- grep("IFN|IMOB|ICON|IEE|INDX",names(base),value=T)
+
+base_temp <- melt(dplyr::select(base,one_of(c("DT",nomes_analise,"IBOV_Index"))), id.vars = "DT" )
+base_temp <- base_temp[!is.na(value),lapply(.SD,function(x) min(x)),.SDcols = "DT", by = "variable"]
+base_temp <- base_temp[,variable:=gsub("_Index","",variable)]
+kable(base_temp[order(DT)],col.names = c("Índice","Início da série"))
+xtable(kable(base_temp[order(DT)],col.names = c("Índice","Início da série")))
+rm(base_temp)
+
+
+```
+
+
+
+
+A carteira de mercado a ser utilizada será estimada conforme descrito em seções anteriores, seguindo as equações encontradas em @Guo2012. Com base nisso, a carteira ótima foi calculada a cada período, utilizando uma janela móvel de $24$ meses para estimação do retorno e matriz de covariância. Dessa forma, a cada período tem-se estimado uma carteira de mercado baseada nas informações dos $24$ períodos anteriores.
+
+
+
+
+```{r analise_ativos, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+## filtrando base
+base_analysis <-dplyr::select(base,one_of("DT",c(nomes_analise,"IBOV_Index")))
+
+#saveRDS(base_analysis,"base_fp.rds")
+base_analysis <- readRDS("base_fp.rds")
+# comando <- paste0(nomes_analise,"=ifelse(",nomes_analise,"<ltn_r,ltn_r,",nomes_analise,")")
+# comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
+# base_analysis <- base_analysis[,eval(comando)]
+
+
+```
+
+
+
+A partir desses ativos, serão propostas três carteiras ótimas:
+
+  * índices Ibovespa (observado)
+  * carteira estimada dinamicamente (estimado)
+  * média da carteira ótima (estimado)
+
+O primeiro *benchmark* é a *proxy* mais frequente, semelhante a encontrada em @Boda2014. 
+
+O gráfico a serguir apresenta a distribuição dos dados para os valores de médias móveis de 24 períodos. Destaca-se a elevada assimetria a esquerda dos índices.
+
+
+```{r analise_ativos0, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+### Mercado
+
+A <- melt(dplyr::select(base_analysis %>% filter(!is.na(IMOB_Index)),one_of(c("DT",paste0(nomes_analise)))),"DT")
+A$alpha <- ifelse(A$variable=="ICON_Index",1,
+                  ifelse(A$variable=="INDX_Index",1,
+                         ifelse(A$variable=="IBOVIEE_Index",.8,
+                                ifelse(A$variable=="IFNCBV_Index",.4,.4))))
+
+A$variable <- ifelse(A$variable=="ICON_Index","1 - ICON_Index",
+                  ifelse(A$variable=="INDX_Index","2 - INDX_Index",
+                         ifelse(A$variable=="IBOVIEE_Index","3 - IBOVIEE_Index",
+                                ifelse(A$variable=="IFNCBV_Index","4 - IFNCBV_Index","5 - IMOB_Index"))))
+
+
+pdf(file.path("decritiva_indices.pdf"),height=8,width = 12)
+ ordem_indice <- c("1 - ICON_Index","2 - INDX_Index","3 - IBOVIEE_Index","4 - IFNCBV_Index","5 - IMOB_Index")
+ 
+ 
+ 
+ggplot(A,aes(x=value,fill=variable)) +
+  geom_density(aes(alpha=alpha)) + xlab("%") + ylab("Densidade") + 
+  ggtitle(expression(atop("Retorno mensal", atop(italic("2008-2017"), ""))))+
+   theme(legend.position='bottom',legend.direction = "horizontal",plot.title = element_text(hjust = 0.5,size=22)) + 
+        scale_fill_manual(values= c("black", "#E69F00", "#56B4E9","blue","red"), 
+                       name=NULL,
+                       breaks=ordem_indice,
+                       labels=gsub(".\\s.\\s(.*)_Index","\\1",ordem_indice)) +
+  scale_alpha_continuous(guide=FALSE) + geom_vline(xintercept = 0 , colour = "black", linetype  = 2 )
+
+
+dev.off()
+
+
+
+descritiva_indice <- A %>% dplyr::group_by(variable) %>%
+  dplyr::summarise(M = mean(value,na.rm=T),
+                   DP = sd(value,na.rm=T)) %>%
+  mutate(variable = gsub(".\\s.\\s(.*)_Index","\\1",variable))
+
+
+print(xtable(descritiva_indice),include.rownames = F)
+
+A <- dplyr::select(base_analysis %>% filter(!is.na(IMOB_Index)),one_of(c(paste0(nomes_analise))))
+names(A) <- gsub("(.*)_Index","\\1",names(A))
+tab_cor <- cor(A)
+tab_cov <- var(A)
+print(xtable(tab_cor))
+
+
+pdf("descritiva_cor.pdf",height=8,width = 12)
+ 
+corrplot(cor(A, use = "complete.obs"), method="ellipse")
+
+dev.off()
+
+
+```       
+
+O segundo indicador determina a cada período, a carteira ótima baseada nas informações de $24$ períodos anteriores, isto é, a composição da carteira de mercado absorve instanteneamente as variações dos ativos analisados.
+
+A tabela a seguir apresenta as medidas de posição e resumo para as composições da portfolio de mercado. Todos os índices setoriais apresentam valores extremos de compositação. 
+
+```{r fronteira_eficiente, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+func_ret <- function(x,mu){
+  return(x%*%mu)
+}
+
+func_v <- function(x,v,cor){
+  return(sum(x %*% t(x) * v %*% t(v)* cor)^.5)
+}
+
+
+w1 <- c(.1,.1,.1,.4,.3)
+func_ret(w1,descritiva_indice$M)
+func_v(w1,descritiva_indice$DP,tab_cor)
+
+A <- expand.grid(w1 = seq(0,1,by=.1),
+                 w2 = seq(0,1,by=.1),
+                 w3 = seq(0,1,by=.1),
+                 w4 = seq(0,1,by=.1),
+                 w5 = seq(0,1,by=.1))
+A$total <- apply(A,1,sum)
+A <- A %>% filter(total == 1) %>%
+  select(-total)
+
+A$r <- 0
+A$v <- 0
+for(i in 1:nrow(A)){
+  A$r[i] <- func_ret(as.matrix(A[i,1:5]),descritiva_indice$M)
+  A$v[i] <- func_v(t(as.matrix(A[i,1:5])),descritiva_indice$DP,tab_cor)
+}
+
+w_optm <- data.table(A_fronteira)[order(v)][1,]
+
+z <- chull(A$r,A$v)
+A_fronteira <- A[z,]
+A_fronteira <- A_fronteira %>%
+  filter(!(v>=6.5 & r>=.9))
+
+px <- c(descritiva_indice$DP,w_optm$v)
+py <- c(descritiva_indice$M,w_optm$r)
+
+
+pdf("fronteira_ativos.pdf",height=8,width = 12)
+ 
+
+
+plot(A_fronteira$v,A_fronteira$r,col=2,type = "l",lwd = 2,
+     xlab = expression("Risco V(W)"),ylab = expression(" Retorno E(W)"))
+points(px,py, cex=c(.75,.75,.75,.75,.75,1)+.5,pch = 16,col = c(1,1,1,1,1,4))
+text(px-c(0,0,0,0,0,-.2),py-c(.025,.025,.025,.025,-.03,0),
+     labels = c(descritiva_indice$variable,"PVM"),cex=c(.75,.75,.75,.75,.75,.75)+.5,
+     col = c(1,1,1,1,1,4))
+abline(v=6,lty = 3 , col = 1 )
+abline(h=0.53,lty = 3 , col = 1)
+abline(h=1.185,lty = 3 , col = 1)
+
+
+dev.off()
+
+
+```
+
+O terceiro candidato a *proxy* da carteira de mercado é o valor médio apresentado na tabela anterior. Apesar de afetada pelos valores extremos, essa medida resumo garante que a soma das composições seja $1$.
+
+```{r analise_ativos11, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+### Mercado
+market3 <- apply(dplyr::select(base_analysis,one_of(paste0("w_",nomes_analise))),2,function(x) mean(na.omit(x)));
+```
+Para contornar a existência de tais valores extremos é necessário realizar o tratamento da base de dados, removendo ou substituindo valores *outliers*. Essa análise não é o foco desse trabalho, mas faz parte da agenda de trabalhos futuros.
+
+O gráfico a seguir apresenta a densidade encontrada para os ativos listados. Para facilitar a visualização, nesse gráfico são permitidos, para a carteira ótima, até $10\%$ do montante investido em vendas descobertas. Os setores imobiliários e financeiros contribuem menos ao longo. Por outro lado, o setor de consumo e energético contribuem com maior percentual.
+
+
+```{r analise_ativos2, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+A <- melt(dplyr::select(base_analysis,one_of(c("DT",paste0("w_",nomes_analise)))),"DT")[value > -.1 & value <1.1,]
+
+pdf(file.path("Beamer","wshort.pdf"),height=6,width = 12)
+
+ggplot(A,aes(x=value,fill=variable)) +
+  geom_density(alpha=0.25) + xlab("Decimal") + ylab("Densidade") + ggtitle('Composição carteira válida (descoberto 10%)') +
+        theme(legend.position='right')
+dev.off()
+```
+
+
+Caso não haja possibilidade para investimentos descobertos, tem-se o seguinte gráfico:
+
+```{r analise_ativos222, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+A <- melt(dplyr::select(base_analysis,one_of(c("DT",paste0("w_",nomes_analise)))),"DT")[value >=0 & value <=1,]
+
+pdf(file.path("Beamer","w.pdf"),height=6,width = 12)
+
+ggplot(A,aes(x=value,fill=variable)) +
+  geom_density(alpha=0.25) + xlab("Decimal") + ylab("Densidade") + ggtitle('Composição carteira válida') +
+        theme(legend.position='right')
+dev.off()
+```
+
+
+A programação a seguir calcula os indicadores de mercado para as três metodologias. Além disso, as distribuições são comparadas por meio de gráfico a seguir. Para facilitar a visualização, a análise foi restringida para retornos de até 60 em torno de zero.
+
+  
+```{r carteira_mercado, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+## primeira 
+base_analysis[,mkt1 := IBOV_Index]
+
+## segunda
+comando <- paste0("mkt2=",paste0(nomes_analise,"*w_",nomes_analise,collapse = "+"))
+comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
+base_analysis <- base_analysis[,eval(comando)]
+
+## terceira
+
+comando <- paste0("mkt3=",paste0(gsub("^w_","",names(market3)),"*",market3,collapse = "+"))
+comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
+base_analysis <- base_analysis[,eval(comando)]
+
+
+## Gráfico
+
+A <- melt(dplyr::select(base_analysis[year(DT)>=2010,],one_of(c("DT",grep("^mkt",names(base_analysis),value = T)))),"DT")
+
+resumo <- apply(dplyr::select(base_analysis[year(DT)>=2010,],one_of(grep("^mkt",names(base_analysis),value = T))),2,function(x) summary(na.omit(x)));
+kable(resumo)
+rm(resumo)
+
+pdf(file.path("Beamer","market.pdf"),height=6,width = 12)
+
+ggplot(A[value<60 & value >-60,],aes(x=value,fill=variable)) +
+  geom_density(alpha=0.25) + xlab("Retorno obsevado") + ylab("Densidade") + ggtitle('Carteiras de mercado') +
+        theme(legend.position='right')
+dev.off()
+rm(A)
+
+```
+
+
+É possível perceber que os dois portfolios de mercados sugeridos possue maior probabilidade valores situados nos extremos da distribuição, com destaque para o portfolio de mercado dinâmico.
+
+A tabela a seguir apresenta a matriz de correlação para as propostas de carteira de mercado.
+
+```{r carteira_mercado_Var, include = T, eval = T , warning=FALSE , echo = mostra_prog}
+
+## Matriz de covariância
+cor_carteiras <- cor(dplyr::select(base_analysis[year(DT)>=2010,],one_of(grep("^mkt",names(base_analysis),value = T))))
+kable(cor_carteiras,digits = 4)
+
+#print(xtable(cor_carteiras),floating=FALSE,latex.environments=NULL)
+
+
+
+```
+
+
+Percebe-se baixa correção entre as carteiras de mercado propostas e o índice Ibovespa.
+
+## Modelo Sharpe e Lintner
+
+Para testar o modelo de SL serão utilizados os três portfolios definidos anteriormente. Dessa forma, o modelo será:
+
+$$ E(R_i) - R_f= \beta_i[E(R_{m}^j) - R_f] $$
+O termo $E(R_{m}^j)$ representa o valor esperado para o $j$-ésimo tipo de cateira de mercado. Ao todo, serão estimados $15$ modelos, tendo para cada umas dos $5$ ativos $3$ modelos SL.
+
+```{r sharp_Lintner, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+resultados <- list()
+contador <- 1
+for(i in 1:3){
+  for(j in nomes_analise){
+    nomes <- c(j,paste0("mkt",i))
+    comando <- paste0("ex_",nomes,"=",nomes,"-ltn_r")
+    comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
+    base_analysis <- base_analysis[,eval(comando)]
+    
+    formula <- paste0("ex_",j,"~ex_",paste0("mkt",i))
+    modelo111 <- lm(as.formula(formula),data = base_analysis)
+    modelo11 <- data.frame(summary(modelo111)$coefficients)
+    modelo11$normalidade <- shapiro.test(modelo111$residuals)$p.value
+    modelo11$parameter <- row.names(modelo11)
+    modelo11$ativo    <- j
+    modelo11$mercado    <- paste0("mkt",i)
+    resultados[[contador]] <- modelo11 
+    contador <- contador + 1
+    
+  }
+}
+
+base_coefs <- rbindlist( resultados,fill = F)
+```
+
+
+modelo SL supõe que os interceptos para o modelo de regressão linear simples do excesso de retorno do portfolio de mercado e os ativos que o compõe sejam iguais a zero. O primeiro gráfico apresenta o comparativo, para cada tipo de portfolio de mercado, de tal parâmetro do modelo. 
+
+
+
+
+```{r sharp_Lintner1, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+pdf(file.path("Beamer","2parinterceptvalue.pdf"),height=6,width = 12)
+
+ggplot(data=base_coefs[parameter=="(Intercept)",], aes(x=ativo, y=Estimate, fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa intercepto") + ggtitle('Análise intercepto')
+dev.off()
+```
+
+O teste do modelo será feito verificando se tais valores são estatisticamente diferentes de zero. Para isso, o p-valor sugere se há ou não evidências para rejeitar a hipótese nula, que são iguais a zero.
+
+O gráfico ilustra que, para as carteiras de mercado propostas, todos os testes de significância não rejeitam, ao nível de $5\%$ (linha contínua) e $10\%$ (linha pontilhada), a hipótese nula, isto é, não há indícios de que o modelo SL não seja válido.
+
+Percebe-se que o mesmo não ocorre para a *proxy* de carteira de mercado sendo o índice do Ibovespa, com estimativas de $\alpha_i$ estatísticamente diferentes de zero para $3$ dos 5 ativos utilizados.
+
+```{r sharp_Lintner2, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+pdf(file.path("Beamer","2parinterceptsig.pdf"),height=6,width = 12)
+
+ggplot(data=base_coefs[parameter=="(Intercept)",], aes(x=ativo, y=Pr...t.., fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise intercepto') +
+  geom_hline(aes(yintercept = .10), linetype="dashed") +
+  geom_hline(aes(yintercept = .05)) 
+dev.off()
+```
+
+Direcionando a análise para o parâmetro $\beta$ percebe-se que o modelo para utilizando o índice de mercado dinâmico também não apresentou evidências de que o parâmetro de inclinação seja diferente de zero. Dessa forma, há a sugestão de que tal modelo está especificado ou foi muito afetado pelos valores extremos ou *outliers* nos dados originais.
+
+As demais metodologias apresentaram evidências de que o parâmetro $\beta$ é, estatísticamente, diferente de zero, mesmo ao nível de $5\%$
+
+
+```{r sharp_Lintner12, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+pdf(file.path("Beamer","2parbetavalue.pdf"),height=6,width = 12)
+
+ggplot(data=base_coefs[parameter!="(Intercept)",], aes(x=ativo, y=Estimate, fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa beta") + ggtitle('Análise beta') +   geom_text(aes(x=ativo, y = (Estimate + 0.05) , label= round(Estimate,2)), position = position_dodge(width=.75), stat = "identity")
+dev.off()
+```
+
+
+
+```{r sharp_Lintner21, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+pdf(file.path("Beamer","2parbetasig.pdf"),height=6,width = 12)
+
+ggplot(data=base_coefs[parameter!="(Intercept)",], aes(x=ativo, y=Pr...t.., fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise beta') +
+  geom_hline(aes(yintercept = .10), linetype="dashed") +
+  geom_hline(aes(yintercept = .05)) 
+dev.off()
+```
+
+Além disso, a normalidade indica que os modelos que utilizam o Ibovespa ou o portfolio dinâmico médio não satisfazem as suposições de normalidade dos dados.
+
+```{r normalidade, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+pdf(file.path("Beamer","2parnorm.pdf"),height=6,width = 12)
+
+ggplot(data=base_coefs[parameter!="(Intercept)",], aes(x=ativo, y=normalidade, fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância Shapiro-Wilk") + ggtitle('Análise normalidade') +
+  geom_hline(aes(yintercept = .10), linetype="dashed") +
+  geom_hline(aes(yintercept = .05)) 
+dev.off()
+
+
+
+
+```
+
+
+
+## Modelo de três parâmetros
+
+Considere o seguinte modelo:
+
+$$ E(R_i) - R_f= \beta_{i}[E(R_{m}^j) - R_f] + \gamma_{2} X_i $$
+
+Sendo $X_i$ a informação de estrutura de capital do setor analisado. Essa variável permite identificar se a forma de financiamento do setor análisado pode contribuir para o modelo de SL.
+
+Para isso, será utilizada a variável razão entre capital de terceiros e próprio. Quanto maior esse valor, maior o nível de individamento da empreza.
+
+
+```{r read_estrutura_capital, include = F, eval = T , warning=FALSE , echo = mostra_prog}
+
+## importação dos dados
+file_input <- file.path(getwd(),"bases","indices_gerais.xlsx")
+sheets <- excel_sheets(file_input)[3]
+base_temp <- read_excel(file_input,sheet = sheets, skip = 2) %>% data.table
+
+names(base_temp) <- names(read_excel(file_input,sheet = sheets) %>% data.table)
+setnames(base_temp,names(base_temp),paste0("SC_",gsub(" ","_",names(base_temp))))
+setnames(base_temp,"SC_D/E","dt")
+
+
+base_temp <- base_temp[,DT := as.Date(paste0("01/",month(dt),"/",year(dt)),format ="%d/%m/%Y")]
+base_temp <- base_temp[,dt:=NULL]
+
+## left join
+base_analysis <- base_temp[base_analysis,on="DT"]
+
+```
+
+
+
+
+
+```{r 3par, include = F, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+resultados <- list()
+contador <- 1
+i <- 1
+j <- nomes_analise[1]
+for(i in 1:3){
+  for(j in nomes_analise){
+    nomes <- c(j,paste0("mkt",i))
+    comando <- paste0("ex_",nomes,"=",nomes,"-ltn_r")
+    comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
+    base_analysis <- base_analysis[,eval(comando)]
+    formula <- paste0("ex_",j,"~ex_",paste0("mkt",i),"+SC_",j)
+    modelo111 <- lm(as.formula(formula),data = base_analysis)
+    modelo11 <- data.frame(summary(modelo111)$coefficients)
+    modelo11$normalidade <- shapiro.test(modelo111$residuals)$p.value
+    modelo11$parameter <- row.names(modelo11)
+    modelo11$ativo    <- j
+    modelo11$mercado    <- paste0("mkt",i)
+    resultados[[contador]] <- modelo11 
+    contador <- contador + 1
+    
+  }
+}
+
+base_coefs_3par <- rbindlist( resultados,fill = F)
+```
+
+
+```{r sharp_Lintner100, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+
+pdf(file.path("Beamer","3parinterceptvalue.pdf"),height=6,width = 12)
+
+
+ggplot(data=base_coefs_3par[parameter=="(Intercept)",], aes(x=ativo, y=Estimate, fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa intercepto") + ggtitle('Análise intercepto (3par)')
+dev.off()
+```
+
+
+a
+
+```{r sharp_Lintner200, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+
+pdf(file.path("Beamer","3parinterceptsig.pdf"),height=6,width = 12)
+
+
+ggplot(data=base_coefs_3par[parameter=="(Intercept)",], aes(x=ativo, y=Pr...t.., fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise intercepto (3par)') +
+  geom_hline(aes(yintercept = .10), linetype="dashed") +
+  geom_hline(aes(yintercept = .05)) 
+dev.off()
+```
+
+aa
+
+```{r sharp_Lintner1200, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+
+pdf(file.path("Beamer","3parbetavalue.pdf"),height=6,width = 12)
+
+
+ggplot(data=base_coefs_3par[grepl("^ex_",parameter),], aes(x=ativo, y=Estimate, fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa beta") + ggtitle('Análise beta (3par)')
+dev.off()
+```
+
+
+aaaa
+
+```{r sharp_Lintner2100, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+
+pdf(file.path("Beamer","3parbetasig.pdf"),height=6,width = 12)
+
+ggplot(data=base_coefs_3par[grepl("^ex_",parameter),], aes(x=ativo, y=Pr...t.., fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise beta (3par)') +
+  geom_hline(aes(yintercept = .10), linetype="dashed") +
+  geom_hline(aes(yintercept = .05)) 
+dev.off()
+```
+
+
+aaaaa
+
+
+```{r sharp_Lintner1210, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+
+pdf(file.path("Beamer","3parestrvalue.pdf"),height=6,width = 12)
+
+
+ggplot(data=base_coefs_3par[grepl("^SC_",parameter),], aes(x=ativo, y=Estimate, fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa beta") + ggtitle('Análise estrutura de capital (3par)')
+dev.off()
+```
+
+
+aaaa
+
+
+```{r sharp_Lintner2110, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+
+pdf(file.path("Beamer","3parestrsig.pdf"),height=6,width = 12)
+
+
+ggplot(data=base_coefs_3par[grepl("^SC_",parameter),], aes(x=ativo, y=Pr...t.., fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise estrutura de capital (3par)') +
+  geom_hline(aes(yintercept = .10), linetype="dashed") +
+  geom_hline(aes(yintercept = .05)) 
+dev.off()
+```
+
+É possível perceber que o parâmetro de estrutura de capital  
+
+```{r normalidade00, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
+
+
+pdf(file.path("Beamer","3parnormalidade.pdf"),height=6,width = 12)
+
+
+ggplot(data=base_coefs_3par[parameter=="(Intercept)",], aes(x=ativo, y=normalidade, fill=mercado)) +
+    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância Shapiro-Wilk") + ggtitle('Análise normalidade') +
+  geom_hline(aes(yintercept = .10), linetype="dashed") +
+  geom_hline(aes(yintercept = .05)) 
+dev.off()
+```
+
+
+## Considerações Finais
+
+O presente trabalho foi motivado pela revisão de @Roll1977 das críticas à *Asset Pricing Theory*, especificamente para o modelo SL. Diante dos pontos teóricos deficientes presentes nos artigos revisadas, foi possível concentrar esforços iniciais de maneira a garantir a replicação empírica lastreada por tais apontamentos.
+
+O artigo sugere duas metodologias para determinar o portfolio de mercado, garantindo a eficiência e otimalidade destas. Para isso, foram utilizados 5 indicadores heterogêneos de investimento. Os índices de mercado propostos não apresentaram evidências para refutar o modelo SL. O mesmo não ocorre com a escolha do *benchmark* tradicional.
+
+O trabalho desenvolvido sugere uma intensa agenda de trabalhos. A primeira, e mais importante delas, é apresentar uma modelagem mais robusta para estimação do retorno e da matriz de covariância. Para isso, segere-se lidar com modelos de espaços de estados com estimação dinâmica. Nesse tipo de abordagem, o processo de estimação é feito *on-line*, a medida que se tenha acesso a novas informações.
+
+A metodologia se mostrou sensível aos valores extremos e *outliers* presentes nas séries de dados, direcionando que trabalhos futuras invistam maior atenção para identificação e ajustamento. Além disso, é possível avaliar outros índices para o ativo livre de risco, por exemplo, SELIC, Taxas Ambima ou CDI. É possível, ainda, avaliar modelos com 3 ou mais parâmetros, incorporando a estrutura de capital e o risco país.
+
+Por fim, a metodologia proposta mostrou-se robusta para os estudos empíricos do modelo SL no contexto da *Asset Pricing Theory*.
+
+# Referências
