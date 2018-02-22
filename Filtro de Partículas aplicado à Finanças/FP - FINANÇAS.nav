@@ -7,10 +7,10 @@
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {1}{0}{2}{3/3}{}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {1}{0}{3}{4/8}{}{0}}
-\headcommand {\beamer@framepages {4}{8}}
-\headcommand {\slideentry {1}{0}{4}{9/9}{}{0}}
-\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\slideentry {1}{0}{3}{4/4}{}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {1}{0}{4}{5/9}{}{0}}
+\headcommand {\beamer@framepages {5}{9}}
 \headcommand {\slideentry {1}{0}{5}{10/10}{}{0}}
 \headcommand {\beamer@framepages {10}{10}}
 \headcommand {\slideentry {1}{0}{6}{11/11}{}{0}}
@@ -29,155 +29,154 @@
 \headcommand {\beamer@framepages {17}{17}}
 \headcommand {\slideentry {1}{0}{13}{18/18}{}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\sectionentry {2}{Amostragem aleat\IeC {\'o}ria}{19}{Amostragem aleat\IeC {\'o}ria}{0}}
-\headcommand {\beamer@sectionpages {2}{18}}
-\headcommand {\beamer@subsectionpages {2}{18}}
-\headcommand {\slideentry {2}{0}{1}{19/19}{}{0}}
+\headcommand {\slideentry {1}{0}{14}{19/19}{}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {2}{0}{2}{20/20}{}{0}}
+\headcommand {\sectionentry {2}{Amostragem aleat\IeC {\'o}ria}{20}{Amostragem aleat\IeC {\'o}ria}{0}}
+\headcommand {\beamer@sectionpages {2}{19}}
+\headcommand {\beamer@subsectionpages {2}{19}}
+\headcommand {\slideentry {2}{0}{1}{20/20}{}{0}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {2}{0}{3}{21/21}{}{0}}
+\headcommand {\slideentry {2}{0}{2}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {2}{0}{4}{22/22}{}{0}}
+\headcommand {\slideentry {2}{0}{3}{22/22}{}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\slideentry {2}{0}{5}{23/23}{}{0}}
+\headcommand {\slideentry {2}{0}{4}{23/23}{}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {2}{0}{6}{24/24}{}{0}}
+\headcommand {\slideentry {2}{0}{5}{24/24}{}{0}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\slideentry {2}{0}{7}{25/25}{}{0}}
+\headcommand {\slideentry {2}{0}{6}{25/25}{}{0}}
 \headcommand {\beamer@framepages {25}{25}}
-\headcommand {\slideentry {2}{0}{8}{26/26}{}{0}}
+\headcommand {\slideentry {2}{0}{7}{26/26}{}{0}}
 \headcommand {\beamer@framepages {26}{26}}
-\headcommand {\slideentry {2}{0}{9}{27/28}{}{0}}
-\headcommand {\beamer@framepages {27}{28}}
-\headcommand {\slideentry {2}{0}{10}{29/29}{}{0}}
-\headcommand {\beamer@framepages {29}{29}}
-\headcommand {\slideentry {2}{0}{11}{30/30}{}{0}}
+\headcommand {\slideentry {2}{0}{8}{27/27}{}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\slideentry {2}{0}{9}{28/29}{}{0}}
+\headcommand {\beamer@framepages {28}{29}}
+\headcommand {\slideentry {2}{0}{10}{30/30}{}{0}}
 \headcommand {\beamer@framepages {30}{30}}
-\headcommand {\slideentry {2}{0}{12}{31/31}{}{0}}
+\headcommand {\slideentry {2}{0}{11}{31/31}{}{0}}
 \headcommand {\beamer@framepages {31}{31}}
-\headcommand {\slideentry {2}{0}{13}{32/32}{}{0}}
+\headcommand {\slideentry {2}{0}{12}{32/32}{}{0}}
 \headcommand {\beamer@framepages {32}{32}}
-\headcommand {\slideentry {2}{0}{14}{33/33}{}{0}}
+\headcommand {\slideentry {2}{0}{13}{33/33}{}{0}}
 \headcommand {\beamer@framepages {33}{33}}
-\headcommand {\slideentry {2}{0}{15}{34/34}{}{0}}
+\headcommand {\slideentry {2}{0}{14}{34/34}{}{0}}
 \headcommand {\beamer@framepages {34}{34}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{35}{Markov Chain Monte Carlo}}\headcommand {\beamer@subsectionpages {19}{34}}
-\headcommand {\slideentry {2}{1}{1}{35/35}{Markov Chain Monte Carlo}{0}}
+\headcommand {\slideentry {2}{0}{15}{35/35}{}{0}}
 \headcommand {\beamer@framepages {35}{35}}
-\headcommand {\slideentry {2}{1}{2}{36/36}{Markov Chain Monte Carlo}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{36}{Markov Chain Monte Carlo}}\headcommand {\beamer@subsectionpages {20}{35}}
+\headcommand {\slideentry {2}{1}{1}{36/36}{Markov Chain Monte Carlo}{0}}
 \headcommand {\beamer@framepages {36}{36}}
-\headcommand {\sectionentry {3}{Introdu\IeC {\c c}\IeC {\~a}o}{37}{Introdu\IeC {\c c}\IeC {\~a}o}{0}}
-\headcommand {\beamer@sectionpages {19}{36}}
-\headcommand {\beamer@subsectionpages {35}{36}}
-\headcommand {\slideentry {3}{0}{1}{37/40}{}{0}}
-\headcommand {\beamer@framepages {37}{40}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{41}{Part\IeC {\'\i }cula}}\headcommand {\beamer@subsectionpages {37}{40}}
-\headcommand {\slideentry {3}{1}{1}{41/42}{Part\IeC {\'\i }cula}{0}}
-\headcommand {\beamer@framepages {41}{42}}
-\headcommand {\slideentry {3}{1}{2}{43/43}{Part\IeC {\'\i }cula}{0}}
-\headcommand {\beamer@framepages {43}{43}}
-\headcommand {\slideentry {3}{1}{3}{44/47}{Part\IeC {\'\i }cula}{0}}
-\headcommand {\beamer@framepages {44}{47}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{48}{Exemplo}}\headcommand {\beamer@subsectionpages {41}{47}}
-\headcommand {\slideentry {3}{2}{1}{48/48}{Exemplo}{0}}
+\headcommand {\slideentry {2}{1}{2}{37/37}{Markov Chain Monte Carlo}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\sectionentry {3}{Part\IeC {\'\i }cula}{38}{Part\IeC {\'\i }cula}{0}}
+\headcommand {\beamer@sectionpages {20}{37}}
+\headcommand {\beamer@subsectionpages {36}{37}}
+\headcommand {\slideentry {3}{0}{1}{38/39}{}{0}}
+\headcommand {\beamer@framepages {38}{39}}
+\headcommand {\slideentry {3}{0}{2}{40/40}{}{0}}
+\headcommand {\beamer@framepages {40}{40}}
+\headcommand {\slideentry {3}{0}{3}{41/44}{}{0}}
+\headcommand {\beamer@framepages {41}{44}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{45}{Exemplo}}\headcommand {\beamer@subsectionpages {38}{44}}
+\headcommand {\slideentry {3}{1}{1}{45/45}{Exemplo}{0}}
+\headcommand {\beamer@framepages {45}{45}}
+\headcommand {\slideentry {3}{1}{2}{46/46}{Exemplo}{0}}
+\headcommand {\beamer@framepages {46}{46}}
+\headcommand {\slideentry {3}{1}{3}{47/47}{Exemplo}{0}}
+\headcommand {\beamer@framepages {47}{47}}
+\headcommand {\slideentry {3}{1}{4}{48/48}{Exemplo}{0}}
 \headcommand {\beamer@framepages {48}{48}}
-\headcommand {\slideentry {3}{2}{2}{49/49}{Exemplo}{0}}
+\headcommand {\slideentry {3}{1}{5}{49/49}{Exemplo}{0}}
 \headcommand {\beamer@framepages {49}{49}}
-\headcommand {\slideentry {3}{2}{3}{50/50}{Exemplo}{0}}
-\headcommand {\beamer@framepages {50}{50}}
-\headcommand {\slideentry {3}{2}{4}{51/51}{Exemplo}{0}}
-\headcommand {\beamer@framepages {51}{51}}
-\headcommand {\slideentry {3}{2}{5}{52/52}{Exemplo}{0}}
-\headcommand {\beamer@framepages {52}{52}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{53}{Modelo din\IeC {\^a}mico}}\headcommand {\beamer@subsectionpages {48}{52}}
-\headcommand {\slideentry {3}{3}{1}{53/54}{Modelo din\IeC {\^a}mico}{0}}
-\headcommand {\beamer@framepages {53}{54}}
-\headcommand {\slideentry {3}{3}{2}{55/57}{Modelo din\IeC {\^a}mico}{0}}
-\headcommand {\beamer@framepages {55}{57}}
-\headcommand {\slideentry {3}{3}{3}{58/59}{Modelo din\IeC {\^a}mico}{0}}
-\headcommand {\beamer@framepages {58}{59}}
-\headcommand {\slideentry {3}{3}{4}{60/60}{Modelo din\IeC {\^a}mico}{0}}
-\headcommand {\beamer@framepages {60}{60}}
-\headcommand {\sectionentry {4}{M\IeC {\'e}todos num\IeC {\'e}ricos}{61}{M\IeC {\'e}todos num\IeC {\'e}ricos}{0}}
-\headcommand {\beamer@sectionpages {37}{60}}
-\headcommand {\beamer@subsectionpages {53}{60}}
-\headcommand {\slideentry {4}{0}{1}{61/61}{}{0}}
-\headcommand {\beamer@framepages {61}{61}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{62}{Monte Carlo}}\headcommand {\beamer@subsectionpages {61}{61}}
-\headcommand {\slideentry {4}{1}{1}{62/62}{Monte Carlo}{0}}
-\headcommand {\beamer@framepages {62}{62}}
-\headcommand {\slideentry {4}{1}{2}{63/65}{Monte Carlo}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{50}{Modelo din\IeC {\^a}mico}}\headcommand {\beamer@subsectionpages {45}{49}}
+\headcommand {\slideentry {3}{2}{1}{50/51}{Modelo din\IeC {\^a}mico}{0}}
+\headcommand {\beamer@framepages {50}{51}}
+\headcommand {\slideentry {3}{2}{2}{52/54}{Modelo din\IeC {\^a}mico}{0}}
+\headcommand {\beamer@framepages {52}{54}}
+\headcommand {\slideentry {3}{2}{3}{55/56}{Modelo din\IeC {\^a}mico}{0}}
+\headcommand {\beamer@framepages {55}{56}}
+\headcommand {\slideentry {3}{2}{4}{57/57}{Modelo din\IeC {\^a}mico}{0}}
+\headcommand {\beamer@framepages {57}{57}}
+\headcommand {\sectionentry {4}{M\IeC {\'e}todos num\IeC {\'e}ricos}{58}{M\IeC {\'e}todos num\IeC {\'e}ricos}{0}}
+\headcommand {\beamer@sectionpages {38}{57}}
+\headcommand {\beamer@subsectionpages {50}{57}}
+\headcommand {\slideentry {4}{0}{1}{58/58}{}{0}}
+\headcommand {\beamer@framepages {58}{58}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{59}{Monte Carlo}}\headcommand {\beamer@subsectionpages {58}{58}}
+\headcommand {\slideentry {4}{1}{1}{59/59}{Monte Carlo}{0}}
+\headcommand {\beamer@framepages {59}{59}}
+\headcommand {\slideentry {4}{1}{2}{60/62}{Monte Carlo}{0}}
+\headcommand {\beamer@framepages {60}{62}}
+\headcommand {\slideentry {4}{1}{3}{63/65}{Monte Carlo}{0}}
 \headcommand {\beamer@framepages {63}{65}}
-\headcommand {\slideentry {4}{1}{3}{66/68}{Monte Carlo}{0}}
-\headcommand {\beamer@framepages {66}{68}}
-\headcommand {\slideentry {4}{1}{4}{69/70}{Monte Carlo}{0}}
-\headcommand {\beamer@framepages {69}{70}}
-\headcommand {\beamer@subsectionentry {0}{4}{2}{71}{Amostragem de Import\IeC {\^a}ncia - AI}}\headcommand {\beamer@subsectionpages {62}{70}}
-\headcommand {\slideentry {4}{2}{1}{71/71}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
-\headcommand {\beamer@framepages {71}{71}}
-\headcommand {\slideentry {4}{2}{2}{72/74}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
-\headcommand {\beamer@framepages {72}{74}}
-\headcommand {\slideentry {4}{2}{3}{75/76}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
-\headcommand {\beamer@framepages {75}{76}}
-\headcommand {\slideentry {4}{2}{4}{77/78}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
-\headcommand {\beamer@framepages {77}{78}}
-\headcommand {\slideentry {4}{2}{5}{79/81}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
+\headcommand {\slideentry {4}{1}{4}{66/67}{Monte Carlo}{0}}
+\headcommand {\beamer@framepages {66}{67}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{68}{Amostragem de Import\IeC {\^a}ncia - AI}}\headcommand {\beamer@subsectionpages {59}{67}}
+\headcommand {\slideentry {4}{2}{1}{68/68}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
+\headcommand {\beamer@framepages {68}{68}}
+\headcommand {\slideentry {4}{2}{2}{69/71}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
+\headcommand {\beamer@framepages {69}{71}}
+\headcommand {\slideentry {4}{2}{3}{72/73}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
+\headcommand {\beamer@framepages {72}{73}}
+\headcommand {\slideentry {4}{2}{4}{74/75}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
+\headcommand {\beamer@framepages {74}{75}}
+\headcommand {\slideentry {4}{2}{5}{76/78}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
+\headcommand {\beamer@framepages {76}{78}}
+\headcommand {\slideentry {4}{2}{6}{79/81}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
 \headcommand {\beamer@framepages {79}{81}}
-\headcommand {\slideentry {4}{2}{6}{82/84}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
-\headcommand {\beamer@framepages {82}{84}}
-\headcommand {\slideentry {4}{2}{7}{85/88}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
-\headcommand {\beamer@framepages {85}{88}}
-\headcommand {\beamer@subsectionentry {0}{4}{3}{89}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}}\headcommand {\beamer@subsectionpages {71}{88}}
-\headcommand {\slideentry {4}{3}{1}{89/89}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
-\headcommand {\beamer@framepages {89}{89}}
-\headcommand {\slideentry {4}{3}{2}{90/92}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
-\headcommand {\beamer@framepages {90}{92}}
-\headcommand {\slideentry {4}{3}{3}{93/94}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
-\headcommand {\beamer@framepages {93}{94}}
-\headcommand {\slideentry {4}{3}{4}{95/96}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
-\headcommand {\beamer@framepages {95}{96}}
-\headcommand {\slideentry {4}{3}{5}{97/99}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
-\headcommand {\beamer@framepages {97}{99}}
-\headcommand {\slideentry {4}{3}{6}{100/101}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
-\headcommand {\beamer@framepages {100}{101}}
-\headcommand {\slideentry {4}{3}{7}{102/104}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
-\headcommand {\beamer@framepages {102}{104}}
-\headcommand {\beamer@subsectionentry {0}{4}{4}{105}{Reamostragem}}\headcommand {\beamer@subsectionpages {89}{104}}
-\headcommand {\slideentry {4}{4}{1}{105/105}{Reamostragem}{0}}
-\headcommand {\beamer@framepages {105}{105}}
-\headcommand {\slideentry {4}{4}{2}{106/108}{Reamostragem}{0}}
+\headcommand {\slideentry {4}{2}{7}{82/85}{Amostragem de Import\IeC {\^a}ncia - AI}{0}}
+\headcommand {\beamer@framepages {82}{85}}
+\headcommand {\beamer@subsectionentry {0}{4}{3}{86}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}}\headcommand {\beamer@subsectionpages {68}{85}}
+\headcommand {\slideentry {4}{3}{1}{86/86}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
+\headcommand {\beamer@framepages {86}{86}}
+\headcommand {\slideentry {4}{3}{2}{87/89}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
+\headcommand {\beamer@framepages {87}{89}}
+\headcommand {\slideentry {4}{3}{3}{90/91}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
+\headcommand {\beamer@framepages {90}{91}}
+\headcommand {\slideentry {4}{3}{4}{92/93}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
+\headcommand {\beamer@framepages {92}{93}}
+\headcommand {\slideentry {4}{3}{5}{94/96}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
+\headcommand {\beamer@framepages {94}{96}}
+\headcommand {\slideentry {4}{3}{6}{97/98}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
+\headcommand {\beamer@framepages {97}{98}}
+\headcommand {\slideentry {4}{3}{7}{99/101}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{0}}
+\headcommand {\beamer@framepages {99}{101}}
+\headcommand {\beamer@subsectionentry {0}{4}{4}{102}{Reamostragem}}\headcommand {\beamer@subsectionpages {86}{101}}
+\headcommand {\slideentry {4}{4}{1}{102/102}{Reamostragem}{0}}
+\headcommand {\beamer@framepages {102}{102}}
+\headcommand {\slideentry {4}{4}{2}{103/105}{Reamostragem}{0}}
+\headcommand {\beamer@framepages {103}{105}}
+\headcommand {\slideentry {4}{4}{3}{106/108}{Reamostragem}{0}}
 \headcommand {\beamer@framepages {106}{108}}
-\headcommand {\slideentry {4}{4}{3}{109/111}{Reamostragem}{0}}
-\headcommand {\beamer@framepages {109}{111}}
-\headcommand {\slideentry {4}{4}{4}{112/115}{Reamostragem}{0}}
-\headcommand {\beamer@framepages {112}{115}}
-\headcommand {\sectionentry {5}{Estima\IeC {\c c}\IeC {\~a}o estados latentes}{116}{Estima\IeC {\c c}\IeC {\~a}o estados latentes}{0}}
-\headcommand {\beamer@sectionpages {61}{115}}
-\headcommand {\beamer@subsectionpages {105}{115}}
-\headcommand {\slideentry {5}{0}{1}{116/116}{}{0}}
-\headcommand {\beamer@framepages {116}{116}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{117}{Filtro Bootstrap}}\headcommand {\beamer@subsectionpages {116}{116}}
-\headcommand {\slideentry {5}{1}{1}{117/117}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {117}{117}}
-\headcommand {\slideentry {5}{1}{2}{118/120}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {118}{120}}
-\headcommand {\slideentry {5}{1}{3}{121/122}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {121}{122}}
-\headcommand {\slideentry {5}{1}{4}{123/125}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {123}{125}}
-\headcommand {\slideentry {5}{1}{5}{126/130}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {126}{130}}
-\headcommand {\slideentry {5}{1}{6}{131/132}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {131}{132}}
-\headcommand {\slideentry {5}{1}{7}{133/134}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {133}{134}}
-\headcommand {\slideentry {5}{1}{8}{135/135}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {135}{135}}
-\headcommand {\slideentry {5}{1}{9}{136/136}{Filtro Bootstrap}{0}}
-\headcommand {\beamer@framepages {136}{136}}
-\headcommand {\beamer@partpages {1}{136}}
-\headcommand {\beamer@subsectionpages {117}{136}}
-\headcommand {\beamer@sectionpages {116}{136}}
-\headcommand {\beamer@documentpages {136}}
+\headcommand {\slideentry {4}{4}{4}{109/112}{Reamostragem}{0}}
+\headcommand {\beamer@framepages {109}{112}}
+\headcommand {\sectionentry {5}{Estima\IeC {\c c}\IeC {\~a}o estados latentes}{113}{Estima\IeC {\c c}\IeC {\~a}o estados latentes}{0}}
+\headcommand {\beamer@sectionpages {58}{112}}
+\headcommand {\beamer@subsectionpages {102}{112}}
+\headcommand {\slideentry {5}{0}{1}{113/113}{}{0}}
+\headcommand {\beamer@framepages {113}{113}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{114}{Filtro Bootstrap}}\headcommand {\beamer@subsectionpages {113}{113}}
+\headcommand {\slideentry {5}{1}{1}{114/114}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {114}{114}}
+\headcommand {\slideentry {5}{1}{2}{115/117}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {115}{117}}
+\headcommand {\slideentry {5}{1}{3}{118/119}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {118}{119}}
+\headcommand {\slideentry {5}{1}{4}{120/122}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {120}{122}}
+\headcommand {\slideentry {5}{1}{5}{123/127}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {123}{127}}
+\headcommand {\slideentry {5}{1}{6}{128/129}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {128}{129}}
+\headcommand {\slideentry {5}{1}{7}{130/131}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {130}{131}}
+\headcommand {\slideentry {5}{1}{8}{132/132}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {132}{132}}
+\headcommand {\slideentry {5}{1}{9}{133/133}{Filtro Bootstrap}{0}}
+\headcommand {\beamer@framepages {133}{133}}
+\headcommand {\beamer@partpages {1}{133}}
+\headcommand {\beamer@subsectionpages {114}{133}}
+\headcommand {\beamer@sectionpages {113}{133}}
+\headcommand {\beamer@documentpages {133}}
 \headcommand {\def \inserttotalframenumber {77}}

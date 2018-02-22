@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.1.12)  22 FEB 2018 18:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.1.12)  22 FEB 2018 18:10
 entering extended mode
 **"./FP - FINANÇAS.tex"
 ("FP - FINANÇAS.tex"
@@ -1471,175 +1471,178 @@ ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 75.
  ("FP - FINANÇAS.nav") [1
 
-{C:/Users/Igor/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
+{C:/Users/Igor/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] ("FP - FINAN
+ÇAS.toc")
+[2
+
+] [3
 
 ]
-LaTeX Font Info:    Try loading font information for OT1+aess on input line 112
+LaTeX Font Info:    Try loading font information for OT1+aess on input line 119
 .
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\ae\ot1aess.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\ot1aess.fd"
 File: ot1aess.fd 1997/11/16 Font definitions for OT1/aess.
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 112.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 119.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 112
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 119
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 112
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 119
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 112.
+(Font)              <8> on input line 119.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 112.
+(Font)              <6> on input line 119.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 112.
-LaTeX Font Info:    Try loading font information for U+msa on input line 112.
+(Font)              <5> on input line 119.
+LaTeX Font Info:    Try loading font information for U+msa on input line 119.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 112.
+LaTeX Font Info:    Try loading font information for U+msb on input line 119.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/aess/m/it' in size <8> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 112.
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 119.
 LaTeX Font Info:    Font shape `T1/aess/m/it' in size <6> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 112.
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 119.
 LaTeX Font Info:    Font shape `T1/aess/m/it' in size <5> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 112.
- [3
-
-] [4
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 119.
+ [4
 
 ] [5
 
 ] [6
 
-]
-[7
+] [7
 
-] [8
+]
+[8
 
 ] [9
 
+] [10
+
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 159.
+(Font)              <10.95> on input line 166.
 LaTeX Font Info:    Font shape `T1/aess/m/it' in size <10.95> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 159.
- [10
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 166.
+ [11
 
 ]
 
-LaTeX Warning: Command \' invalid in math mode on input line 175.
+LaTeX Warning: Command \' invalid in math mode on input line 182.
 
 Missing character: There is no � in font cmss8!
 
-LaTeX Warning: Command \' invalid in math mode on input line 175.
+LaTeX Warning: Command \' invalid in math mode on input line 182.
 
 Missing character: There is no � in font cmss8!
-[11
-
-] <marko_02.png, id=126, 335.75438pt x 239.39438pt>
-File: marko_02.png Graphic file (type png)
- <use marko_02.png>
-Package pdftex.def Info: marko_02.png used on input line 195.
-(pdftex.def)             Requested size: 159.6233pt x 113.81102pt.
-
 [12
 
- <./marko_02.png>] [13
+] <marko_02.png, id=152, 335.75438pt x 239.39438pt>
+File: marko_02.png Graphic file (type png)
+ <use marko_02.png>
+Package pdftex.def Info: marko_02.png used on input line 202.
+(pdftex.def)             Requested size: 159.6233pt x 113.81102pt.
+
+[13
+
+ <./marko_02.png>] [14
 
 ]
-<decritiva_indices.pdf, id=139, 867.24pt x 578.16pt>
+<decritiva_indices.pdf, id=165, 867.24pt x 578.16pt>
 File: decritiva_indices.pdf Graphic file (type pdf)
 
 <use decritiva_indices.pdf>
-Package pdftex.def Info: decritiva_indices.pdf used on input line 217.
+Package pdftex.def Info: decritiva_indices.pdf used on input line 224.
 (pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
 
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 217--217
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 224--224
  [] 
  []
 
 
-Overfull \vbox (12.97775pt too high) detected at line 217
- []
-
-[14
-
- <./decritiva_indices.pdf>]
-<descritiva_cor.pdf, id=154, 867.24pt x 578.16pt>
-File: descritiva_cor.pdf Graphic file (type pdf)
- <use descritiva_cor.pdf>
-Package pdftex.def Info: descritiva_cor.pdf used on input line 227.
-(pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
-
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 227--227
- [] 
- []
-
-
-Overfull \vbox (12.97775pt too high) detected at line 227
+Overfull \vbox (12.97775pt too high) detected at line 224
  []
 
 [15
 
- <./descritiva_cor.pdf>]
-<fronteira_ativos.pdf, id=165, 867.24pt x 578.16pt>
-File: fronteira_ativos.pdf Graphic file (type pdf)
- <use fronteira_ativos.pdf>
-Package pdftex.def Info: fronteira_ativos.pdf used on input line 238.
+ <./decritiva_indices.pdf>]
+<descritiva_cor.pdf, id=180, 867.24pt x 578.16pt>
+File: descritiva_cor.pdf Graphic file (type pdf)
+ <use descritiva_cor.pdf>
+Package pdftex.def Info: descritiva_cor.pdf used on input line 234.
 (pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
 
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 238--238
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 234--234
  [] 
  []
 
 
-Overfull \vbox (12.97775pt too high) detected at line 238
+Overfull \vbox (12.97775pt too high) detected at line 234
  []
 
 [16
 
- <./fronteira_ativos.pdf>] [17
-
-] [18
-
-] [19
-
-]
-File: decritiva_indices.pdf Graphic file (type pdf)
- <use decritiva_indices.pdf>
-Package pdftex.def Info: decritiva_indices.pdf used on input line 285.
+ <./descritiva_cor.pdf>]
+<fronteira_ativos.pdf, id=191, 867.24pt x 578.16pt>
+File: fronteira_ativos.pdf Graphic file (type pdf)
+ <use fronteira_ativos.pdf>
+Package pdftex.def Info: fronteira_ativos.pdf used on input line 245.
 (pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
 
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 285--285
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 245--245
  [] 
  []
 
 
-Overfull \vbox (12.97775pt too high) detected at line 285
+Overfull \vbox (12.97775pt too high) detected at line 245
  []
 
-[20
+[17
 
-] [21
+ <./fronteira_ativos.pdf>] [18
+
+] [19
+
+] [20
+
+]
+File: decritiva_indices.pdf Graphic file (type pdf)
+ <use decritiva_indices.pdf>
+Package pdftex.def Info: decritiva_indices.pdf used on input line 292.
+(pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
+
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 292--292
+ [] 
+ []
+
+
+Overfull \vbox (12.97775pt too high) detected at line 292
+ []
+
+[21
 
 ] [22
+
+] [23
 
 ]
 \openout4 = `"FP - FINANÇAS.vrb"'.
@@ -1649,53 +1652,51 @@ LaTeX Font Info:    Try loading font information for T1+aett on input line 4.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)) [23
+)) [24
 
 ]
-<VAR_mc.pdf, id=215, 867.24pt x 578.16pt>
+<VAR_mc.pdf, id=240, 867.24pt x 578.16pt>
 File: VAR_mc.pdf Graphic file (type pdf)
  <use VAR_mc.pdf>
-Package pdftex.def Info: VAR_mc.pdf used on input line 342.
+Package pdftex.def Info: VAR_mc.pdf used on input line 349.
 (pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
 
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 342--342
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 349--349
  [] 
  []
 
 
-Overfull \vbox (12.97775pt too high) detected at line 342
+Overfull \vbox (12.97775pt too high) detected at line 349
  []
 
-[24
+[25
 
- <./VAR_mc.pdf>] [25
-
-] [26
+ <./VAR_mc.pdf>] [26
 
 ] [27
 
 ] [28
 
+] [29
+
 ]
-<VAR_boots.pdf, id=250, 867.24pt x 578.16pt>
+<VAR_boots.pdf, id=275, 867.24pt x 578.16pt>
 File: VAR_boots.pdf Graphic file (type pdf)
  <use VAR_boots.pdf>
-Package pdftex.def Info: VAR_boots.pdf used on input line 387.
+Package pdftex.def Info: VAR_boots.pdf used on input line 394.
 (pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
 
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 387--387
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 394--394
  [] 
  []
 
 
-Overfull \vbox (12.97775pt too high) detected at line 387
+Overfull \vbox (12.97775pt too high) detected at line 394
  []
 
-[29
+[30
 
- <./VAR_boots.pdf>] [30
-
-] [31
+ <./VAR_boots.pdf>] [31
 
 ] [32
 
@@ -1709,131 +1710,131 @@ Overfull \vbox (12.97775pt too high) detected at line 387
 
 ] [37
 
-] [38
-
-] [39
-
 ]
-[40
-
-] <porta_chaves_alvo_02.jpg, id=321, 1278.27562pt x 1710.39pt>
+<porta_chaves_alvo_02.jpg, id=325, 1278.27562pt x 1710.39pt>
 File: porta_chaves_alvo_02.jpg Graphic file (type jpg)
 
 <use porta_chaves_alvo_02.jpg>
-Package pdftex.def Info: porta_chaves_alvo_02.jpg used on input line 488.
+Package pdftex.def Info: porta_chaves_alvo_02.jpg used on input line 484.
 (pdftex.def)             Requested size: 95.67148pt x 128.0374pt.
- [41
+ [38
 
  <./porta_chaves_alvo_02.jpg>]
-<porta_chaves_alvo_01.jpg, id=329, 1704.3675pt x 2280.52pt>
+<porta_chaves_alvo_01.jpg, id=331, 1704.3675pt x 2280.52pt>
 File: porta_chaves_alvo_01.jpg Graphic file (type jpg)
 
 <use porta_chaves_alvo_01.jpg>
-Package pdftex.def Info: porta_chaves_alvo_01.jpg used on input line 488.
+Package pdftex.def Info: porta_chaves_alvo_01.jpg used on input line 484.
 (pdftex.def)             Requested size: 95.67798pt x 128.0374pt.
- [42
+ [39
 
- <./porta_chaves_alvo_01.jpg>] [43
+ <./porta_chaves_alvo_01.jpg>] [40
+
+] [41
+
+]
+[42
+
+] [43
 
 ] [44
 
-]
-[45
-
-] [46
-
-] [47
-
-] <1-particle-filter.png, id=362, 501.875pt x 501.875pt>
+] <1-particle-filter.png, id=364, 501.875pt x 501.875pt>
 File: 1-particle-filter.png Graphic file (type png)
 
 <use 1-particle-filter.png>
-Package pdftex.def Info: 1-particle-filter.png used on input line 548.
+Package pdftex.def Info: 1-particle-filter.png used on input line 544.
 (pdftex.def)             Requested size: 184.94801pt x 184.9429pt.
- [48
+ [45
 
  <./1-particle-filter.png (PNG copy)>]
-<2-particle-filter-initial.png, id=369, 501.875pt x 501.875pt>
+<2-particle-filter-initial.png, id=371, 501.875pt x 501.875pt>
 File: 2-particle-filter-initial.png Graphic file (type png)
 
 <use 2-particle-filter-initial.png>
-Package pdftex.def Info: 2-particle-filter-initial.png used on input line 560.
+Package pdftex.def Info: 2-particle-filter-initial.png used on input line 556.
 (pdftex.def)             Requested size: 184.94801pt x 184.9429pt.
- [49
+ [46
 
  <./2-particle-filter-initial.png (PNG copy)>] <3-particle-filter-sensor-sweep.
-png, id=376, 501.875pt x 501.875pt>
+png, id=377, 501.875pt x 501.875pt>
 File: 3-particle-filter-sensor-sweep.png Graphic file (type png)
 
 <use 3-particle-filter-sensor-sweep.png>
 Package pdftex.def Info: 3-particle-filter-sensor-sweep.png used on input line 
-570.
+566.
 (pdftex.def)             Requested size: 184.94801pt x 184.9429pt.
- [50
+ [47
 
  <./3-particle-filter-sensor-sweep.png (PNG copy)>]
-<4-particle-filter-after-weighting.png, id=382, 501.875pt x 501.875pt>
+<4-particle-filter-after-weighting.png, id=383, 501.875pt x 501.875pt>
 File: 4-particle-filter-after-weighting.png Graphic file (type png)
 
 <use 4-particle-filter-after-weighting.png>
 Package pdftex.def Info: 4-particle-filter-after-weighting.png used on input li
-ne 582.
+ne 578.
 (pdftex.def)             Requested size: 184.94801pt x 184.9429pt.
- [51
+ [48
 
  <./4-particle-filter-after-weighting.png (PNG copy)>]
-<5-particle-filter-after-move.png, id=388, 501.875pt x 501.875pt>
+<5-particle-filter-after-move.png, id=389, 501.875pt x 501.875pt>
 File: 5-particle-filter-after-move.png Graphic file (type png)
 
 <use 5-particle-filter-after-move.png>
 Package pdftex.def Info: 5-particle-filter-after-move.png used on input line 59
-4.
+0.
 (pdftex.def)             Requested size: 184.94801pt x 184.9429pt.
- [52
+ [49
 
  <./5-particle-filter-after-move.png (PNG copy)>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 615.
+(Font)              <12> on input line 611.
 LaTeX Font Info:    Font shape `T1/aess/m/it' in size <12> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 615.
- [53
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 611.
+ [50
 
-] [54
+] [51
 
-] <modelodinamicoR.pdf, id=407, 833.1125pt x 415.5525pt>
+] <modelodinamicoR.pdf, id=409, 833.1125pt x 415.5525pt>
 File: modelodinamicoR.pdf Graphic file (type pdf)
 
 <use modelodinamicoR.pdf>
-Package pdftex.def Info: modelodinamicoR.pdf used on input line 645.
+Package pdftex.def Info: modelodinamicoR.pdf used on input line 641.
 (pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
- [55
+ [52
 
  <./modelodinamicoR.pdf>]
-<modelodinamicoR1.pdf, id=418, 833.1125pt x 415.5525pt>
+<modelodinamicoR1.pdf, id=419, 833.1125pt x 415.5525pt>
 File: modelodinamicoR1.pdf Graphic file (type pdf)
 
 <use modelodinamicoR1.pdf>
-Package pdftex.def Info: modelodinamicoR1.pdf used on input line 645.
+Package pdftex.def Info: modelodinamicoR1.pdf used on input line 641.
 (pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
- [56
+ [53
 
  <./modelodinamicoR1.pdf>]
-<modelodinamicoR2.pdf, id=428, 833.1125pt x 415.5525pt>
+<modelodinamicoR2.pdf, id=429, 833.1125pt x 415.5525pt>
 File: modelodinamicoR2.pdf Graphic file (type pdf)
 
 <use modelodinamicoR2.pdf>
-Package pdftex.def Info: modelodinamicoR2.pdf used on input line 645.
+Package pdftex.def Info: modelodinamicoR2.pdf used on input line 641.
 (pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
- [57
+ [54
 
- <./modelodinamicoR2.pdf>] [58
+ <./modelodinamicoR2.pdf>] [55
+
+] [56
+
+] [57
+
+]
+[58
 
 ] [59
 
 ] [60
 
-]
-[61
+] [61
 
 ] [62
 
@@ -1855,23 +1856,23 @@ Package pdftex.def Info: modelodinamicoR2.pdf used on input line 645.
 
 ] [71
 
-] [72
+]
 
-] [73
+LaTeX Warning: Citation `doucet2' on page 72 undefined on input line 805.
+
+[72
+
+]
+
+LaTeX Warning: Citation `doucet2' on page 73 undefined on input line 805.
+
+[73
 
 ] [74
 
-]
+] [75
 
-LaTeX Warning: Citation `doucet2' on page 75 undefined on input line 809.
-
-[75
-
-]
-
-LaTeX Warning: Citation `doucet2' on page 76 undefined on input line 809.
-
-[76
+] [76
 
 ] [77
 
@@ -1895,48 +1896,48 @@ LaTeX Warning: Citation `doucet2' on page 76 undefined on input line 809.
 
 ] [87
 
-] [88
+]
+[88
 
 ] [89
 
 ] [90
 
-]
-[91
+] [91
 
 ] [92
 
 ] [93
 
-] [94
-
-] [95
-
-] [96
-
 ]
-Overfull \hbox (12.1121pt too wide) detected at line 1003
+Overfull \hbox (12.1121pt too wide) detected at line 999
 \OML/lmm/m/it/10.95 []\OT1/aess/m/n/10.95 (\OML/lmm/m/it/10.95 []\OT1/aess/m/
 n/10.95 ) = []
  []
 
-[97
+[94
 
 ]
-Overfull \hbox (12.1121pt too wide) detected at line 1003
+Overfull \hbox (12.1121pt too wide) detected at line 999
 \OML/lmm/m/it/10.95 []\OT1/aess/m/n/10.95 (\OML/lmm/m/it/10.95 []\OT1/aess/m/
 n/10.95 ) = []
  []
 
-[98
+[95
 
 ]
-Overfull \hbox (12.1121pt too wide) detected at line 1003
+Overfull \hbox (12.1121pt too wide) detected at line 999
 \OML/lmm/m/it/10.95 []\OT1/aess/m/n/10.95 (\OML/lmm/m/it/10.95 []\OT1/aess/m/
 n/10.95 ) = []
  []
 
-[99
+[96
+
+] [97
+
+] [98
+
+] [99
 
 ] [100
 
@@ -1944,29 +1945,29 @@ n/10.95 ) = []
 
 ] [102
 
-] [103
+]
 
-] [104
+LaTeX Warning: Citation `petris' on page 103 undefined on input line 1069.
 
-] [105
+[103
 
 ]
 
-LaTeX Warning: Citation `petris' on page 106 undefined on input line 1073.
+LaTeX Warning: Citation `petris' on page 104 undefined on input line 1069.
 
-[106
-
-]
-
-LaTeX Warning: Citation `petris' on page 107 undefined on input line 1073.
-
-[107
+[104
 
 ]
 
-LaTeX Warning: Citation `petris' on page 108 undefined on input line 1073.
+LaTeX Warning: Citation `petris' on page 105 undefined on input line 1069.
 
-[108
+[105
+
+] [106
+
+] [107
+
+] [108
 
 ] [109
 
@@ -1980,83 +1981,88 @@ LaTeX Warning: Citation `petris' on page 108 undefined on input line 1073.
 
 ] [114
 
-] [115
+]
 
-] [116
+LaTeX Warning: Citation `gordon' on page 115 undefined on input line 1150.
 
-] [117
+[115
 
 ]
 
-LaTeX Warning: Citation `gordon' on page 118 undefined on input line 1154.
+LaTeX Warning: Citation `gordon' on page 116 undefined on input line 1150.
 
-[118
-
-]
-
-LaTeX Warning: Citation `gordon' on page 119 undefined on input line 1154.
-
-[119
+[116
 
 ]
 
-LaTeX Warning: Citation `gordon' on page 120 undefined on input line 1154.
+LaTeX Warning: Citation `gordon' on page 117 undefined on input line 1150.
 
-[120
+[117
+
+] [118
+
+] [119
+
+] [120
 
 ] [121
 
 ] [122
 
-] [123
-
-] [124
-
-] [125
-
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 1237.
+(Font)              <10> on input line 1233.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 1237.
+(Font)              <7> on input line 1233.
 LaTeX Font Info:    Font shape `T1/aess/m/it' in size <10> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 1237.
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 1233.
 
 LaTeX Font Info:    Font shape `T1/aess/m/it' in size <7> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 1237.
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 1233.
 
 
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1237--1237
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1233--1233
+[][]  
+ []
+
+[123
+
+]
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1233--1233
+[][]  
+ []
+
+[124
+
+]
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1233--1233
+[][]  
+ []
+
+[125
+
+]
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1233--1233
 [][]  
  []
 
 [126
 
 ]
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1237--1237
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1233--1233
 [][]  
  []
 
 [127
 
-]
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1237--1237
-[][]  
- []
+] [128
 
-[128
+] [129
 
 ]
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1237--1237
-[][]  
- []
 
-[129
-
-]
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1237--1237
-[][]  
- []
+LaTeX Font Warning: Font shape `T1/aess/bx/it' undefined
+(Font)              using `T1/aess/bx/n' instead on input line 1268.
 
 [130
 
@@ -2064,18 +2070,7 @@ Overfull \hbox (32.9877pt too wide) in paragraph at lines 1237--1237
 
 ] [132
 
-]
-
-LaTeX Font Warning: Font shape `T1/aess/bx/it' undefined
-(Font)              using `T1/aess/bx/n' instead on input line 1272.
-
-[133
-
-] [134
-
-] [135
-
-] ("FP - FINANÇAS.bbl") [136
+] ("FP - FINANÇAS.bbl") [133
 
 ]
 \tf@nav=\write6
@@ -2087,14 +2082,14 @@ LaTeX Font Warning: Font shape `T1/aess/bx/it' undefined
 \tf@snm=\write8
 \openout8 = `"FP - FINANÇAS.snm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1299.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1299.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1295.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1295.
  ("FP - FINANÇAS.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1299.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1299.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1295.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1295.
 
 Package rerunfilecheck Info: File `"FP - FINANÇAS".out' has not changed.
-(rerunfilecheck)             Checksum: 90A22320EBA8A23896B84DA920FFC8BE;745.
+(rerunfilecheck)             Checksum: EC670338E2EF9C2BAAB3D7113F347009;741.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2104,13 +2099,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 25134 strings out of 493333
- 479003 string characters out of 3139197
+ 25148 strings out of 493333
+ 479576 string characters out of 3139197
  536913 words of memory out of 3000000
- 27727 multiletter control sequences out of 15000+200000
+ 27746 multiletter control sequences out of 15000+200000
  63468 words of font info for 122 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
- 56i,18n,59p,804b,542s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,18n,59p,804b,543s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Fil
 es/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX 2.9/fon
 ts/enc/dvips/lm/lm-mathex.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
@@ -2128,9 +2123,9 @@ nts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
 c/lm/lmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:
 /Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on "FP - FINANÇAS.pdf" (136 pages, 935109 bytes).
+Output written on "FP - FINANÇAS.pdf" (133 pages, 932444 bytes).
 PDF statistics:
- 971 PDF objects out of 1000 (max. 8388607)
- 289 named destinations out of 1000 (max. 500000)
+ 963 PDF objects out of 1000 (max. 8388607)
+ 282 named destinations out of 1000 (max. 500000)
  211 words of extra memory for PDF output out of 10000 (max. 10000000)
 
