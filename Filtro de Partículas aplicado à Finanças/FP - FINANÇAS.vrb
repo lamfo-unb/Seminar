@@ -1,0 +1,11 @@
+\frametitle{Code - MC}
+
+
+\begin{verbatim}
+set.seed(1052210218)
+library(MASS)
+n_mc <- 100000
+mc <- mvrnorm(n=n_mc,mu,Sigma)
+mc <- matriz_mc %*% w_optm
+qlim <- quantile(mc,p=0.05)
+   \end{verbatim}

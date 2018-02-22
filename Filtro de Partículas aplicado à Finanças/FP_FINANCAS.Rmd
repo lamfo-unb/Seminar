@@ -2,16 +2,11 @@
 title: "Estudo empírico de Asset Princing Theory"
 author: "Igor Ferreira do Nascimento"
 date: "14 de junho de 2017"
-output:
-  html_document: default
-bibliography: bibliography.bib
+output: html_document
 ---
 
 # Introdução
 
-O presente trabalho tem por objetivo apresentar uma análise empírica instigada pela discussão do artigo @Roll1977, apresentado no início da disciplina. O artigo apresenta uma revisão sobre os estudos empíricos relativos ao modelo Sharpe-Lintner (SL) de *Asset Pricing Theory* (APT), proveniente, originalmente, dos trabalhos @LITNER e @Sharpe64.
-
-Nesse trabalho, o autor analisa os trabalhos empíricos @BJS, @FM e @BF e aprensenta uma argumentação teórica lastreada por um *background* matemático evidenciando pontos conflitantes de tais autores, indícios da refutação da da formulação teórica de Lintner-Sharpe.
 
 
 Esse modelo estabelece uma relação linear específica entre os ativos de um portfolio e seu *benchmark*, analisados com relação ao excesso sobre o ativo livre de risco. O modelo é especificado como:
@@ -183,7 +178,8 @@ base <- base[(day == last_day),]
 base <- base[order(dt)]
 
 # Calculando retorno dos ativos
-base <- base[, c(nomes):=lapply(.SD, function(x) (x/shift(x, 1)-1)*100),.SDcols = nomes]
+base <- base[, c(nomes):=lapply(.SD, function(x) log((x/shift(x, 1)))),.SDcols = nomes]
+# base <- base[, c(nomes):=lapply(.SD, function(x) ((x/shift(x, 1))-1)*100),.SDcols = nomes]
 base <- base[,DT:=as.Date(paste0(day,"/",month,"/",year),format ="%d/%m/%Y")]
 
 
@@ -195,12 +191,11 @@ Da tabela anterior nota-se que o índice IBOVESPA e IBOVIEE, índice do setor en
 ```{r juntando_bases, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
 
 nomes_analise <- grep("IFN|IMOB|ICON|IEE|INDX",names(base),value=T)
-
+names(base)
 base_temp <- melt(dplyr::select(base,one_of(c("DT",nomes_analise,"IBOV_Index"))), id.vars = "DT" )
 base_temp <- base_temp[!is.na(value),lapply(.SD,function(x) min(x)),.SDcols = "DT", by = "variable"]
 base_temp <- base_temp[,variable:=gsub("_Index","",variable)]
 kable(base_temp[order(DT)],col.names = c("Índice","Início da série"))
-xtable(kable(base_temp[order(DT)],col.names = c("Índice","Início da série")))
 rm(base_temp)
 
 
@@ -219,8 +214,8 @@ A carteira de mercado a ser utilizada será estimada conforme descrito em seçõ
 ## filtrando base
 base_analysis <-dplyr::select(base,one_of("DT",c(nomes_analise,"IBOV_Index")))
 
-#saveRDS(base_analysis,"base_fp.rds")
-base_analysis <- readRDS("base_fp.rds")
+saveRDS(base_analysis,"base_fp.rds")
+# base_analysis <- readRDS("base_fp.rds")
 # comando <- paste0(nomes_analise,"=ifelse(",nomes_analise,"<ltn_r,ltn_r,",nomes_analise,")")
 # comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
 # base_analysis <- base_analysis[,eval(comando)]
@@ -247,8 +242,8 @@ O gráfico a serguir apresenta a distribuição dos dados para os valores de mé
 A <- melt(dplyr::select(base_analysis %>% filter(!is.na(IMOB_Index)),one_of(c("DT",paste0(nomes_analise)))),"DT")
 A$alpha <- ifelse(A$variable=="ICON_Index",1,
                   ifelse(A$variable=="INDX_Index",1,
-                         ifelse(A$variable=="IBOVIEE_Index",.8,
-                                ifelse(A$variable=="IFNCBV_Index",.4,.4))))
+                        ifelse(A$variable=="IBOVIEE_Index",1,
+                                ifelse(A$variable=="IFNCBV_Index",1,1))))
 
 A$variable <- ifelse(A$variable=="ICON_Index","1 - ICON_Index",
                   ifelse(A$variable=="INDX_Index","2 - INDX_Index",
@@ -262,10 +257,10 @@ pdf(file.path("decritiva_indices.pdf"),height=8,width = 12)
  
  
 ggplot(A,aes(x=value,fill=variable)) +
-  geom_density(aes(alpha=alpha)) + xlab("%") + ylab("Densidade") + 
-  ggtitle(expression(atop("Retorno mensal", atop(italic("2008-2017"), ""))))+
+  geom_density(aes(alpha=alpha)) + xlab("log return") + ylab("Densidade") + 
+  ggtitle(expression(atop("Log retorno mensal", atop(italic("2008-2017"), ""))))+
    theme(legend.position='bottom',legend.direction = "horizontal",plot.title = element_text(hjust = 0.5,size=22)) + 
-        scale_fill_manual(values= c("black", "#E69F00", "#56B4E9","blue","red"), 
+        scale_fill_manual(values= c("black", "#FF00FF", "#56B4E9","#E69F00","red"), 
                        name=NULL,
                        breaks=ordem_indice,
                        labels=gsub(".\\s.\\s(.*)_Index","\\1",ordem_indice)) +
@@ -324,9 +319,10 @@ A <- expand.grid(w1 = seq(0,1,by=.1),
                  w3 = seq(0,1,by=.1),
                  w4 = seq(0,1,by=.1),
                  w5 = seq(0,1,by=.1))
+
 A$total <- apply(A,1,sum)
-A <- A %>% filter(total == 1) %>%
-  select(-total)
+library(dplyr)
+A <- A %>% filter(total == 1) %>%   dplyr::select(-total)
 
 A$r <- 0
 A$v <- 0
@@ -335,12 +331,13 @@ for(i in 1:nrow(A)){
   A$v[i] <- func_v(t(as.matrix(A[i,1:5])),descritiva_indice$DP,tab_cor)
 }
 
-w_optm <- data.table(A_fronteira)[order(v)][1,]
 
 z <- chull(A$r,A$v)
 A_fronteira <- A[z,]
 A_fronteira <- A_fronteira %>%
   filter(!(v>=6.5 & r>=.9))
+  # filter(!(v>=0.07 & r>=0.006))
+w_optm <- data.table(A_fronteira)[order(v)][1,]
 
 px <- c(descritiva_indice$DP,w_optm$v)
 py <- c(descritiva_indice$M,w_optm$r)
@@ -356,6 +353,7 @@ points(px,py, cex=c(.75,.75,.75,.75,.75,1)+.5,pch = 16,col = c(1,1,1,1,1,4))
 text(px-c(0,0,0,0,0,-.2),py-c(.025,.025,.025,.025,-.03,0),
      labels = c(descritiva_indice$variable,"PVM"),cex=c(.75,.75,.75,.75,.75,.75)+.5,
      col = c(1,1,1,1,1,4))
+
 abline(v=6,lty = 3 , col = 1 )
 abline(h=0.53,lty = 3 , col = 1)
 abline(h=1.185,lty = 3 , col = 1)
@@ -368,388 +366,116 @@ dev.off()
 
 O terceiro candidato a *proxy* da carteira de mercado é o valor médio apresentado na tabela anterior. Apesar de afetada pelos valores extremos, essa medida resumo garante que a soma das composições seja $1$.
 
-```{r analise_ativos11, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-### Mercado
-market3 <- apply(dplyr::select(base_analysis,one_of(paste0("w_",nomes_analise))),2,function(x) mean(na.omit(x)));
-```
-Para contornar a existência de tais valores extremos é necessário realizar o tratamento da base de dados, removendo ou substituindo valores *outliers*. Essa análise não é o foco desse trabalho, mas faz parte da agenda de trabalhos futuros.
+```{r MC, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
 
-O gráfico a seguir apresenta a densidade encontrada para os ativos listados. Para facilitar a visualização, nesse gráfico são permitidos, para a carteira ótima, até $10\%$ do montante investido em vendas descobertas. Os setores imobiliários e financeiros contribuem menos ao longo. Por outro lado, o setor de consumo e energético contribuem com maior percentual.
+A <- melt(dplyr::select(base_analysis %>% filter(!is.na(IMOB_Index)),one_of(c("DT",paste0(nomes_analise[2])))),"DT")
+A$alpha <- ifelse(A$variable=="ICON_Index",1,
+                  ifelse(A$variable=="INDX_Index",1,
+                        ifelse(A$variable=="IBOVIEE_Index",1,
+                                ifelse(A$variable=="IFNCBV_Index",1,1))))
+
+A$variable <- ifelse(A$variable=="ICON_Index","1 - ICON_Index",
+                  ifelse(A$variable=="INDX_Index","2 - INDX_Index",
+                         ifelse(A$variable=="IBOVIEE_Index","3 - IBOVIEE_Index",
+                                ifelse(A$variable=="IFNCBV_Index","4 - IFNCBV_Index","5 - IMOB_Index"))))
 
 
-```{r analise_ativos2, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-A <- melt(dplyr::select(base_analysis,one_of(c("DT",paste0("w_",nomes_analise)))),"DT")[value > -.1 & value <1.1,]
-
-pdf(file.path("Beamer","wshort.pdf"),height=6,width = 12)
-
+pdf(file.path("decritiva_indices_mc.pdf"),height=8,width = 12)
+ ordem_indice <- c("1 - ICON_Index","2 - INDX_Index","3 - IBOVIEE_Index","4 - IFNCBV_Index","5 - IMOB_Index")
+ 
+ 
+ 
 ggplot(A,aes(x=value,fill=variable)) +
-  geom_density(alpha=0.25) + xlab("Decimal") + ylab("Densidade") + ggtitle('Composição carteira válida (descoberto 10%)') +
-        theme(legend.position='right')
+  geom_density(aes(alpha=alpha)) + xlab("log return") + ylab("Density") + 
+  ggtitle(expression(atop("Log retorno mensal", atop(italic("2008-2017"), ""))))+
+   theme(legend.position='bottom',legend.direction = "horizontal",plot.title = element_text(hjust = 0.5,size=22)) + 
+        scale_fill_manual(values= c("black", "#FF00FF", "#56B4E9","#E69F00","red"), 
+                       name=NULL,
+                       breaks=ordem_indice,
+                       labels=gsub(".\\s.\\s(.*)_Index","\\1",ordem_indice)) +
+  scale_alpha_continuous(guide=FALSE) + geom_vline(xintercept = 0 , colour = "black", linetype  = 2 )
+
+
 dev.off()
-```
 
+### MC
+set.seed(1052210218)
+library(MASS)
+n_mc <- 100000
+matriz_mc <- mvrnorm(n=n_mc,mu=descritiva_indice$M,Sigma = as.matrix(tab_cov))
+matriz_mc <- data.table(as.matrix(matriz_mc) %*% t(w_optm[,1:5]))
+names(matriz_mc)
+
+pdf(file.path("MC_mc.pdf"),height=8,width = 12)
+ggplot(matriz_mc, aes(x=V1)) + 
+    geom_histogram(aes(y=..density..),      # Histogram with density instead of count on y-axis
+                   binwidth=.05,
+                   colour="black", fill="white") +
+    geom_density(alpha=.2, fill="black")   +
+  scale_alpha_continuous(guide=FALSE) + geom_vline(xintercept = 0 , colour = "black", linetype  = 2 )
 
-Caso não haja possibilidade para investimentos descobertos, tem-se o seguinte gráfico:
-
-```{r analise_ativos222, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-A <- melt(dplyr::select(base_analysis,one_of(c("DT",paste0("w_",nomes_analise)))),"DT")[value >=0 & value <=1,]
-
-pdf(file.path("Beamer","w.pdf"),height=6,width = 12)
-
-ggplot(A,aes(x=value,fill=variable)) +
-  geom_density(alpha=0.25) + xlab("Decimal") + ylab("Densidade") + ggtitle('Composição carteira válida') +
-        theme(legend.position='right')
-dev.off()
-```
-
-
-A programação a seguir calcula os indicadores de mercado para as três metodologias. Além disso, as distribuições são comparadas por meio de gráfico a seguir. Para facilitar a visualização, a análise foi restringida para retornos de até 60 em torno de zero.
-
-  
-```{r carteira_mercado, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-## primeira 
-base_analysis[,mkt1 := IBOV_Index]
-
-## segunda
-comando <- paste0("mkt2=",paste0(nomes_analise,"*w_",nomes_analise,collapse = "+"))
-comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
-base_analysis <- base_analysis[,eval(comando)]
-
-## terceira
-
-comando <- paste0("mkt3=",paste0(gsub("^w_","",names(market3)),"*",market3,collapse = "+"))
-comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
-base_analysis <- base_analysis[,eval(comando)]
-
-
-## Gráfico
-
-A <- melt(dplyr::select(base_analysis[year(DT)>=2010,],one_of(c("DT",grep("^mkt",names(base_analysis),value = T)))),"DT")
-
-resumo <- apply(dplyr::select(base_analysis[year(DT)>=2010,],one_of(grep("^mkt",names(base_analysis),value = T))),2,function(x) summary(na.omit(x)));
-kable(resumo)
-rm(resumo)
-
-pdf(file.path("Beamer","market.pdf"),height=6,width = 12)
-
-ggplot(A[value<60 & value >-60,],aes(x=value,fill=variable)) +
-  geom_density(alpha=0.25) + xlab("Retorno obsevado") + ylab("Densidade") + ggtitle('Carteiras de mercado') +
-        theme(legend.position='right')
-dev.off()
-rm(A)
-
-```
-
-
-É possível perceber que os dois portfolios de mercados sugeridos possue maior probabilidade valores situados nos extremos da distribuição, com destaque para o portfolio de mercado dinâmico.
-
-A tabela a seguir apresenta a matriz de correlação para as propostas de carteira de mercado.
-
-```{r carteira_mercado_Var, include = T, eval = T , warning=FALSE , echo = mostra_prog}
-
-## Matriz de covariância
-cor_carteiras <- cor(dplyr::select(base_analysis[year(DT)>=2010,],one_of(grep("^mkt",names(base_analysis),value = T))))
-kable(cor_carteiras,digits = 4)
-
-#print(xtable(cor_carteiras),floating=FALSE,latex.environments=NULL)
-
-
-
-```
-
-
-Percebe-se baixa correção entre as carteiras de mercado propostas e o índice Ibovespa.
-
-## Modelo Sharpe e Lintner
-
-Para testar o modelo de SL serão utilizados os três portfolios definidos anteriormente. Dessa forma, o modelo será:
-
-$$ E(R_i) - R_f= \beta_i[E(R_{m}^j) - R_f] $$
-O termo $E(R_{m}^j)$ representa o valor esperado para o $j$-ésimo tipo de cateira de mercado. Ao todo, serão estimados $15$ modelos, tendo para cada umas dos $5$ ativos $3$ modelos SL.
-
-```{r sharp_Lintner, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-resultados <- list()
-contador <- 1
-for(i in 1:3){
-  for(j in nomes_analise){
-    nomes <- c(j,paste0("mkt",i))
-    comando <- paste0("ex_",nomes,"=",nomes,"-ltn_r")
-    comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
-    base_analysis <- base_analysis[,eval(comando)]
-    
-    formula <- paste0("ex_",j,"~ex_",paste0("mkt",i))
-    modelo111 <- lm(as.formula(formula),data = base_analysis)
-    modelo11 <- data.frame(summary(modelo111)$coefficients)
-    modelo11$normalidade <- shapiro.test(modelo111$residuals)$p.value
-    modelo11$parameter <- row.names(modelo11)
-    modelo11$ativo    <- j
-    modelo11$mercado    <- paste0("mkt",i)
-    resultados[[contador]] <- modelo11 
-    contador <- contador + 1
-    
-  }
-}
-
-base_coefs <- rbindlist( resultados,fill = F)
-```
-
-
-modelo SL supõe que os interceptos para o modelo de regressão linear simples do excesso de retorno do portfolio de mercado e os ativos que o compõe sejam iguais a zero. O primeiro gráfico apresenta o comparativo, para cada tipo de portfolio de mercado, de tal parâmetro do modelo. 
-
-
-
-
-```{r sharp_Lintner1, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-pdf(file.path("Beamer","2parinterceptvalue.pdf"),height=6,width = 12)
-
-ggplot(data=base_coefs[parameter=="(Intercept)",], aes(x=ativo, y=Estimate, fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa intercepto") + ggtitle('Análise intercepto')
-dev.off()
-```
-
-O teste do modelo será feito verificando se tais valores são estatisticamente diferentes de zero. Para isso, o p-valor sugere se há ou não evidências para rejeitar a hipótese nula, que são iguais a zero.
-
-O gráfico ilustra que, para as carteiras de mercado propostas, todos os testes de significância não rejeitam, ao nível de $5\%$ (linha contínua) e $10\%$ (linha pontilhada), a hipótese nula, isto é, não há indícios de que o modelo SL não seja válido.
-
-Percebe-se que o mesmo não ocorre para a *proxy* de carteira de mercado sendo o índice do Ibovespa, com estimativas de $\alpha_i$ estatísticamente diferentes de zero para $3$ dos 5 ativos utilizados.
-
-```{r sharp_Lintner2, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-pdf(file.path("Beamer","2parinterceptsig.pdf"),height=6,width = 12)
-
-ggplot(data=base_coefs[parameter=="(Intercept)",], aes(x=ativo, y=Pr...t.., fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise intercepto') +
-  geom_hline(aes(yintercept = .10), linetype="dashed") +
-  geom_hline(aes(yintercept = .05)) 
-dev.off()
-```
-
-Direcionando a análise para o parâmetro $\beta$ percebe-se que o modelo para utilizando o índice de mercado dinâmico também não apresentou evidências de que o parâmetro de inclinação seja diferente de zero. Dessa forma, há a sugestão de que tal modelo está especificado ou foi muito afetado pelos valores extremos ou *outliers* nos dados originais.
-
-As demais metodologias apresentaram evidências de que o parâmetro $\beta$ é, estatísticamente, diferente de zero, mesmo ao nível de $5\%$
-
-
-```{r sharp_Lintner12, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-pdf(file.path("Beamer","2parbetavalue.pdf"),height=6,width = 12)
-
-ggplot(data=base_coefs[parameter!="(Intercept)",], aes(x=ativo, y=Estimate, fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa beta") + ggtitle('Análise beta') +   geom_text(aes(x=ativo, y = (Estimate + 0.05) , label= round(Estimate,2)), position = position_dodge(width=.75), stat = "identity")
-dev.off()
-```
-
-
-
-```{r sharp_Lintner21, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-pdf(file.path("Beamer","2parbetasig.pdf"),height=6,width = 12)
-
-ggplot(data=base_coefs[parameter!="(Intercept)",], aes(x=ativo, y=Pr...t.., fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise beta') +
-  geom_hline(aes(yintercept = .10), linetype="dashed") +
-  geom_hline(aes(yintercept = .05)) 
-dev.off()
-```
-
-Além disso, a normalidade indica que os modelos que utilizam o Ibovespa ou o portfolio dinâmico médio não satisfazem as suposições de normalidade dos dados.
-
-```{r normalidade, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-pdf(file.path("Beamer","2parnorm.pdf"),height=6,width = 12)
-
-ggplot(data=base_coefs[parameter!="(Intercept)",], aes(x=ativo, y=normalidade, fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância Shapiro-Wilk") + ggtitle('Análise normalidade') +
-  geom_hline(aes(yintercept = .10), linetype="dashed") +
-  geom_hline(aes(yintercept = .05)) 
 dev.off()
 
 
 
 
-```
+qlim <- (exp(quantile(matriz_mc$V1,p=c(0.01,.025,0.05)))-1)*100
+qlim <- unlist(qlim)
+class(qlim)
+dd <- density((exp(matriz_mc$V1)-1)*100)
+dd <- with(dd,data.frame(x,y))
 
+pdf(file.path("VAR_mc.pdf"),height=8,width = 12)
+qplot(x,y,data=dd,geom="line")+
+  geom_ribbon(data=subset(dd,x<qlim[[3]]),aes(ymax=y),ymin=0,
+              fill="red",colour=NA,alpha=0.5) + xlab("Retorno %") + ylab("Density") + ggtitle('VaR(95%) - Monte Carlo') + theme(legend.position='right',plot.title = element_text(hjust = 0.5,size=22)) + 
+  annotate("text", x=qlim[[3]]-3, y=.02, label=paste0(round(qlim[[3]],3),"%") )
 
-
-## Modelo de três parâmetros
-
-Considere o seguinte modelo:
-
-$$ E(R_i) - R_f= \beta_{i}[E(R_{m}^j) - R_f] + \gamma_{2} X_i $$
-
-Sendo $X_i$ a informação de estrutura de capital do setor analisado. Essa variável permite identificar se a forma de financiamento do setor análisado pode contribuir para o modelo de SL.
-
-Para isso, será utilizada a variável razão entre capital de terceiros e próprio. Quanto maior esse valor, maior o nível de individamento da empreza.
-
-
-```{r read_estrutura_capital, include = F, eval = T , warning=FALSE , echo = mostra_prog}
-
-## importação dos dados
-file_input <- file.path(getwd(),"bases","indices_gerais.xlsx")
-sheets <- excel_sheets(file_input)[3]
-base_temp <- read_excel(file_input,sheet = sheets, skip = 2) %>% data.table
-
-names(base_temp) <- names(read_excel(file_input,sheet = sheets) %>% data.table)
-setnames(base_temp,names(base_temp),paste0("SC_",gsub(" ","_",names(base_temp))))
-setnames(base_temp,"SC_D/E","dt")
-
-
-base_temp <- base_temp[,DT := as.Date(paste0("01/",month(dt),"/",year(dt)),format ="%d/%m/%Y")]
-base_temp <- base_temp[,dt:=NULL]
-
-## left join
-base_analysis <- base_temp[base_analysis,on="DT"]
-
-```
-
-
-
-
-
-```{r 3par, include = F, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-resultados <- list()
-contador <- 1
-i <- 1
-j <- nomes_analise[1]
-for(i in 1:3){
-  for(j in nomes_analise){
-    nomes <- c(j,paste0("mkt",i))
-    comando <- paste0("ex_",nomes,"=",nomes,"-ltn_r")
-    comando <- parse(text = paste0("`:=`(",paste0(comando,collapse = ","),")"))
-    base_analysis <- base_analysis[,eval(comando)]
-    formula <- paste0("ex_",j,"~ex_",paste0("mkt",i),"+SC_",j)
-    modelo111 <- lm(as.formula(formula),data = base_analysis)
-    modelo11 <- data.frame(summary(modelo111)$coefficients)
-    modelo11$normalidade <- shapiro.test(modelo111$residuals)$p.value
-    modelo11$parameter <- row.names(modelo11)
-    modelo11$ativo    <- j
-    modelo11$mercado    <- paste0("mkt",i)
-    resultados[[contador]] <- modelo11 
-    contador <- contador + 1
-    
-  }
-}
-
-base_coefs_3par <- rbindlist( resultados,fill = F)
-```
-
-
-```{r sharp_Lintner100, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-
-pdf(file.path("Beamer","3parinterceptvalue.pdf"),height=6,width = 12)
-
-
-ggplot(data=base_coefs_3par[parameter=="(Intercept)",], aes(x=ativo, y=Estimate, fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa intercepto") + ggtitle('Análise intercepto (3par)')
 dev.off()
-```
 
 
-a
-
-```{r sharp_Lintner200, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
 
 
-pdf(file.path("Beamer","3parinterceptsig.pdf"),height=6,width = 12)
 
 
-ggplot(data=base_coefs_3par[parameter=="(Intercept)",], aes(x=ativo, y=Pr...t.., fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise intercepto (3par)') +
-  geom_hline(aes(yintercept = .10), linetype="dashed") +
-  geom_hline(aes(yintercept = .05)) 
+
+#### bootstrap----
+k_janela <- 5
+n_boots <- 100000/k_janela
+base_analysis_bootstrap<-dplyr::select(base_analysis %>% filter(!is.na(IMOB_Index)),one_of(c("DT",paste0(nomes_analise))))
+ind_sample <- 1:(nrow(base_analysis_bootstrap)-k_janela)
+set.seed(2122210218)
+matriz_boots <- sample(ind_sample,n_boots,replace = T)
+
+comando <- paste0("c(",paste0(matriz_boots,":",matriz_boots+k_janela,collapse = ","),")")
+
+base_analysis_bootstrap <- base_analysis_bootstrap[eval(parse(text =comando )),] %>% dplyr::select(-DT)
+matriz_boot <- data.table(as.matrix(base_analysis_bootstrap) %*% t(w_optm[,1:5]))
+
+pdf(file.path("boots_boots.pdf"),height=8,width = 12)
+ggplot(matriz_boot, aes(x=V1)) + 
+    geom_histogram(aes(y=..density..),      # Histogram with density instead of count on y-axis
+                   binwidth=.05,
+                   colour="black", fill="white") +
+    geom_density(alpha=.2, fill="black")   +
+  scale_alpha_continuous(guide=FALSE) + geom_vline(xintercept = 0 , colour = "black", linetype  = 2 )
+
 dev.off()
-```
-
-aa
-
-```{r sharp_Lintner1200, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
 
 
-pdf(file.path("Beamer","3parbetavalue.pdf"),height=6,width = 12)
 
 
-ggplot(data=base_coefs_3par[grepl("^ex_",parameter),], aes(x=ativo, y=Estimate, fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa beta") + ggtitle('Análise beta (3par)')
+qlim <- (exp(quantile(matriz_boot$V1,p=c(0.01,.025,0.05)))-1)*100
+qlim <- unlist(qlim)
+dd <- density((exp(matriz_boot$V1)-1)*100)
+dd <- with(dd,data.frame(x,y))
+
+pdf(file.path("VAR_boots.pdf"),height=8,width = 12)
+qplot(x,y,data=dd,geom="line")+
+  geom_ribbon(data=subset(dd,x<qlim[[3]]),aes(ymax=y),ymin=0,
+              fill="red",colour=NA,alpha=0.5) + xlab("Retorno %") + ylab("Density") + ggtitle('VaR(95%) - Bootstrap') + theme(legend.position='right',plot.title = element_text(hjust = 0.5,size=22)) + 
+  annotate("text", x=qlim[[3]]-3, y=.02, label=paste0(round(qlim[[3]],3),"%") )
+
 dev.off()
+
 ```
-
-
-aaaa
-
-```{r sharp_Lintner2100, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-
-pdf(file.path("Beamer","3parbetasig.pdf"),height=6,width = 12)
-
-ggplot(data=base_coefs_3par[grepl("^ex_",parameter),], aes(x=ativo, y=Pr...t.., fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise beta (3par)') +
-  geom_hline(aes(yintercept = .10), linetype="dashed") +
-  geom_hline(aes(yintercept = .05)) 
-dev.off()
-```
-
-
-aaaaa
-
-
-```{r sharp_Lintner1210, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-
-pdf(file.path("Beamer","3parestrvalue.pdf"),height=6,width = 12)
-
-
-ggplot(data=base_coefs_3par[grepl("^SC_",parameter),], aes(x=ativo, y=Estimate, fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Estimativa beta") + ggtitle('Análise estrutura de capital (3par)')
-dev.off()
-```
-
-
-aaaa
-
-
-```{r sharp_Lintner2110, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-
-pdf(file.path("Beamer","3parestrsig.pdf"),height=6,width = 12)
-
-
-ggplot(data=base_coefs_3par[grepl("^SC_",parameter),], aes(x=ativo, y=Pr...t.., fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância") + ggtitle('Análise estrutura de capital (3par)') +
-  geom_hline(aes(yintercept = .10), linetype="dashed") +
-  geom_hline(aes(yintercept = .05)) 
-dev.off()
-```
-
-É possível perceber que o parâmetro de estrutura de capital  
-
-```{r normalidade00, include = T, eval = T , warning=FALSE, results='hide' , echo = mostra_prog}
-
-
-pdf(file.path("Beamer","3parnormalidade.pdf"),height=6,width = 12)
-
-
-ggplot(data=base_coefs_3par[parameter=="(Intercept)",], aes(x=ativo, y=normalidade, fill=mercado)) +
-    geom_bar(stat="identity", position=position_dodge(), colour="black") +  xlab("Ativo") + ylab("Significância Shapiro-Wilk") + ggtitle('Análise normalidade') +
-  geom_hline(aes(yintercept = .10), linetype="dashed") +
-  geom_hline(aes(yintercept = .05)) 
-dev.off()
-```
-
-
-## Considerações Finais
-
-O presente trabalho foi motivado pela revisão de @Roll1977 das críticas à *Asset Pricing Theory*, especificamente para o modelo SL. Diante dos pontos teóricos deficientes presentes nos artigos revisadas, foi possível concentrar esforços iniciais de maneira a garantir a replicação empírica lastreada por tais apontamentos.
-
-O artigo sugere duas metodologias para determinar o portfolio de mercado, garantindo a eficiência e otimalidade destas. Para isso, foram utilizados 5 indicadores heterogêneos de investimento. Os índices de mercado propostos não apresentaram evidências para refutar o modelo SL. O mesmo não ocorre com a escolha do *benchmark* tradicional.
-
-O trabalho desenvolvido sugere uma intensa agenda de trabalhos. A primeira, e mais importante delas, é apresentar uma modelagem mais robusta para estimação do retorno e da matriz de covariância. Para isso, segere-se lidar com modelos de espaços de estados com estimação dinâmica. Nesse tipo de abordagem, o processo de estimação é feito *on-line*, a medida que se tenha acesso a novas informações.
-
-A metodologia se mostrou sensível aos valores extremos e *outliers* presentes nas séries de dados, direcionando que trabalhos futuras invistam maior atenção para identificação e ajustamento. Além disso, é possível avaliar outros índices para o ativo livre de risco, por exemplo, SELIC, Taxas Ambima ou CDI. É possível, ainda, avaliar modelos com 3 ou mais parâmetros, incorporando a estrutura de capital e o risco país.
-
-Por fim, a metodologia proposta mostrou-se robusta para os estudos empíricos do modelo SL no contexto da *Asset Pricing Theory*.
-
-# Referências

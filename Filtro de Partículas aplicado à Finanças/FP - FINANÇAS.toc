@@ -1,12 +1,12 @@
 \select@language {portuguese}
 \beamer@sectionintoc {1}{Introdu\IeC {\c c}\IeC {\~a}o}{2}{0}{1}
-\beamer@sectionintoc {2}{M\IeC {\'e}todo}{21}{0}{2}
-\beamer@subsectionintoc {2}{1}{Bootstrap}{22}{0}{2}
-\beamer@subsectionintoc {2}{2}{Monte Carlo}{24}{0}{2}
-\beamer@subsectionintoc {2}{3}{Markov Chain Monte Carlo}{26}{0}{2}
-\beamer@sectionintoc {3}{Modelos}{28}{0}{3}
-\beamer@subsectionintoc {3}{1}{Modelos de Espa\IeC {\c c}os de Estados}{28}{0}{3}
-\beamer@sectionintoc {4}{Filtro de Part\IeC {\'\i }culas}{30}{0}{4}
-\beamer@subsectionintoc {4}{1}{Aplica\IeC {\c c}\IeC {\~a}o}{32}{0}{4}
-\beamer@subsectionintoc {4}{2}{Implementa\IeC {\c c}\IeC {\~o}es}{35}{0}{4}
-\beamer@sectionintoc {5}{Considera\IeC {\c c}\IeC {\~o}es finais}{36}{0}{5}
+\beamer@sectionintoc {2}{Amostragem aleat\IeC {\'o}ria}{19}{0}{2}
+\beamer@subsectionintoc {2}{1}{Markov Chain Monte Carlo}{35}{0}{2}
+\beamer@sectionintoc {3}{Introdu\IeC {\c c}\IeC {\~a}o}{37}{0}{3}
+\beamer@sectionintoc {4}{M\IeC {\'e}todos num\IeC {\'e}ricos}{61}{0}{4}
+\beamer@subsectionintoc {4}{1}{Monte Carlo}{62}{0}{4}
+\beamer@subsectionintoc {4}{2}{Amostragem de Import\IeC {\^a}ncia - AI}{71}{0}{4}
+\beamer@subsectionintoc {4}{3}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{89}{0}{4}
+\beamer@subsectionintoc {4}{4}{Reamostragem}{105}{0}{4}
+\beamer@sectionintoc {5}{Estima\IeC {\c c}\IeC {\~a}o estados latentes}{116}{0}{5}
+\beamer@subsectionintoc {5}{1}{Filtro Bootstrap}{117}{0}{5}

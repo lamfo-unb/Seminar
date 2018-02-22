@@ -30,6 +30,41 @@
 \setbeamertemplate{bibliography entry location}{}
 \setbeamertemplate{bibliography entry note}{}
 
+\usepackage{setspace}
+\usepackage{color}
+\usepackage{listings}
+
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}
+
+
+% Standard packages
+
+% Pacotes
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{amssymb}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{geometry}
+\usepackage{enumerate} 
+\setbeamertemplate{footline}[frame number]
+\bibliographystyle{bbs}
+\usepackage{mathtools}% http://ctan.org/pkg/mathtools
+\usepackage{abraces}% http://ctan.org/pkg/abraces
+% Setup TikZ
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+%LABS
+\usepackage{graphicx}
+
+
+
 
 
 \title[Artigo]{Antecipação e adaptação: como incorporar os dinamismos do mundo financeiro}
@@ -172,34 +207,11 @@ return?"} \cite{Laloux1999}
 
 \end{frame}
 
-\begin{frame}{Ativos  IBOVESPA}
+\begin{frame}{Índices  IBOVESPA}
 
 \begin{center}
  \includegraphics[height=8cm,keepaspectratio]{decritiva_indices.pdf}
  \end{center}
-
-
-\end{frame}
-
-
-\begin{frame}{Estatísticas}
-
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Sun Feb 18 11:14:16 2018
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrr}
-  \hline
-variable & M & DP \\ 
-  \hline
-ICON & 1.17 & 5.30 \\ 
-  INDX & 0.50 & 6.14 \\ 
-  IBOVIEE & 0.90 & 5.70 \\ 
-  IFNCBV & 1.20 & 7.74 \\ 
-  IMOB & 0.30 & 10.70 \\ 
-   \hline
-\end{tabular}
-\end{table}
 
 
 \end{frame}
@@ -226,15 +238,6 @@ ICON & 1.17 & 5.30 \\
 \end{frame}
 
 
-\begin{frame}{Série Temporal}
-
-\begin{enumerate}
-\item transversal
-\item longitudinal
-\end{enumerate}
-
-\end{frame}
-
 \begin{frame}{Objetivo}
 
 Apresentar:
@@ -257,22 +260,165 @@ Apresentar:
 
 \end{frame}
 
+\section{Amostragem aleatória}
 
 
-\section{Método}
+
+\begin{frame}{Value at Risk (Var)}
+
+\begin{itemize}
+\item Em um dia ruim, quanto eu posso perder em um determinado portfólio? 
+\item Quantos dias ruins eu suportaria nesse portfólio?
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Monte Carlo}
+
+\begin{center}
+ \includegraphics[height=8cm,keepaspectratio]{decritiva_indices.pdf}
+ \end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Monte Carlo}
+
+\begin{itemize}
+\item descrição: (re)amostragem ``paramétrica"
+\item vantagens: acessa ``todo" espaço
+\item desvantagem: conhecimento prévio da distribuição
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Normal Multivariada}
+
+\begin{equation*}
+X \color{red}\sim N_k\left(\color{blue}\tilde{\mu}\color{red},\color{blue}\Sigma\color{red}\right)
+\end{equation*}
+
+
+
+\begin{equation*}
+f(X) = \frac{1}{\sqrt{2\pi}}\frac{1}{\sqrt{det \color{blue}\Sigma}}exp\left(-\frac{1}{2}(\tilde{X}-\color{blue}\tilde{\mu}\color{black})\color{blue}\Sigma^{-1}\color{black}(\tilde{X}-\color{blue}\tilde{\mu}\color{black})\right)
+\end{equation*}
+
+
+\begin{enumerate}
+\item \textcolor{red}{modelo}
+\item \textcolor{blue}{parâmetros}
+\item amostragem
+\end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Code - MC}
+
+
+\begin{verbatim}
+set.seed(1052210218)
+library(MASS)
+n_mc <- 100000
+mc <- mvrnorm(n=n_mc,mu,Sigma)
+mc <- matriz_mc %*% w_optm
+qlim <- quantile(mc,p=0.05)
+   \end{verbatim}
+\end{frame}
+
+\begin{frame}{Value at Risk (Var)}
+
+\begin{center}
+ \includegraphics[height=8cm,keepaspectratio]{VAR_mc.pdf}
+ \end{center}
+ 
+\end{frame}
+
+\begin{frame}{Pontos importantes}
+\begin{itemize}
+\item Suposição da distribuição:
+\item Estrutura de dependência longitudinal?
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Bootstrap}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}{ Bootstrap}
+
+
+\begin{itemize}
+\item descrição: (re)amostragem ``não-paramétrica"
+\item vantagens: não requer conhecimento sobre a distribuição
+\item desvantagem: acessa espaço ``realizado"
+\end{itemize}
+
+\pause
+
+\begin{itemize}
+\item Suposição da distribuição: amostragem aleatória nos próprios dados
+\item Estrutura de dependência longitudinal: Base divida em janelas $5$ meses
+\end{itemize}
+ 
+\end{frame}
+
+
+
+
+\begin{frame}{Value at Risk (Var) - Bootstrap}
+
+\begin{center}
+ \includegraphics[height=8cm,keepaspectratio]{VAR_boots.pdf}
+ \end{center}
+ 
+\end{frame}
+
+
 
 
 \begin{frame}{Método}
 
 \begin{enumerate}
-\item Bootstrap
 \item Monte Carlo
+\item Bootstrap
 \item Markov Chain Monte Carlo
 \end{enumerate}
 
 \end{frame}
 
-\subsection{Bootstrap}
+
+
+\begin{frame}{Monte Carlo}
+
+História do Método Monte Carlo.
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Monte Carlo}
+
+Por que isso é interessante ?
+
+\end{frame}
+
 
 \begin{frame}{Bootstrap}
 
@@ -288,20 +434,6 @@ Por que isso é interessante ?
 \end{frame}
 
 
-\subsection{Monte Carlo}
-
-\begin{frame}{Monte Carlo}
-
-História do Método Monte Carlo
-
-\end{frame}
-
-
-\begin{frame}{Monte Carlo}
-
-Por que isso é interessante ?
-
-\end{frame}
 
 \subsection{Markov Chain Monte Carlo}
 
@@ -321,106 +453,841 @@ Por que isso é interessante ?
 
 
 
-\section{Modelos}
+\section{Introdução}
+\begin{frame}{Objetivos da dissertação}
+\noindent
+  \begin{itemize}
+  \item<1->  Revisão bibliográfica do filtro de partículas
+  \item<2->  Estimação dos estados latentes nos modelos dinâmicos utilizando a técnica
+  \item<3->  Estimação de parâmetros estáticos e desconhecidos presentes nas equações dos modelos
+  \item<4->  Apresentar uma dissertação didática para o estudo da técnica 
+  \end{itemize}
+\end{frame}
 
 
+\subsection*{Partícula}
+\begin{frame}{Problema}
+\noindent
 
-\subsection{Modelos de Espaços de Estados}
+ \begin{block}{}
+  {\large Estimar um parâmetro desconhecido.}
+\end{block}
 
-\begin{frame}{Modelos de Espaços de Estado}
+ \only<1>{
+  \begin{center}
+  \includegraphics[height=4.5cm,keepaspectratio]{porta_chaves_alvo_02.jpg}
+  \end{center}
+  }
 
-O que são modelos de espaços de estados
+ \only<2>{
+  \begin{center}
+  \includegraphics[height=4.5cm,keepaspectratio]{porta_chaves_alvo_01.jpg}
+  \end{center}
+  }
+
+\end{frame}
+
+\begin{frame}{Método de estimação}
+    \begin{block}{Estimação}
+      \Huge  Filtro de partículas
+    \end{block}
 
 \end{frame}
 
 
-\begin{frame}{Modelos de Espaços de Estado}
 
-Por que isso é interessante ?
+\begin{frame}{Partículas}
+\noindent
+
+\only<1>{
+    \begin{block}{Definição Naive}
+  {\large \textbf{Parte} de um todo}
+    \end{block}		}
+\only<2>{
+  \begin{block}{Definição Naive}
+  {\large \textbf{Parte} de um todo}
+\end{block}
+}
+\only<3>{
+  \begin{block}{Definição Naive}
+  {\large Parte de um \textbf{todo}}
+\end{block}
+}
+\only<4>{
+  \begin{block}{Definição Naive}
+  {\large Parte de um todo.}
+	\end{block}
+		}
+
+    \begin{enumerate}
+      \item<2-| alert@2> Parte: Partículas.
+      \item<3-| alert@3> Todo: Espaço paramétrico.
+    \end{enumerate}
+    
+\pause
+\pause
+\pause
+  \begin{block}{Definição}
+  {\large Partículas são realizações de um experimento cujos valores possíveis estão definidos no espaço paramétrico.}
+\end{block}
+
+
+ 
+\end{frame}
+
+
+\subsection*{Exemplo}
+\begin{frame}{Exemplo do uso de Filtro de partículas na Robótica}
+
+%Posição do robô. 
+ 
+  \begin{center}
+  \includegraphics[height=6.5cm,keepaspectratio]{1-particle-filter.png}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}{Partículas}
+
+%Localizações hipotéticas do robô.
+
+ 
+  \begin{center}
+  \includegraphics[height=6.5cm,keepaspectratio]{2-particle-filter-initial.png}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Medida de proximidade}
+ 
+%Mensurar quais partículas são mais prováveis.
+
+  \begin{center}
+  \includegraphics[height=6.5cm,keepaspectratio]{3-particle-filter-sensor-sweep.png}
+  \end{center}
 
 \end{frame}
 
 
 
-\section{Filtro de Partículas}
+\begin{frame}{Aproximação}
+
+%Estimação da posição do robô.
+ 
+  \begin{center}
+  \includegraphics[height=6.5cm,keepaspectratio]{4-particle-filter-after-weighting.png}
+  \end{center}
+
+\end{frame}
 
 
 
+\begin{frame}{Propagação}
+ 
+%Cada partícula gera novas partículas nas proximidades.
+
+  \begin{center}
+  \includegraphics[height=6.5cm,keepaspectratio]{5-particle-filter-after-move.png}
+  \end{center}
+
+\end{frame}
+
+
+
+%%retomando
+
+\subsection*{Modelo dinâmico}
+\begin{frame}{Modelo dinâmico}
+\noindent
+
+ 
+  \begin{block}{Parte não observável - sistema}
+  {\large Sequência $\theta_t$ com estrutura de dependência de um Processo Markoviano, $\{\theta_t$, $t=1,...,n\}$.}
+\end{block}
+
+\pause
+  \begin{block}{Parte observável}
+  {\large Sequência $y_t$ $\{y_t$, $t=1,...,n\}$ que é dependente, exclusivamente, de $\theta_t$.}
+\end{block}
+  
+
+\end{frame}
+
+
+\begin{frame}{Modelo dinâmico}
+\only<1>{	
+  \begin{center}
+  \includegraphics[height=4cm,keepaspectratio]{modelodinamicoR.pdf}
+  \end{center}
+}
+\only<2>{
+  \begin{center}
+  \includegraphics[height=4cm,keepaspectratio]{modelodinamicoR1.pdf}
+  \end{center}
+}
+\only<3>{
+  \begin{center}
+  \includegraphics[height=4cm,keepaspectratio]{modelodinamicoR2.pdf}
+  \end{center}
+}
+\pause
+\underline{\textbf{Equação do Sistema}}
+$$
+\theta_t \sim \pi(.|\theta_{t-1})
+$$
+\pause
+\underline{\textbf{Equação das Observações}}
+$$
+y_t \sim \pi(.|\theta_{t})
+$$
+
+\end{frame}
+
+\begin{frame}{Propriedades}
+\begin{center}
+\begin{itemize}
+\item[A.1:] $\theta_t, t=1,...,n$ é uma sequência de estados de um Processo Markoviano;
+
+$$
+\pi(\theta_{1:n}) = \pi(\theta_1) \prod_{k=2}^n \pi(\theta_k|\theta_{k-1}) 
+$$
+
+\pause 
+
+\item[A.2:] $y_{1:t}$ é um vetor de observações que são condicionalmente independentes dado $\theta_{1:t}$, para cada $t=1,...,n$.
+
+$$
+\pi(y_t|\theta_{1:t},y_{1:t-1}) = \pi(y_t|\theta_{t})
+$$
+
+\end{itemize}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Distribuição conjunta}
+
+Essas propriedades permitem descrever a \textbf{distribuição conjunta} das observações e dos estados como o produto das seguintes \textbf{distribuições condicionais}:
+
+$$
+\pi(y_{1:n},\theta_{1:n}) = \pi(\theta_0) \prod_{t=1}^n \pi(\theta_t|\theta_{t-1})\pi(y_t|\theta_t) 
+$$
+
+\underline{\textbf{Interesse:}}
+
+$$\pi(\theta_{1:n}|y_{1:n}) =  \frac{\pi(\theta_{1:n},y_{1:n})}{\pi(y_{1:n})} $$
+
+
+\end{frame}
+
+
+
+\section{Métodos numéricos}
+
+\begin{frame}{Método de estimação}
+    \begin{block}{Estimação}
+      \Huge  Métodos numéricos
+    \end{block}
+
+\end{frame}
+
+
+\subsection{Monte Carlo}
+
+\begin{frame}{Métodos numéricos}
+
+    \begin{block}{Estimação}
+      \Huge  Monte Carlo
+    \end{block}
+
+
+\end{frame}
+
+\begin{frame}{Definição}
+
+\textbf{Distribuição alvo} : $\pi_n(\theta_1,...,\theta_n)$ para $n$ fixo.
+
+\pause
+\vspace{0.5cm}
+
+Gera-se $N$ amostras independentes da variável aleatória $\Theta^i_{1:n} \sim \pi_n(\theta_1,...,\theta_n)$, $i=1,...,N$.
+
+\pause
+\vspace{0.5cm}
+
+Aproximação e dada por:
+
+$$
+\hat{\pi}_n(\theta_1,...,\theta_n) = \frac{1}{N}\sum_i^N \delta_{\Theta^i_{1:n}}(\theta_{1:n}),
+$$
+
+\vspace{0.5cm}
+sendo $\delta_{\Theta_{1:n}^{i}}(\theta_{1:n})$ uma função indicadora de massa no ponto $\theta_{1:n}$.
+\end{frame}
+
+
+
+
+
+\begin{frame}{Definição}
+
+Considerer mensurar uma função $\phi_n$ em $\pi(\theta_1,...,\theta_n)$:
+
+$$
+E(\phi_n) =  \int \phi_n(\theta_1,...,\theta_n)\pi_n(\theta_1,...,\theta_n)d\theta_{1:n}
+$$
+\pause
+
+Pelo método Monte Carlo, \textbf{avaliamos}  $\phi_n$ no suporte simulado de $\pi(\theta_1,...,\theta_n)$ por meio das \textbf{amostras}:
+
+$$
+\hat{E}(\phi_n) = \int \phi_n(\theta_1,...,\theta_n)\hat{\pi}_n(\theta_1,...,\theta_n)d\theta_{1:n}
+$$
+\pause
+$$
+\hat{E}(\phi_n) = \frac{1}{N} \sum_{i=1}^N \phi_n(\Theta^i_{1:n})
+$$
+
+
+\end{frame}
+
+\begin{frame}{Desvantagens}
+
+
+\begin{itemize}
+
+\item[] \underline{\textbf{Problema 1}}: Não é fácil se gerar $\pi_n(\theta_1,...,\theta_n)$.
+\pause 
+\item[] \underline{\textbf{Problema 2}}: Ainda que fosse possível se gerar, a dimensão de $\pi_n(\theta_1,...,\theta_n)$ pode ser muito grande para se obter amostras multivariadas. Problema encontrado no método \underline{\textbf{MCMC}}.
+
+\end{itemize}
+\end{frame}
+
+
+\subsection{Amostragem de Importância - AI}
+
+\begin{frame}{Problema 1}
+    \begin{block}{Estimação}
+      \Huge  Amostragem de importância
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Problema 1}
+
+A amostragem de importância trata o \textbf{\underline{problema 1}}: não se sabe gerar $\pi(\theta_{1:n})$.
+
+\vspace{0.5cm}
+\pause
+
+Utiliza-se uma \textbf{distribuição de importância} $q(.)$ para obter o mesmo suporte da distribuição $\pi(.)$ .
+$$
+E_{\pi}(\phi)=\int \phi(\theta) \pi(\theta) d\theta = \int \frac{ \phi(\theta) \pi(\theta)}{q(\theta)} q(\theta) d\theta
+$$
+
+\pause
+A quantidade $\frac{\pi(\theta)}{q(\theta)}$  fornece um ajuste da discrepância entre \textbf{gerar um suporte} de $\pi(\theta)$ por meio da distribuição geradora $q(\theta)$.
+
+\end{frame}
+
+
+
+
+\begin{frame}{Notação}
+
+Considere a seguinte representação, \cite{doucet2}:
+$$ \pi(\theta_{1:n}) = \frac{\gamma_n(\theta_{1:n})}{Z_n(\theta_{1:n})}, \hspace{1cm} Z_n = \int \gamma_n(\theta_{1:n}) d\theta_{1:n}$$
+
+\pause
+
+Considere uma distribuição auxilar, tal que:
+
+$$ \pi(\theta_{1:n}) > 0 \rightarrow q_n(\theta_{1:n})>0$$
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Peso}
+
+\underline{A distribuição de interesse}:
+\begin{tabular}{ccc}
+$ \pi(\theta_{1:n}) = \frac{\gamma_n(\theta_{1:n})}{Z_n(\theta_{1:n})}= $  & $ \overbrace{ \frac{\gamma_n(\theta_{1:n})}{q_n(\theta_{1:n})} }^{W_n} $  & $ \frac{q_n(\theta_{1:n})}{Z_n(\theta_{1:n})} $
+\end{tabular}
+
+\vspace{0.5cm}
+$$ \pi(\theta_{1:n}) = \frac{w_n(\theta_{1:n})q_n(\theta_{1:n})}{Z_n(\theta_{1:n})} $$
+
+\pause
+
+O denominador é:
+
+$$ Z(\theta_{1:n}) = \int w_n(\theta_{1:n})q_n(\theta_{1:n})d\theta_{1:n}$$
+
+\end{frame}
+
+
+
+\begin{frame}{Aproximação}
+
+Considere $N$  amostras independentes $\Theta^i_{1:n} \sim q_n(\theta_{1:n})$.
+
+\pause
+\vspace{0.5cm}
+
+Aproximação Monte Carlo é:
+
+$$
+\hat{q}_n(\theta_{1:n}) = \frac{1}{N} \sum^N_i \delta_{\Theta^i}(\theta_{1:n})
+$$
+
+\vspace{0.5cm}
+
+Dessa forma, a aproximação para a distribuição de interesse é:
+
+\pause
+
+$$
+\hat{\pi}_n(\theta_{1:n}) = \frac{w_n(\theta_{1:n})\hat{q}_n(\theta_{1:n})}{\int w_n(\theta_{1:n})\hat{q}_n(\theta_{1:n}) d\theta_{1:n}}
+$$
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Aproximação}
+
+A distribuiçao de interesse pode ser expressa por:
+
+$$\hat{\pi}_n(\theta_{1:n})= \frac{\frac{1}{N} \sum^N_{i=1} w_n(\Theta^i_{1:n})\delta_{\Theta^i_{1:n}}(\theta_{1:n})}{ \int  w_n(\theta_{1:n})\left[ \frac{1}{N} \sum^N_{i=1} \delta_{\Theta^i_{1:n}}(\theta_{1:n}) \right] d\theta_{1:n}} $$
+
+\pause
+
+
+$$\hat{\pi}_n(\theta_{1:n})= \frac{ \sum^N_{i=1} w_n(\Theta^i_{1:n})\delta_{\Theta^i_{1:n}}(\theta_{1:n})}{   \sum^N_{i=1} w_n(\Theta^i_{1:n})\left[ \int \delta_{\Theta^i_{1:n}}(\theta_{1:n}) d\theta_{1:n} \right] }, $$
+
+\pause
+sendo,
+$$ \int \delta_{\Theta^i_{1:n}}(\theta_{1:n}) d\theta_{1:n} =1 $$
+
+$$\hat{Z}_n(\theta_{1:n})=    \sum^N_{i=1} w_n(\Theta^i_{1:n}) $$
+
+
+\end{frame}
+
+
+
+\begin{frame}{Aproximação}
+
+Dessa forma,
+$$\hat{\pi}_n(\theta_{1:n})= \frac{\sum^N_{i=1} w_n(\Theta^i_{1:n})\delta_{\Theta^i_{1:n}}(\theta_{1:n})}{\sum^N_{i=1} w_n(\Theta^i_{1:n})} $$
+
+\pause
+
+Sendo:
+
+$$W_n(\theta_{1:n})= \frac{ w_n(\Theta^i_{1:n})}{ \sum^N_{j=1} w_n(\Theta^j_{1:n})} $$
+
+\pause
+
+$$\hat{\pi}_n(\theta_{1:n})= \sum^N_{i=1} W_n(\Theta^i_{1:n})\delta_{\Theta^i_{1:n}}(\theta_{1:n}) $$
+
+\pause
+A aproximação Monte Carlo para a função $\phi_n(.)$ é:
+$$
+\hat{E}(\phi_n) = \frac{1}{N} \sum_{i=1}^N W_n(\Theta^i_{1:n}) \phi_n(\Theta^i_{1:n}).
+$$
+
+\end{frame}
+
+
+\subsection{Amostragem de Importância Sequencial - (AIS)}
+
+\begin{frame}{Problema 2}
+    \begin{block}{}
+      \Huge  Amostragem de importância sequencial (AIS)
+    \end{block}
+\end{frame}
+
+
+
+
+\begin{frame}{Problema 2}
+
+Apesar do uso da amostragem de importância, amostrar $q_n(\theta_{1:n})$ pode ser \textbf{inviável devido a dimensão} $n$.
+
+\vspace{0.5cm}
+
+\pause
+
+Considere que a distribuição auxiliar escolhida, $q(.)$, possa ser escrita por:
+$$ q(\theta_{1:n})  = q(\theta_{1:n-1})q(\theta_n|\theta_{1:n-1})$$
+
+\vspace{0.5cm}
+
+\pause
+Tem-se:
+
+$$ q(\theta_{1:n})  = q(\theta_1)\prod_{k=2}^n q(\theta_k|\theta_{1:k-1})$$
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Decomposição sequecial}
+Assim, os pesos no tempo $t=2$:
+$$
+w(\theta_{1:2}) =\frac{\gamma(\theta_{1:2})}{q(\theta_{1:2})} = \frac{\gamma(\theta_{1:2})}{q(\theta_1)q(\theta_2|\theta_1)}
+$$
+
+\pause
+
+Algebricamente,
+
+\begin{eqnarray} \left. \begin{aligned}
+w(\theta_{1:2})  & = \frac{\gamma(\theta_{1})}{q(\theta_{1})}\frac{\gamma(\theta_{1:2})}{\gamma(\theta_1)q(\theta_2|\theta_1)} \\
+				 &  w(\theta_{1:2}) = w_1(\theta_1) \frac{\gamma(\theta_{1:2})}{\gamma(\theta_1)q(\theta_2|\theta_1)} \nonumber
+\end{aligned}\right. \end{eqnarray}
+
+% = \frac{\gamma(\theta_{1})}{q(\theta_{1})}\frac{\gamma(\theta_{1:2})}{\gamma(\theta_1)q(\theta_2|\theta_1)},
+%w(\theta_{1:2}) = w_1(\theta_1) \frac{\gamma(\theta_{1:2})}{\gamma(\theta_1)q(\theta_2|\theta_1)}
+
+
+\end{frame}
+
+\begin{frame}{Generalização}
+Por indução, tem-se, $\forall$ $t>1$:
+
+$$
+w_n(\theta_{1:n}) = w_{n-1}(\theta_{1:n-1}) \frac{\gamma(\theta_{1:n})}{\gamma(\theta_{1:n-1})q(\theta_n|\theta_{1:n-1})}
+$$
+
+\pause
+\vspace{0.5cm}
+
+Pesos são atualizados \textbf{iterativamente}. Isso reduz a dimensão da amostragem para a dimensão de $\theta_t$, em cada tempo $t$.
+$$
+\alpha_n(\theta_{1:n}) = \frac{\gamma(\theta_{1:n})}{\gamma(\theta_{1:n-1})q(\theta_n|\theta_{1:n-1})}
+$$
+\end{frame}
+
+
+
+
+\begin{frame}{AIS - Filtragem}
+
+Na contexto da filtragem, tem-se que $\gamma(\theta_{1:n}) = p(\theta_{1:n},y_{1:n})$. Assim:
+
+$$
+\alpha_n(\theta_{1:n}) = \frac{p(\theta_{1:n},y_{1:n})}{p(\theta_{1:n-1},y_{1:n-1})q_n(\theta_n|\theta_{1:n-1})}
+$$
+
+\pause
+
+$$
+\alpha_n(\theta_{1:n}) = \frac{p(y_{n}|\theta_{1:n-1},\theta_n,y_{1:n-1})p(\theta_{n}|\theta_{1:n-1},y_{1:n-1})p(\theta_{1:n-1},y_{1:n-1})}{p(\theta_{1:n-1},y_{1:n-1})q_n(\theta_n|\theta_{1:n-1})}
+$$
+
+\pause
+
+$$
+\alpha_n(\theta_{1:n}) = \frac{p(y_{n}|\theta_{1:n-1},\theta_n,y_{1:n-1})p(\theta_{n}|\theta_{1:n-1},y_{1:n-1})}{q_n(\theta_n|\theta_{1:n-1})}
+$$
+\end{frame}
+
+\begin{frame}{Amostragem de importância sequencial}
+
+As propriedades Markovianas A.1 e A.2 garantem:
+
+$$
+\alpha_n(\theta_{1:n}) = \frac{p(y_{n}|\theta_n)p(\theta_{n}|\theta_{n-1})}{q_n(\theta_n|\theta_{1:n-1})}
+$$
+
+\pause
+
+Chamada de \underline{\textbf{peso de incremento}}, a parte reponsável pelo processo \textbf{sequencial} de estimação.
+
+
+$$
+w_n(\theta_{1:n}) = w_{n-1}(\theta_{1:n-1}) \alpha_n(\theta_{1:n})
+$$
+
+
+\end{frame}
+
+\begin{frame}{Amostragem de Importância sequencial}
+Considere o processo sequencial de reponderação do processo de Amostragem sequencial de Importância:
+
+$$
+w_t \propto \frac{\pi(y_t|\theta_t)\pi(\theta_t|\theta_{t-1})}{g_{t|t-1}(\theta_t|\theta_{0:t-1},y_{1:t})} w_{t-1}
+$$
+
+\pause
+
+A função $g_{t|t-1}(\theta_t|\theta_{0:t-1},y_{1:t})$ é a responsável por gerar as propostas de partículas, conhecida como \textbf{função de transição de importância}.
+
+\vspace{0.5cm} 
+
+\pause
+
+\textbf{Os tipos de filtro de partículas são definidos pelo tipo de equação $g_{t|t-1}(.)$ escolhida}.
+
+\end{frame}
+
+
+
+\subsection{Reamostragem}
+
+\begin{frame}{Problema 3}
+    \begin{block}{}
+      \Huge  Reamostragem
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Degeneração}
+
+É possível que a distribuição dos pesos $w^i_t$ se degenerem. Isso ocorre quando tem-se pesos com valores próximos de $1$.
+
+\vspace{0.5cm} 
+\pause
+
+Adota-se então um critério de degeneração da distribuição dos pesos calculando o seguinte valor em cada vetor de partículas:
+
+$$
+N^t_{eff} = \frac{1}{\sum^N_ i{(w_t^{i})^2}}
+$$
+
+
+\pause
+
+\cite{petris} indica utilizar de $N/2$ como critério para regeneração das partículas, substituindo os pesos das partículas por $1/N$.
+
+\end{frame}
+
+
+\begin{frame}{Reamostragem}
+
+O processo de reamostragem está presente no processo de estimação para reduzir a discrepância, o que em casos extremos causa a chamada \textbf{degeneração dos pesos de importância}. 
+
+\pause
+
+\begin{itemize}
+\item Reamostragem Multinomial;
+\item Reamostragem Residual;
+\item Reamostragem Estratificada;
+\item Reamostragem Sistemática.
+\end{itemize}
+
+\pause
+
+Reamostrar com probabilidade proporcional ao peso de importância.
+
+\end{frame}
+
+
+\begin{frame}{Reamostragem multinomial}
+$$
+\{\theta_t^i,w_t^i\},  i=1,...,N
+$$
+
+\pause
+\vspace{0.5cm} 
+As partículas $\theta^i_t$ são reamostradas com $w^i_t$ como peso
+\pause
+\vspace{0.5cm} 
+As novas partículas tem peso $w^i_t = 1/N$. 
+\vspace{0.5cm} 
+
+\pause
+Partículas com baixa probabilidade são descartadas
+
+\end{frame}
+
+
+
+
+%bloco2%
+\section{Estimação estados latentes}
+\begin{frame}{Seção}
+    \begin{block}{Estimação}
+      \Huge  Filtro de Partículas
+    \end{block}
+\end{frame}
+
+\subsection{Filtro Bootstrap}
 \begin{frame}{Filtro de Partículas}
-
-O que é Filtro de Partículas
-
+    \begin{block}{Método}
+      \Huge  Filtro Bootstrap
+    \end{block}
 \end{frame}
 
+\begin{frame}{Sistema Dinâmico}
 
+Proposto por \cite{gordon}.
 
-\begin{frame}{Série Temporal}
+\vspace{0.5cm}
 
+\underline{Equação do sistema}
+$$\theta_t = f(\theta_{t-1},w_t), \hspace{1cm}f: \Re^n \times \Re^m \Rightarrow \Re^n$$
 
-\begin{enumerate}
+\pause
 
-\item Complexidade (transversal)
+\underline{Equação das observações}
+$$y_t = h(\theta_{t} , v_t), \hspace{1cm} h: \Re^n\times \Re^r \Rightarrow \Re^p$$
 
-\item  Complexidade (longitudinal)
+\pause
 
-\end{enumerate}
-
-\end{frame}
-
-\subsection{Aplicação}
-
-
-\begin{frame}{Aplicações}
-
+Considere:
 \begin{itemize}
-
-\item Retorno
-
-\item Volatilidade
+\item $w_t \sim p_1(.)$ e $v_t\sim p_2(.)$
+\item $p(\theta_1|D_0)=p(\theta_1)$
 \end{itemize}
 
 \end{frame}
 
 
-\begin{frame}{Retorno}
+\begin{frame}{Objetivo}
 
-Modelo para retorno
+Considere a \textit{posteriori}:
+
+\vspace{0.5cm}
+
+$$
+p(\theta_t|D_t)  = \frac{h(y_t|\theta_t)  p(\theta_t|D_{t-1}) }{\int h(y_t|\theta_t)p(\theta_t|D_{t-1})d \theta_t}
+$$
+
+\pause
+
+\textbf{Três grandes tarefas}:
+\vspace{0.5cm}
+
+\begin{tabular}{cccc}
+3:\textit{Posteriori} & & 2:Atualização & 1: Propagação \\
+$\overbrace{p(\theta_t|D_t)} $ & $=$ & $\overbrace{\left[\frac{h(y_t|\theta_t)}{\int h(y_t|\theta_t)p(\theta_t|D_{t-1})d \theta_t}\right]} $& $\overbrace{p(\theta_t|D_{t-1})}$
+\end{tabular}
+
 \end{frame}
 
 
-\begin{frame}{Volatilidade}
-Modelo para volatilidade
+
+\begin{frame}{1: Propagação}
+
+Por meio do suporte de $p(\theta_{t-1}|D_{t-1})$,
+$$
+p(\theta_t|D_{t-1}) = \int f(\theta_t|\theta_{t-1})p(\theta_{t-1}|D_{t-1})d\theta_{t-1}
+$$
+\pause
+e ``atravessando" a equação dos estados latente do sistema pelo suporte de $w_t$, 
+
+$$
+p(\theta_t|\theta_{t-1}) = \int f(\theta_t|\theta_{t-1},w_{t})p(w_{t}|\theta_{t-1})dw_{t}
+$$
+\pause
+
+obtém-se de forma determinística,
+
+$$
+p(\theta_t|D_{t-1}) = \int \int f(\theta_t|\theta_{t-1},w_{t})p(w_{t})p(\theta_{t-1}|D_{t-1})dw_{t}d\theta_{t-1}
+$$
+
+
 \end{frame}
 
 
 
+\begin{frame}{1: Propagação}
 
 
-\subsection{Implementações}
+Com isso, pode-se obter $p(\theta_t|D_{t-1})$, faz-se:
+\pause
+\begin{itemize}
+\item[1-] gerar suporte de  $\theta_{t-1}$ a partir de $p(\theta_{t-1}|D_{t-1})$. \textbf{Todo suporte da distribuição $\theta_{t-1}$}.
 
-\begin{frame}{Implmentação}
+\pause
+
+
+\item[2-] gerar suporte de $w_{t}$ a partir de $p(w_{t})$. \textbf{Todo suporte da distribuição $w_{t}$}.
+
+\pause
+
+\item[3-]  Obter de forma determinística, o suporte da distribuição de interesse por meio de $\{\theta_{t-1},w_{t}\}$,  \textbf{obtidos pela função $h(.)$}.
+\end{itemize}
+
+\pause
+
+
+A equação de interesse é representada por:
+\begin{small}
+
+\begin{tabular}{ccccc}
+ & 3 & 2 & 1 & \\
+$p(\theta_t|D_{t-1}) = \int \int $& $\overbrace{h(\theta_t|\theta_{t-1},w_{t-1})} $& $\overbrace{p(w_{t-1})} $& $\overbrace{p(\theta_{t-1}|D_{t-1})} $&$ dw_{t-1}d\theta_{t-1}$
+\end{tabular}
+
+\end{small}
+
+\end{frame}
+
+
+
+\begin{frame}{2: Atualização}
+
+A distribuição gerada, ``atravessa" a equação observável do sistema pelo suporte de $v_t$,
+
+$$
+p(y_t|\theta_{t}) = \int h(y_t|\theta_{t},v_{t})p(v_{t})dv_{t},
+$$
+\pause
+
+e é avaliada por:
+
+$$ \pi_t \propto h(y_t|\theta_t, v_{t})$$.
+
+
+\end{frame}
+
+\begin{frame}{3: \textit{Posteriori}}
+
+
+Obtém-se a distribuição de $p(\theta_{t}|D_t)$ por meio da combinação entre \textbf{1:Propagação} e  \textbf{2:Atualização}.
+
+\vspace{0.5cm}
+
+\pause
+
+\begin{tabular}{cccc}
+3:\textit{Posteriori} & & 2:Atualização & 1: Propagação \\
+$\overbrace{p(\theta_t|D_t)} $ & $=$ & $\overbrace{\left[\frac{h(y_t|\theta_t)}{\int h(y_t|\theta_t)p(\theta_t|D_{t-1})d \theta_t}\right]} $& $\overbrace{p(\theta_t|D_{t-1})}$
+\end{tabular}
+
+
+\end{frame}
+
+\begin{frame}{Algoritmo}
 
 \begin{itemize}
-
-\item R
-
-\item Python
-
-
+\item[1.1] Para $t=1$: gerar $N$ amostras $\{\theta_{0}^{i}, i= 1,...,N\} \sim p(\theta_0)$;
+\item[1.2] Para $t>1$: gerar $N$ amostras $\{\theta_{t-1}^{i}, i= 1,...,N\}\sim p(\theta_{t-1}|D_{t-1})$
+\end{itemize}
+\begin{itemize}
+\item[2] Gerar $N$ amostra para $w_{t}^{i} \sim p_1(w)$
+\item[3] Obter valores de $\theta^{i*}_{t}$, de forma determinística, $\theta_{t*}^{i} = f(\theta_{t-1}^{i},w_{t}^{i})$
+\item[4] Sendo $v_t$ uma estatística conhecida, atualiza-se o peso de $\theta^{i*}_{t}$ usando:
+$$
+\pi^{i}_t = \frac{p(y_t|\theta_t^{i*},v_t)}{\sum^N_j p(y_t|\theta_t^{j*},v_t)}
+$$
+\item[5] Reamostrar $N$ vezes $\{\theta_{t}^{i*}, i= 1,...,N\}$ com probabilidade igual a $\pi_{t}^{i}$.
 \end{itemize}
 
 \end{frame}
-
-
-
-\section{Considerações finais}
-\begin{frame}{Considerações finais}
-
-Flexibiliza
-
-\end{frame}
-
-
 
 \begin{frame}[allowframebreaks]%in case more than 1 slide needed
     {\tiny
