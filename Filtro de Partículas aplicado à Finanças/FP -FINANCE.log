@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.1.12)  27 FEB 2018 11:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.1.12)  27 FEB 2018 16:27
 entering extended mode
 **"./FP -FINANCE.tex"
 ("FP -FINANCE.tex"
@@ -1682,29 +1682,20 @@ LaTeX Font Info:    Font shape `T1/aess/m/it' in size <10.95> not available
 (Font)              Font shape `T1/aess/m/sl' tried instead on input line 161.
  [10
 
-]
+] [11
 
-LaTeX Warning: Command \' invalid in math mode on input line 177.
-
-Missing character: There is no ó in font cmss8!
-
-LaTeX Warning: Command \' invalid in math mode on input line 177.
-
-Missing character: There is no ó in font cmss8!
-[11
-
-] <marko_02.png, id=158, 335.75438pt x 239.39438pt>
+] <marko_02.png, id=146, 335.75438pt x 239.39438pt>
 File: marko_02.png Graphic file (type png)
- <use marko_02.png>
+
+<use marko_02.png>
 Package pdftex.def Info: marko_02.png used on input line 194.
 (pdftex.def)             Requested size: 159.6233pt x 113.81102pt.
-
-[12
+ [12
 
  <./marko_02.png>] [13
 
 ]
-<decritiva_indices.pdf, id=171, 867.24pt x 578.16pt>
+<decritiva_indices.pdf, id=159, 867.24pt x 578.16pt>
 File: decritiva_indices.pdf Graphic file (type pdf)
 
 <use decritiva_indices.pdf>
@@ -1722,7 +1713,7 @@ Overfull \vbox (12.97775pt too high) detected at line 216
 [14
 
  <./decritiva_indices.pdf>]
-<descritiva_cor.pdf, id=186, 867.24pt x 578.16pt>
+<descritiva_cor.pdf, id=174, 867.24pt x 578.16pt>
 File: descritiva_cor.pdf Graphic file (type pdf)
  <use descritiva_cor.pdf>
 Package pdftex.def Info: descritiva_cor.pdf used on input line 226.
@@ -1739,7 +1730,7 @@ Overfull \vbox (12.97775pt too high) detected at line 226
 [15
 
  <./descritiva_cor.pdf>]
-<fronteira_ativos.pdf, id=197, 867.24pt x 578.16pt>
+<fronteira_ativos.pdf, id=185, 867.24pt x 578.16pt>
 File: fronteira_ativos.pdf Graphic file (type pdf)
  <use fronteira_ativos.pdf>
 Package pdftex.def Info: fronteira_ativos.pdf used on input line 237.
@@ -1761,52 +1752,68 @@ Overfull \vbox (12.97775pt too high) detected at line 237
 
 ] [19
 
-] [20
-
 ]
-<processo_adapt_antecipa.png, id=235, 878.53218pt x 162.6075pt>
+<processo_adapt_antecipa.png, id=219, 878.53218pt x 162.6075pt>
 File: processo_adapt_antecipa.png Graphic file (type png)
 
 <use processo_adapt_antecipa.png>
-Package pdftex.def Info: processo_adapt_antecipa.png used on input line 301.
+Package pdftex.def Info: processo_adapt_antecipa.png used on input line 307.
 (pdftex.def)             Requested size: 307.45065pt x 56.9055pt.
 
-Overfull \hbox (0.16078pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.16078pt too wide) in paragraph at lines 307--307
  [] 
  []
 
-[21
+[20
 
- <./processo_adapt_antecipa.png>] [22
+ <./processo_adapt_antecipa.png>] [21
+
+] [22
 
 ] [23
 
-] [24
+]
+File: processo_adapt_antecipa.png Graphic file (type png)
+
+<use processo_adapt_antecipa.png>
+Package pdftex.def Info: processo_adapt_antecipa.png used on input line 390.
+(pdftex.def)             Requested size: 307.45065pt x 56.9055pt.
+
+Overfull \hbox (0.16078pt too wide) in paragraph at lines 390--390
+ [] 
+ []
+
+[24
 
 ] [25
 
 ] [26
 
-]
-File: decritiva_indices.pdf Graphic file (type pdf)
-
-<use decritiva_indices.pdf>
-Package pdftex.def Info: decritiva_indices.pdf used on input line 405.
-(pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
-
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 405--405
- [] 
- []
-
-
-Overfull \vbox (12.97775pt too high) detected at line 405
- []
-
-[27
+] [27
 
 ] [28
 
 ] [29
+
+]
+File: decritiva_indices.pdf Graphic file (type pdf)
+ <use decritiva_indices.pdf>
+Package pdftex.def Info: decritiva_indices.pdf used on input line 450.
+(pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
+
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 450--450
+ [] 
+ []
+
+
+Overfull \vbox (12.97775pt too high) detected at line 450
+ []
+
+[30
+
+] [31
+
+] [32
 
 ]
 \openout4 = `"FP -FINANCE.vrb"'.
@@ -1816,102 +1823,96 @@ LaTeX Font Info:    Try loading font information for T1+aett on input line 4.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)) [30
+)) [33
 
 ]
-<VAR_mc.pdf, id=299, 867.24pt x 578.16pt>
+<VAR_mc.pdf, id=304, 867.24pt x 578.16pt>
 File: VAR_mc.pdf Graphic file (type pdf)
  <use VAR_mc.pdf>
-Package pdftex.def Info: VAR_mc.pdf used on input line 462.
+Package pdftex.def Info: VAR_mc.pdf used on input line 507.
 (pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
 
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 462--462
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 507--507
  [] 
  []
 
 
-Overfull \vbox (12.97775pt too high) detected at line 462
+Overfull \vbox (12.97775pt too high) detected at line 507
  []
 
-[31
+[34
 
- <./VAR_mc.pdf>] [32
+ <./VAR_mc.pdf>] [35
 
-] [33
-
-] [34
-
-]
-<VAR_boots.pdf, id=329, 867.24pt x 578.16pt>
-File: VAR_boots.pdf Graphic file (type pdf)
- <use VAR_boots.pdf>
-Package pdftex.def Info: VAR_boots.pdf used on input line 501.
-(pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
-
-Overfull \hbox (34.13477pt too wide) in paragraph at lines 501--501
- [] 
- []
-
-
-Overfull \vbox (12.97775pt too high) detected at line 501
- []
-
-[35
-
- <./VAR_boots.pdf>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 522.
-LaTeX Font Info:    Font shape `T1/aess/m/it' in size <12> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 522.
- [36
+] [36
 
 ] [37
 
+] [38
+
 ]
-<modelodinamicoR.pdf, id=356, 833.1125pt x 415.5525pt>
-File: modelodinamicoR.pdf Graphic file (type pdf)
+<VAR_boots.pdf, id=338, 867.24pt x 578.16pt>
+File: VAR_boots.pdf Graphic file (type pdf)
+ <use VAR_boots.pdf>
+Package pdftex.def Info: VAR_boots.pdf used on input line 553.
+(pdftex.def)             Requested size: 341.42464pt x 227.62204pt.
 
-<use modelodinamicoR.pdf>
-Package pdftex.def Info: modelodinamicoR.pdf used on input line 552.
-(pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
- [38
+Overfull \hbox (34.13477pt too wide) in paragraph at lines 553--553
+ [] 
+ []
 
- <./modelodinamicoR.pdf>]
-<modelodinamicoR1.pdf, id=366, 833.1125pt x 415.5525pt>
-File: modelodinamicoR1.pdf Graphic file (type pdf)
 
-<use modelodinamicoR1.pdf>
-Package pdftex.def Info: modelodinamicoR1.pdf used on input line 552.
-(pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
- [39
+Overfull \vbox (12.97775pt too high) detected at line 553
+ []
 
- <./modelodinamicoR1.pdf>]
-<modelodinamicoR2.pdf, id=376, 833.1125pt x 415.5525pt>
-File: modelodinamicoR2.pdf Graphic file (type pdf)
+[39
 
-<use modelodinamicoR2.pdf>
-Package pdftex.def Info: modelodinamicoR2.pdf used on input line 552.
-(pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
- [40
+ <./VAR_boots.pdf>] [40
 
- <./modelodinamicoR2.pdf>] [41
+]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 581.
+LaTeX Font Info:    Font shape `T1/aess/m/it' in size <12> not available
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 581.
+ [41
 
 ] [42
 
-] [43
-
 ]
-[44
+<modelodinamicoR.pdf, id=369, 833.1125pt x 415.5525pt>
+File: modelodinamicoR.pdf Graphic file (type pdf)
 
-] [45
+<use modelodinamicoR.pdf>
+Package pdftex.def Info: modelodinamicoR.pdf used on input line 611.
+(pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
+ [43
 
-] [46
+ <./modelodinamicoR.pdf>]
+<modelodinamicoR1.pdf, id=380, 833.1125pt x 415.5525pt>
+File: modelodinamicoR1.pdf Graphic file (type pdf)
+
+<use modelodinamicoR1.pdf>
+Package pdftex.def Info: modelodinamicoR1.pdf used on input line 611.
+(pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
+ [44
+
+ <./modelodinamicoR1.pdf>]
+<modelodinamicoR2.pdf, id=390, 833.1125pt x 415.5525pt>
+File: modelodinamicoR2.pdf Graphic file (type pdf)
+
+<use modelodinamicoR2.pdf>
+Package pdftex.def Info: modelodinamicoR2.pdf used on input line 611.
+(pdftex.def)             Requested size: 228.17229pt x 113.81102pt.
+ [45
+
+ <./modelodinamicoR2.pdf>] [46
 
 ] [47
 
 ] [48
 
-] [49
+]
+[49
 
 ] [50
 
@@ -1931,8 +1932,7 @@ Package pdftex.def Info: modelodinamicoR2.pdf used on input line 552.
 
 ] [58
 
-]
-[59
+] [59
 
 ] [60
 
@@ -1942,7 +1942,8 @@ Package pdftex.def Info: modelodinamicoR2.pdf used on input line 552.
 
 ] [63
 
-] [64
+]
+[64
 
 ] [65
 
@@ -1962,8 +1963,7 @@ Package pdftex.def Info: modelodinamicoR2.pdf used on input line 552.
 
 ] [73
 
-]
-[74
+] [74
 
 ] [75
 
@@ -1971,39 +1971,62 @@ Package pdftex.def Info: modelodinamicoR2.pdf used on input line 552.
 
 ] [77
 
-] [78
+]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 1231.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 1231.
+LaTeX Font Info:    Font shape `T1/aess/m/it' in size <10> not available
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 1231.
+
+LaTeX Font Info:    Font shape `T1/aess/m/it' in size <7> not available
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 1231.
+
+
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1231--1231
+[][]  
+ []
+
+[78
 
 ]
-Overfull \hbox (12.1121pt too wide) detected at line 905
-\OML/lmm/m/it/10.95 []\OT1/aess/m/n/10.95 (\OML/lmm/m/it/10.95 []\OT1/aess/m/
-n/10.95 ) = []
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1231--1231
+[][]  
  []
 
 [79
 
 ]
-Overfull \hbox (12.1121pt too wide) detected at line 905
-\OML/lmm/m/it/10.95 []\OT1/aess/m/n/10.95 (\OML/lmm/m/it/10.95 []\OT1/aess/m/
-n/10.95 ) = []
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1231--1231
+[][]  
  []
 
 [80
 
 ]
-Overfull \hbox (12.1121pt too wide) detected at line 905
-\OML/lmm/m/it/10.95 []\OT1/aess/m/n/10.95 (\OML/lmm/m/it/10.95 []\OT1/aess/m/
-n/10.95 ) = []
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1231--1231
+[][]  
  []
 
 [81
 
-] [82
+]
+Overfull \hbox (32.9877pt too wide) in paragraph at lines 1231--1231
+[][]  
+ []
+
+[82
 
 ] [83
 
 ] [84
 
-] [85
+]
+
+LaTeX Font Warning: Font shape `T1/aess/bx/it' undefined
+(Font)              using `T1/aess/bx/n' instead on input line 1266.
+
+[85
 
 ] [86
 
@@ -2021,16 +2044,51 @@ n/10.95 ) = []
 
 ] [93
 
-] [94
-
-] [95
-
 ]
-[96
+<processo_1_01_02_05.pdf, id=661, 505.89pt x 505.89pt>
+File: processo_1_01_02_05.pdf Graphic file (type pdf)
 
-] [97
+<use processo_1_01_02_05.pdf>
+Package pdftex.def Info: processo_1_01_02_05.pdf used on input line 1402.
+(pdftex.def)             Requested size: 284.53154pt x 199.17207pt.
 
-] [98
+Overfull \vbox (6.42776pt too high) detected at line 1402
+ []
+
+[94
+
+ <./processo_1_01_02_05.pdf>]
+<tau_1_01_02_05.pdf, id=672, 505.89pt x 505.89pt>
+File: tau_1_01_02_05.pdf Graphic file (type pdf)
+ <use tau_1_01_02_05.pdf>
+Package pdftex.def Info: tau_1_01_02_05.pdf used on input line 1415.
+(pdftex.def)             Requested size: 284.53154pt x 199.17207pt.
+
+[95
+
+ <./tau_1_01_02_05.pdf>] <beta_1_01_02_05.pdf, id=684, 505.89pt x 505.89pt>
+File: beta_1_01_02_05.pdf Graphic file (type pdf)
+
+<use beta_1_01_02_05.pdf>
+Package pdftex.def Info: beta_1_01_02_05.pdf used on input line 1431.
+(pdftex.def)             Requested size: 284.53154pt x 199.17207pt.
+ [96
+
+ <./beta_1_01_02_05.pdf>]
+<alpha_1_01_02_05.pdf, id=695, 505.89pt x 505.89pt>
+File: alpha_1_01_02_05.pdf Graphic file (type pdf)
+ <use alpha_1_01_02_05.pdf>
+Package pdftex.def Info: alpha_1_01_02_05.pdf used on input line 1444.
+(pdftex.def)             Requested size: 284.53154pt x 199.17207pt.
+
+[97
+
+ <./alpha_1_01_02_05.pdf>]
+Overfull \hbox (24.66623pt too wide) in paragraph at lines 1470--1470
+ [] 
+ []
+
+[98
 
 ] [99
 
@@ -2042,152 +2100,7 @@ n/10.95 ) = []
 
 ] [103
 
-] [104
-
-] [105
-
-] [106
-
-] [107
-
-] [108
-
-]
-[109
-
-] [110
-
-] [111
-
-] [112
-
-]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 1189.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 1189.
-LaTeX Font Info:    Font shape `T1/aess/m/it' in size <10> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 1189.
-
-LaTeX Font Info:    Font shape `T1/aess/m/it' in size <7> not available
-(Font)              Font shape `T1/aess/m/sl' tried instead on input line 1189.
-
-
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1189--1189
-[][]  
- []
-
-[113
-
-]
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1189--1189
-[][]  
- []
-
-[114
-
-]
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1189--1189
-[][]  
- []
-
-[115
-
-]
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1189--1189
-[][]  
- []
-
-[116
-
-]
-Overfull \hbox (32.9877pt too wide) in paragraph at lines 1189--1189
-[][]  
- []
-
-[117
-
-] [118
-
-] [119
-
-]
-
-LaTeX Font Warning: Font shape `T1/aess/bx/it' undefined
-(Font)              using `T1/aess/bx/n' instead on input line 1224.
-
-[120
-
-] [121
-
-] [122
-
-] [123
-
-] [124
-
-] [125
-
-] [126
-
-] [127
-
-] [128
-
-]
-<processo_1_01_02_05.pdf, id=861, 505.89pt x 505.89pt>
-File: processo_1_01_02_05.pdf Graphic file (type pdf)
-
-<use processo_1_01_02_05.pdf>
-Package pdftex.def Info: processo_1_01_02_05.pdf used on input line 1352.
-(pdftex.def)             Requested size: 284.53154pt x 199.17207pt.
-
-Overfull \vbox (6.42776pt too high) detected at line 1352
- []
-
-[129
-
- <./processo_1_01_02_05.pdf>]
-<tau_1_01_02_05.pdf, id=872, 505.89pt x 505.89pt>
-File: tau_1_01_02_05.pdf Graphic file (type pdf)
- <use tau_1_01_02_05.pdf>
-Package pdftex.def Info: tau_1_01_02_05.pdf used on input line 1365.
-(pdftex.def)             Requested size: 284.53154pt x 199.17207pt.
-
-[130
-
- <./tau_1_01_02_05.pdf>]
-<beta_1_01_02_05.pdf, id=883, 505.89pt x 505.89pt>
-File: beta_1_01_02_05.pdf Graphic file (type pdf)
- <use beta_1_01_02_05.pdf>
-Package pdftex.def Info: beta_1_01_02_05.pdf used on input line 1381.
-(pdftex.def)             Requested size: 284.53154pt x 199.17207pt.
-
-[131
-
- <./beta_1_01_02_05.pdf>]
-<alpha_1_01_02_05.pdf, id=894, 505.89pt x 505.89pt>
-File: alpha_1_01_02_05.pdf Graphic file (type pdf)
- <use alpha_1_01_02_05.pdf>
-Package pdftex.def Info: alpha_1_01_02_05.pdf used on input line 1394.
-(pdftex.def)             Requested size: 284.53154pt x 199.17207pt.
-
-[132
-
- <./alpha_1_01_02_05.pdf>]
-Overfull \hbox (24.66623pt too wide) in paragraph at lines 1420--1420
- [] 
- []
-
-[133
-
-] [134
-
-] [135
-
-] [136
-
-] ("FP -FINANCE.bbl") [137
+] ("FP -FINANCE.bbl") [104
 
 ]
 \tf@nav=\write6
@@ -2199,24 +2112,23 @@ Overfull \hbox (24.66623pt too wide) in paragraph at lines 1420--1420
 \tf@snm=\write8
 \openout8 = `"FP -FINANCE.snm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1508.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1508.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1592.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1592.
  ("FP -FINANCE.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1508.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1508.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1592.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1592.
 
 Package rerunfilecheck Info: File `"FP -FINANCE".out' has not changed.
-(rerunfilecheck)             Checksum: A5EC1B380C358F8E3898E37B27A2787F;856.
-
+(rerunfilecheck)             Checksum: 35908832902AC05BAEE53247AE0F70F6;694.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 28522 strings out of 493333
- 560464 string characters out of 3139197
- 660077 words of memory out of 3000000
- 31010 multiletter control sequences out of 15000+200000
+ 28428 strings out of 493333
+ 559497 string characters out of 3139197
+ 660162 words of memory out of 3000000
+ 30983 multiletter control sequences out of 15000+200000
  64438 words of font info for 125 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
  56i,18n,67p,801b,555s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2239,9 +2151,9 @@ fonts/type1/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/symbols/msam10.pfb>
-Output written on "FP -FINANCE.pdf" (137 pages, 645500 bytes).
+Output written on "FP -FINANCE.pdf" (104 pages, 579253 bytes).
 PDF statistics:
- 1067 PDF objects out of 1200 (max. 8388607)
- 310 named destinations out of 1000 (max. 500000)
- 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 868 PDF objects out of 1000 (max. 8388607)
+ 243 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
