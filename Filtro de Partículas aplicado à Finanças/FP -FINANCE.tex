@@ -600,12 +600,12 @@ qlim <- quantile(mc,p=0.05)
 \pause
 \underline{\textbf{Equação do Sistema}}
 $$
-\theta_t \sim \pi(.|\theta_{t-1})
+\theta_t =  G_t \theta_{t-1} + w_t
 $$
 \pause
 \underline{\textbf{Equação das Observações}}
 $$
-y_t \sim \pi(.|\theta_{t})
+y_t  =  F_t \theta_{t} + v_t
 $$
 
 \end{frame}
@@ -648,6 +648,19 @@ $$\pi(\theta_{1:n}|y_{1:n}) =  \frac{\pi(\theta_{1:n},y_{1:n})}{\pi(y_{1:n})} $$
 \end{frame}
 
 
+\begin{frame}{Filtro de Kalman}
+
+Seja $v_t$ e $w_t$ perturbações com distribuição Gaussiana e independentes, \cite{west} apresenta um esquema sequencial para o processo de filtragem, conhecido como \textbf{Filtro de Kalman}.
+
+\begin{itemize}
+\item[(a)]\textbf{\textit{Posteriori} de $\theta$ em $t-1$}:  $(\theta_{t-1}|D_{t-1})\sim N[m_{t-1},C_{t-1}]$;
+\item[(b)]\textbf{Atualização da \textit{priori} em $t-1$:} $(\theta_{t}|D_{t-1})\sim N[m_{t-1},R_{t}]$;
+\item[(c)]\textbf{Predição para $y$ em $t$:}  $(y_t|D_{t-1})\sim N[f_{t},Q_{t}]$;
+\item[(d)]\textbf{Posteriori de $\theta$ em $t$:}  $(\theta_t|D_{t})\sim N[m_{t},C_{t}]$;
+\end{itemize}
+Sendo: $R_t = C_{t-1}+W_t$, $f_t = m_{t-1}$, $Q_t = R_{t}+V_t$, $\theta_t = m_{t-1}+A_te_t$,  $C_t=A_tV_t$, $A_t=R_t/Q_t$ e $e_t=Y_t-f_t$.
+
+\end{frame}
 
 
 \subsection{Monte Carlo}
@@ -712,44 +725,44 @@ $$
 
 \begin{itemize}
 
-\item[] \underline{\textbf{Problema 1}}: Não é fácil se gerar $\pi_n(\theta_1,...,\theta_n)$. (Amostragem de Importância)
+\item[] \underline{\textbf{Problema 1}}: Não é fácil se gerar $\pi_n(\theta_1,...,\theta_n)$. 
 \pause 
 
 \vspace{.5cm}
-\item[] \underline{\textbf{Problema 2}}: Ainda que fosse possível se gerar, a dimensão de $\pi_n(\theta_1,...,\theta_n)$ pode ser muito grande para se obter amostras multivariadas. Problema encontrado no método \underline{\textbf{MCMC}}. (Amostragem de Importância Sequencial)
+\item[] \underline{\textbf{Problema 2}}: Ainda que fosse possível se gerar, a dimensão de $\pi_n(\theta_1,...,\theta_n)$ pode ser muito grande para se obter amostras multivariadas. Problema encontrado no método \underline{\textbf{MCMC}}. 
 
 \end{itemize}
 \end{frame}
 
 
-%\subsection{Amostragem de Importância - AI}
-%
-%\begin{frame}{Problema 1}
-%    \begin{block}{}
-%      \Huge  Amostragem de importância
-%    \end{block}
-%\end{frame}
-%
-%
-%\begin{frame}{Problema 1}
-%
-%A amostragem de importância trata o \textbf{\underline{problema 1}}: não se sabe gerar $\pi(\theta_{1:n})$.
-%
-%\vspace{0.5cm}
-%\pause
-%
-%Utiliza-se uma \textbf{distribuição de importância} $q(.)$ para obter o mesmo suporte da distribuição $\pi(.)$ .
-%$$
-%E_{\pi}(\phi)=\int \phi(\theta) \pi(\theta) d\theta = \int \frac{ \phi(\theta) \pi(\theta)}{q(\theta)} q(\theta) d\theta
-%$$
-%
-%\pause
-%A quantidade $\frac{\pi(\theta)}{q(\theta)}$  fornece um ajuste da discrepância entre \textbf{gerar um suporte} de $\pi(\theta)$ por meio da distribuição geradora $q(\theta)$.
-%
-%\end{frame}
-%
-%
-%
+\subsection{Amostragem de Importância - AI}
+
+\begin{frame}{Problema 1}
+    \begin{block}{}
+      \Huge  Amostragem de importância
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Problema 1}
+
+A amostragem de importância trata o \textbf{\underline{problema 1}}: não se sabe gerar $\pi(\theta_{1:n})$.
+
+\vspace{0.5cm}
+\pause
+
+Utiliza-se uma \textbf{distribuição de importância} $q(.)$ para obter o mesmo suporte da distribuição $\pi(.)$ .
+$$
+E_{\pi}(\phi)=\int \phi(\theta) \pi(\theta) d\theta = \int \frac{ \phi(\theta) \pi(\theta)}{q(\theta)} q(\theta) d\theta
+$$
+
+\pause
+A quantidade $\frac{\pi(\theta)}{q(\theta)}$  fornece um ajuste da discrepância entre \textbf{gerar um suporte} de $\pi(\theta)$ por meio da distribuição geradora $q(\theta)$.
+
+\end{frame}
+
+
+
 %%
 %%\begin{frame}{Notação}
 %%
@@ -764,9 +777,9 @@ $$
 %%
 %%
 %%\end{frame}
-%
-%
-%
+
+
+
 %
 %\begin{frame}{Peso}
 %
@@ -837,66 +850,66 @@ $$
 %
 %\end{frame}
 %
-%
-%
-%\begin{frame}{Aproximação}
-%
-%Dessa forma,
-%$$\hat{\pi}_n(\theta_{1:n})= \frac{\sum^N_{i=1} w_n(\Theta^i_{1:n})\delta_{\Theta^i_{1:n}}(\theta_{1:n})}{\sum^N_{i=1} w_n(\Theta^i_{1:n})} $$
-%
-%\pause
-%
-%Sendo:
-%
-%$$W_n(\theta_{1:n})= \frac{ w_n(\Theta^i_{1:n})}{ \sum^N_{j=1} w_n(\Theta^j_{1:n})} $$
-%
-%\pause
-%
-%$$\hat{\pi}_n(\theta_{1:n})= \sum^N_{i=1} W_n(\Theta^i_{1:n})\delta_{\Theta^i_{1:n}}(\theta_{1:n}) $$
-%
-%\pause
-%A aproximação Monte Carlo para a função $\phi_n(.)$ é:
-%$$
-%\hat{E}(\phi_n) = \frac{1}{N} \sum_{i=1}^N W_n(\Theta^i_{1:n}) \phi_n(\Theta^i_{1:n}).
-%$$
-%
-%\end{frame}
-%
-%
-%\subsection{Amostragem de Importância Sequencial - (AIS)}
-%
-%\begin{frame}{Problema 2}
-%    \begin{block}{}
-%      \Huge  Amostragem de importância sequencial (AIS)
-%    \end{block}
-%\end{frame}
-%
-%
-%
-%
-%\begin{frame}{Problema 2}
-%
-%Apesar do uso da amostragem de importância, amostrar $q_n(\theta_{1:n})$ pode ser \textbf{inviável devido a dimensão} $n$.
-%
-%\vspace{0.5cm}
-%
-%\pause
-%
-%Considere que a distribuição auxiliar escolhida, $q(.)$, possa ser escrita por:
-%$$ q(\theta_{1:n})  = q(\theta_{1:n-1})q(\theta_n|\theta_{1:n-1})$$
-%
-%\vspace{0.5cm}
-%
-%\pause
-%Tem-se:
-%
-%$$ q(\theta_{1:n})  = q(\theta_1)\prod_{k=2}^n q(\theta_k|\theta_{1:k-1})$$
-%
-%\end{frame}
-%
-%
-%
-%
+
+
+\begin{frame}{Aproximação}
+
+Dessa forma,
+$$\hat{\pi}_n(\theta_{1:n})= \frac{\sum^N_{i=1} w_n(\Theta^i_{1:n})\delta_{\Theta^i_{1:n}}(\theta_{1:n})}{\sum^N_{i=1} w_n(\Theta^i_{1:n})} $$
+
+\pause
+
+Sendo:
+
+$$W_n(\theta_{1:n})= \frac{ w_n(\Theta^i_{1:n})}{ \sum^N_{j=1} w_n(\Theta^j_{1:n})} $$
+
+\pause
+
+$$\hat{\pi}_n(\theta_{1:n})= \sum^N_{i=1} W_n(\Theta^i_{1:n})\delta_{\Theta^i_{1:n}}(\theta_{1:n}) $$
+
+\pause
+A aproximação Monte Carlo para a função $\phi_n(.)$ é:
+$$
+\hat{E}(\phi_n) = \frac{1}{N} \sum_{i=1}^N W_n(\Theta^i_{1:n}) \phi_n(\Theta^i_{1:n}).
+$$
+
+\end{frame}
+
+
+\subsection{Amostragem de Importância Sequencial - (AIS)}
+
+\begin{frame}{Problema 2}
+    \begin{block}{}
+      \Huge  Amostragem de importância sequencial (AIS)
+    \end{block}
+\end{frame}
+
+
+
+
+\begin{frame}{Problema 2}
+
+Apesar do uso da amostragem de importância, amostrar $q_n(\theta_{1:n})$ pode ser \textbf{inviável devido a dimensão} $n$.
+
+\vspace{0.5cm}
+
+\pause
+
+Considere que a distribuição auxiliar escolhida, $q(.)$, possa ser escrita por:
+$$ q(\theta_{1:n})  = q(\theta_{1:n-1})q(\theta_n|\theta_{1:n-1})$$
+
+\vspace{0.5cm}
+
+\pause
+Tem-se:
+
+$$ q(\theta_{1:n})  = q(\theta_1)\prod_{k=2}^n q(\theta_k|\theta_{1:k-1})$$
+
+\end{frame}
+
+
+
+
 %
 %\begin{frame}{Decomposição sequecial}
 %Assim, os pesos no tempo $t=2$:
@@ -959,7 +972,7 @@ $$
 %$$
 %\end{frame}
 
-\begin{frame}{Amostragem de importância sequencial}
+\begin{frame}{Amostragem de Importância Sequencial}
 
 As propriedades Markovianas A.1 e A.2 garantem:
 
@@ -1000,55 +1013,55 @@ A função $g_{t|t-1}(\theta_t|\theta_{0:t-1},y_{1:t})$ é a responsável por ge
 
 
 
-%\subsection{Reamostragem}
-%
-%\begin{frame}{Problema 3}
-%    \begin{block}{}
-%      \Huge  Reamostragem
-%    \end{block}
-%\end{frame}
-%
-%
-%\begin{frame}{Degeneração}
-%
-%É possível que a distribuição dos pesos $w^i_t$ se degenerem. Isso ocorre quando tem-se pesos com valores próximos de $1$.
-%
-%\vspace{0.5cm} 
-%\pause
-%
-%Adota-se então um critério de degeneração da distribuição dos pesos calculando o seguinte valor em cada vetor de partículas:
-%
-%$$
-%N^t_{eff} = \frac{1}{\sum^N_ i{(w_t^{i})^2}}
-%$$
-%
-%
-%\pause
-%
-%\cite{petris} indica utilizar de $N/2$ como critério para regeneração das partículas, substituindo os pesos das partículas por $1/N$.
-%
-%\end{frame}
-%
-%
-%
-%
-%\begin{frame}{Reamostragem}
-%$$
-%\{\theta_t^i,w_t^i\},  i=1,...,N
-%$$
-%
-%\pause
-%\vspace{0.5cm} 
-%As partículas $\theta^i_t$ são reamostradas com $w^i_t$ como peso
-%\pause
-%\vspace{0.5cm} 
-%As novas partículas tem peso $w^i_t = 1/N$. 
-%\vspace{0.5cm} 
-%
-%\pause
-%Partículas com baixa probabilidade são descartadas
-%
-%\end{frame}
+\subsection{Reamostragem}
+
+\begin{frame}{Problema 3}
+    \begin{block}{}
+      \Huge  Reamostragem
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Degeneração}
+
+É possível que a distribuição dos pesos $w^i_t$ se degenerem. Isso ocorre quando tem-se pesos com valores próximos de $1$.
+
+\vspace{0.5cm} 
+\pause
+
+Adota-se então um critério de degeneração da distribuição dos pesos calculando o seguinte valor em cada vetor de partículas:
+
+$$
+N^t_{eff} = \frac{1}{\sum^N_ i{(w_t^{i})^2}}
+$$
+
+
+\pause
+
+\cite{petris} indica utilizar de $N/2$ como critério para regeneração das partículas, substituindo os pesos das partículas por $1/N$.
+
+\end{frame}
+
+
+
+
+\begin{frame}{Reamostragem}
+$$
+\{\theta_t^i,w_t^i\},  i=1,...,N
+$$
+
+\pause
+\vspace{0.5cm} 
+As partículas $\theta^i_t$ são reamostradas com $w^i_t$ como peso
+\pause
+\vspace{0.5cm} 
+As novas partículas tem peso $w^i_t = 1/N$. 
+\vspace{0.5cm} 
+
+\pause
+Partículas com baixa probabilidade são descartadas
+
+\end{frame}
 
 
 

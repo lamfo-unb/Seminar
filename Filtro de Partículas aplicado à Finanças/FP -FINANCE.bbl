@@ -4,12 +4,6 @@
 Consigli, G. \& Dempster, M. a.~H. (1998).
 \newblock {\em Annals of Operations Research}, 81(October):131 -- 161.
 
-\bibitem[\protect\astroncite{Doucet and Johansen}{2008}]{doucet2}
-Doucet, A. \& Johansen, A.~M. (2008).
-\newblock A tutorial on particle filtering and smoothing:fifteen years later.
-\newblock {\em Technical report (Department of Statistics, University of
-  British Columbia)}.
-
 \bibitem[\protect\astroncite{Ferstl and Weissensteiner}{2011}]{Ferstl2011}
 Ferstl, R. \& Weissensteiner, A. (2011).
 \newblock {Asset-liability management under time-varying investment
@@ -54,11 +48,6 @@ Markowitz, H.~M. (1952).
 \newblock Portfolio selection.
 \newblock {\em The Journal of Finance}.
 
-\bibitem[\protect\astroncite{Petris et~al.}{2009}]{petris}
-Petris, G., Petrone, S., \& Campagnoli, P. (2009).
-\newblock {\em Dynamic Linear Models with R}.
-\newblock Springer.
-
 \bibitem[\protect\astroncite{Quaranta and Zaffaroni}{2008}]{Quaranta2008}
 Quaranta, A.~G. \& Zaffaroni, A. (2008).
 \newblock {Robust optimization of conditional value at risk and portfolio
@@ -70,5 +59,10 @@ Virbickaite, A., Lopes, H.~F., Aus{\'i}n, M.~C., \& Galeano, P. (2016).
 \newblock {Particle Leaning for Bayesian Non-Parametric Markov Switching
   Stochastic Volatility Model}.
 \newblock {\em R{\&}R Bayesian Analysis}, 2(1):1--28.
+
+\bibitem[\protect\astroncite{West and Harrison}{1997}]{west}
+West, M. \& Harrison, J. (1997).
+\newblock {\em Bayesian Forecast and Dynamic Models}.
+\newblock Springer-Verlag.
 
 \end{thebibliography}

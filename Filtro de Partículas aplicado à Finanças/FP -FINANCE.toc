@@ -5,7 +5,10 @@
 \beamer@subsectionintoc {3}{1}{Monte Carlo }{29}{0}{3}
 \beamer@subsectionintoc {3}{2}{Bootstrap}{36}{0}{3}
 \beamer@sectionintoc {4}{Modelos Din\IeC {\^a}micos}{40}{0}{4}
-\beamer@subsectionintoc {4}{1}{Monte Carlo}{49}{0}{4}
-\beamer@sectionintoc {5}{Filtro de Part\IeC {\'\i }culas}{63}{0}{5}
-\beamer@subsectionintoc {5}{1}{Filtro Bootstrap}{69}{0}{5}
-\beamer@sectionintoc {6}{Stochastic Volatility Models}{88}{0}{6}
+\beamer@subsectionintoc {4}{1}{Monte Carlo}{50}{0}{4}
+\beamer@subsectionintoc {4}{2}{Amostragem de Import\IeC {\^a}ncia - AI}{59}{0}{4}
+\beamer@subsectionintoc {4}{3}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{67}{0}{4}
+\beamer@subsectionintoc {4}{4}{Reamostragem}{76}{0}{4}
+\beamer@sectionintoc {5}{Filtro de Part\IeC {\'\i }culas}{84}{0}{5}
+\beamer@subsectionintoc {5}{1}{Filtro Bootstrap}{90}{0}{5}
+\beamer@sectionintoc {6}{Stochastic Volatility Models}{109}{0}{6}
