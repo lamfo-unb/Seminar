@@ -335,7 +335,7 @@ for(i in 1:nrow(A)){
 z <- chull(A$r,A$v)
 A_fronteira <- A[z,]
 A_fronteira <- A_fronteira %>%
-  filter(!(v>=6.5 & r>=.9))
+  filter(!(v>=.07 & r>=.008))
   # filter(!(v>=0.07 & r>=0.006))
 w_optm <- data.table(A_fronteira)[order(v)][1,]
 
@@ -348,9 +348,9 @@ pdf("fronteira_ativos.pdf",height=8,width = 12)
 
 
 plot(A_fronteira$v,A_fronteira$r,col=2,type = "l",lwd = 2,
-     xlab = expression("Risco V(W)"),ylab = expression(" Retorno E(W)"))
+     xlab = expression("Risco"),ylab = expression(" Retorno"))
 points(px,py, cex=c(.75,.75,.75,.75,.75,1)+.5,pch = 16,col = c(1,1,1,1,1,4))
-text(px-c(0,0,0,0,0,-.2),py-c(.025,.025,.025,.025,-.03,0),
+text(px-c(0,0,0,0,0,-.002),py-c(.00025,.00025,.00025,.00025,-.0003,0),
      labels = c(descritiva_indice$variable,"PVM"),cex=c(.75,.75,.75,.75,.75,.75)+.5,
      col = c(1,1,1,1,1,4))
 
