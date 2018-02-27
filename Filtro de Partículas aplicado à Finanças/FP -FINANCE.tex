@@ -20,7 +20,7 @@
 %--------------------------------------
 \usepackage{hyphenat}
 \hyphenation{mate-mática recu-perar}
-
+\usepackage{natbib}
 
 %remove the icon
 \setbeamertemplate{bibliography item}{}
@@ -64,10 +64,21 @@
 \usepackage{graphicx}
 
 
+\usepackage{tkz-graph}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{fit,positioning}
+\usetikzlibrary{bayesnet}
+\usetikzlibrary{positioning}
+\SetGraphUnit{4}
+\GraphInit[vstyle=Simple]
+\SetVertexSimple[MinSize    = 16pt, LineColor = blue!60, FillColor = blue!60]
 
 
 
-\title[Artigo]{Antecipação e adaptação: como incorporar os dinamismos do mundo financeiro}
+
+\title[Artigo]{Antecipação e adaptação: como incorporar o dinamismo do mundo financeiro}
 \author[Igor Nascimento]{Igor Nascimento}
 \institute[LAMFO]{Laboratório de Aprendizado de Máquina em Finanças e Organizações - LAMFO}
 \date[2018]{28/02/2018}
@@ -87,23 +98,6 @@
 
 
 
-\begin{frame}{Visão geral}
-
-
-\vspace{.15cm}
-\begin{enumerate}
-\item Contexto
-\vspace{.15cm}
-\item Amostragem aleatória
-\vspace{.15cm}
-\item Modelos Dinâmicos
-\vspace{.15cm}
-\item Filtro de Partículas
-\end{enumerate}
-
-\end{frame}
-
-
 
 \begin{frame}{Mundo financeiro}
 
@@ -118,6 +112,9 @@ O investidor (banco, pessoa física, fundo de investimento, fundo de pensão) po
 
 \end{frame}
 
+
+
+
 \begin{frame}{Ativos}
 
 \begin{itemize}
@@ -125,7 +122,7 @@ O investidor (banco, pessoa física, fundo de investimento, fundo de pensão) po
 \pause
 \item Títulos de dívida pública (NTN-B, LTN)
 \pause
-\item Empresa de terceiros (Debêntures)]
+\item Empresa de terceiros (Debêntures)
 \pause
 \item Empresas própria (Empresário)
 \pause
@@ -145,14 +142,13 @@ Alocação de ativos ou portfólio é \textbf{escolher} um ou mais ativos.
 \item Risco:   quais são os valores possíveis para o retorno
 \end{itemize}
 
-O trabalho seminal de \cite{Markowitz1952} sobre alocação de portfólio e fronteira eficiente.
-
-
+O trabalho seminal de \cite{mkv} sobre alocação de portfólio e fronteira eficiente.
 
 \end{frame}
 
-\begin{frame}{\cite{Markowitz1952}}
 
+
+\begin{frame}{\cite{mkv}}
 
 \begin{itemize}
 \item ativos: $$r_1,r_2,...,r_N$$
@@ -160,7 +156,6 @@ O trabalho seminal de \cite{Markowitz1952} sobre alocação de portfólio e fron
 \item variância: $$V(r_1)=\sigma^2_1,V(r_2)=\sigma^2_2,...,V(r_N)=\sigma^2_N$$
 \item covariância (correlação): $$COR(r_i,r_j) = \rho_{ij}$$
 \end{itemize}
-
 
 
 \end{frame}
@@ -180,9 +175,6 @@ V_{portfólio} =V(\mathbf{ W})= \sum_{i=1}^N\sum_{j=1}^N w_i w_j \times \sigma_i
 \end{equation}
 
 \end{frame}
-
-
-
 
 
 
@@ -267,11 +259,132 @@ Apresentar:
 
 \end{frame}
 
+
+\section{Stochastic Dynamic Programming}
+
+
+\begin{frame}{Stochastic Dynamic Programming}
+
+Um problema de programação estocástica pode ser considerado, \citep{Consigli1998}:
+
+\begin{enumerate}
+\item um problema em múltiplos estágios recursivo;
+\item um processo de decisões $d_t$ em $t=1,\cdots,T$;
+\item com restrições conhecidas e parâmetros $w_t$ aleatórios. 
+\end{enumerate}
+
+\end{frame}
+
+
+
+\begin{frame}{Stochastic Dynamic Programming}
+
+Ao longo de todo o período $t=1,\cdots,T$, \citep{Kouwenberg2008}:
+
+\begin{enumerate}
+\item as decisões em $d_t$ estão intercaladas pelo que foi observado no instante $w_{t-1}$ e o que não se conhece sobre $w_{t}$
+\item A relação entre a decisão tomada $d_{t-1}$ e o parâmetro de incerteza $w_{t-1}$ é \textbf{antecipativa} (condições de incerteza)
+\item enquanto a relação entre $d_t$ e $w_{t-1}$ é \textbf{adaptativa} (ambiente de aprendizagem)
+\end{enumerate} 
+
+\end{frame}
+
+
+\begin{frame}{Estrutura de decisão}
+\begin{figure}
+\begin{center}
+ \includegraphics[height=2cm,keepaspectratio]{processo_adapt_antecipa.png}
+ \end{center}
+\label{fig:dp}
+\end{figure}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Estrutura de decisão}
+
+Otimizar, no instante $t$, a função $f(d_t)$ de custo formada pelo estágio antecipativo e o valor da decisão adaptativa $d_t^{*}$, dependente de $d_t$ e daquilo que não se sabe $w_t$.
+
+
+O termo relacionado à decisão adaptativa é representada pelo valor esperado da função custo $q(d_t^{*},w_t)$ associada ao que foi observado de $w_t$.
+
+A função de otimização é restrita à matriz tecnológica $A$ e o vetor de recursos $b$.
+
+Já a descisão $d_t^{*}$ é restrita à matriz tecnológica $T(w_t)$, que transforma a decisão $d_t$ em recursos para $d_t^{*}$, vetor $h(w_t)$ de recursos e matriz de recursos $W(w_t)$. 
+
+
+
+\begin{equation}
+\begin{array}{cc}
+\left. \begin{aligned}
+\text{Minimize:} \ \ &Z = f(d_t)  + E\left(q(d_t^{*},w_t)\right) \ \\
+\text{Sujeito} \ \ & A d_t = \text{b} \\
+& W(w_t)d_t^{*} = h(w_t) - T(w_t)d_t
+ \end{aligned}\right.
+\end{array}
+\label{eq:fob}
+\end{equation}
+\end{frame}
+
+
+
+\begin{frame}{Estrutura de decisão}
+
+O parâmetro de incerteza $w_t$ do processo pode ser discretizado em \textbf{cenários}, formado pelo espaço de eventos $\Omega = \{w_t^{1},w_t^{2},\cdots,w_t^{N}\}$ \citep{Kouwenberg2008}. Para tal discretização considera-se que:
+\begin{itemize}
+\item $p^{(l)} = \pi(w_t = w_t^{(l)})$
+\item $\sum_{l=1}^N p^{(l)} = 1$
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Formulação discretizada}
+
+
+\begin{equation}
+\begin{array}{cc}
+\left. \begin{aligned}
+\text{Minimize:} \ \ &Z = f(d_t)  +\sum_{l=1}^N p^{(l)} q(d_t^{*(l)},w_t^{(l)}) \ \\
+\text{Sujeito} \ \ & A d_t = \text{b} \\
+& W(w_t^{(l)})d_t^{*(l)} = h(w_t^{(l)}) - T(w_t^{(l)})d_t
+ \end{aligned}\right.
+\end{array}
+\label{eq:fobc}
+\end{equation}
+
+
+
+O processo de otimização se repete dinamicamente a medida em que se tenha acesso a novas informações sobre $w_t$. 
+
+A decisão $d_t^{*}$ no instante $t$ é a decisão $d_{t+1}$ do instante $t+1$.
+
+\end{frame}
+
+
+\begin{frame}{Função objetivo}
+
+
+Nesse caso, a função objetivo pode ser adaptada para:
+
+\begin{itemize}
+\item minimizar custo de administração \citep{Kouwenberg2008}
+\item maximizar o valor final da carteira \citep{Johannes2014}
+\item minimizar o risco \citep{Ferstl2011} e \citep{Quaranta2008}.
+\end{itemize}
+
+\end{frame}
+
+
+
 \section{Amostragem aleatória}
 
 
 
-\begin{frame}{Value at Risk (Var)}
+\begin{frame}{Value at Risk (VaR)}
 
 \begin{itemize}
 \item Em um dia ruim, quanto eu posso perder em um determinado portfólio? 
@@ -356,12 +469,6 @@ qlim <- quantile(mc,p=0.05)
 \end{frame}
 
 
-\begin{frame}{Bootstrap}
-
-
-
-\end{frame}
-
 
 
 \begin{frame}{ Bootstrap}
@@ -395,205 +502,9 @@ qlim <- quantile(mc,p=0.05)
 
 
 
+\section{Modelos Dinâmicos}
 
-\begin{frame}{Método}
 
-\begin{enumerate}
-\item Monte Carlo
-\item Bootstrap
-\item Markov Chain Monte Carlo
-\end{enumerate}
-
-\end{frame}
-
-
-
-\begin{frame}{Monte Carlo}
-
-História do Método Monte Carlo.
-
-\end{frame}
-
-
-
-
-
-
-
-\begin{frame}{Monte Carlo}
-
-Por que isso é interessante ?
-
-\end{frame}
-
-
-\begin{frame}{Bootstrap}
-
-O que é Bootstrap
-
-\end{frame}
-
-
-\begin{frame}{Sistemas Complexos}
-
-Por que isso é interessante ?
-
-\end{frame}
-
-
-
-\subsection{Markov Chain Monte Carlo}
-
-\begin{frame}{Markov Chain Monte Carlo}
-
-O que é Markov Chain Monte Carlo?
-
-\end{frame}
-
-
-\begin{frame}{Markov Chain Monte Carlo}
-
-Por que isso é interessante ?
-
-\end{frame}
-
-
-
-
-
-\section{Partícula}
-\begin{frame}{Problema}
-\noindent
-
- \begin{block}{}
-  {\large Estimar um parâmetro desconhecido.}
-\end{block}
-
- \only<1>{
-  \begin{center}
-  \includegraphics[height=4.5cm,keepaspectratio]{porta_chaves_alvo_02.jpg}
-  \end{center}
-  }
-
- \only<2>{
-  \begin{center}
-  \includegraphics[height=4.5cm,keepaspectratio]{porta_chaves_alvo_01.jpg}
-  \end{center}
-  }
-
-\end{frame}
-
-\begin{frame}{Método de estimação}
-    \begin{block}{Estimação}
-      \Huge  Filtro de partículas
-    \end{block}
-
-\end{frame}
-
-
-
-\begin{frame}{Partículas}
-\noindent
-
-\only<1>{
-    \begin{block}{Definição Naive}
-  {\large \textbf{Parte} de um todo}
-    \end{block}		}
-\only<2>{
-  \begin{block}{Definição Naive}
-  {\large \textbf{Parte} de um todo}
-\end{block}
-}
-\only<3>{
-  \begin{block}{Definição Naive}
-  {\large Parte de um \textbf{todo}}
-\end{block}
-}
-\only<4>{
-  \begin{block}{Definição Naive}
-  {\large Parte de um todo.}
-	\end{block}
-		}
-
-    \begin{enumerate}
-      \item<2-| alert@2> Parte: Partículas.
-      \item<3-| alert@3> Todo: Espaço paramétrico.
-    \end{enumerate}
-    
-\pause
-\pause
-\pause
-  \begin{block}{Definição}
-  {\large Partículas são realizações de um experimento cujos valores possíveis estão definidos no espaço paramétrico.}
-\end{block}
-
-
- 
-\end{frame}
-
-
-\subsection*{Exemplo}
-\begin{frame}{Exemplo do uso de Filtro de partículas na Robótica}
-
-%Posição do robô. 
- 
-  \begin{center}
-  \includegraphics[height=6.5cm,keepaspectratio]{1-particle-filter.png}
-  \end{center}
-
-\end{frame}
-
-
-\begin{frame}{Partículas}
-
-%Localizações hipotéticas do robô.
-
- 
-  \begin{center}
-  \includegraphics[height=6.5cm,keepaspectratio]{2-particle-filter-initial.png}
-  \end{center}
-
-\end{frame}
-
-\begin{frame}{Medida de proximidade}
- 
-%Mensurar quais partículas são mais prováveis.
-
-  \begin{center}
-  \includegraphics[height=6.5cm,keepaspectratio]{3-particle-filter-sensor-sweep.png}
-  \end{center}
-
-\end{frame}
-
-
-
-\begin{frame}{Aproximação}
-
-%Estimação da posição do robô.
- 
-  \begin{center}
-  \includegraphics[height=6.5cm,keepaspectratio]{4-particle-filter-after-weighting.png}
-  \end{center}
-
-\end{frame}
-
-
-
-\begin{frame}{Propagação}
- 
-%Cada partícula gera novas partículas nas proximidades.
-
-  \begin{center}
-  \includegraphics[height=6.5cm,keepaspectratio]{5-particle-filter-after-move.png}
-  \end{center}
-
-\end{frame}
-
-
-
-%%retomando
-
-\subsection*{Modelo dinâmico}
 \begin{frame}{Modelo dinâmico}
 \noindent
 
@@ -679,21 +590,16 @@ $$\pi(\theta_{1:n}|y_{1:n}) =  \frac{\pi(\theta_{1:n},y_{1:n})}{\pi(y_{1:n})} $$
 
 
 
+
 \section{Métodos numéricos}
 
-\begin{frame}{Método de estimação}
-    \begin{block}{Estimação}
-      \Huge  Métodos numéricos
-    \end{block}
-
-\end{frame}
 
 
 \subsection{Monte Carlo}
 
 \begin{frame}{Métodos numéricos}
 
-    \begin{block}{Estimação}
+    \begin{block}{}
       \Huge  Monte Carlo
     \end{block}
 
@@ -721,8 +627,6 @@ $$
 \vspace{0.5cm}
 sendo $\delta_{\Theta_{1:n}^{i}}(\theta_{1:n})$ uma função indicadora de massa no ponto $\theta_{1:n}$.
 \end{frame}
-
-
 
 
 
@@ -755,6 +659,8 @@ $$
 
 \item[] \underline{\textbf{Problema 1}}: Não é fácil se gerar $\pi_n(\theta_1,...,\theta_n)$.
 \pause 
+
+\vspace{.5cm}
 \item[] \underline{\textbf{Problema 2}}: Ainda que fosse possível se gerar, a dimensão de $\pi_n(\theta_1,...,\theta_n)$ pode ser muito grande para se obter amostras multivariadas. Problema encontrado no método \underline{\textbf{MCMC}}.
 
 \end{itemize}
@@ -1110,8 +1016,58 @@ Partículas com baixa probabilidade são descartadas
 
 
 
-%bloco2%
-\section{Estimação estados latentes}
+\section{Filtro de Partículas}
+
+\begin{frame}{Método de estimação}
+    \begin{block}{Estimação}
+      \Huge  Filtro de partículas
+    \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Partículas}
+\noindent
+
+\only<1>{
+    \begin{block}{Definição}
+  {\large \textbf{Parte} de um todo}
+    \end{block}		}
+\only<2>{
+  \begin{block}{Definição}
+  {\large \textbf{Parte} de um todo}
+\end{block}
+}
+\only<3>{
+  \begin{block}{Definição}
+  {\large Parte de um \textbf{todo}}
+\end{block}
+}
+\only<4>{
+  \begin{block}{Definição}
+  {\large Parte de um todo.}
+	\end{block}
+		}
+
+    \begin{enumerate}
+      \item<2-| alert@2> Parte: Partículas.
+      \item<3-| alert@3> Todo: Espaço paramétrico.
+    \end{enumerate}
+    
+\pause
+\pause
+\pause
+  \begin{block}{Definição}
+  {\large Partículas são realizações de um experimento cujos valores possíveis estão definidos no espaço paramétrico.}
+\end{block}
+
+
+ 
+\end{frame}
+
+
+
 \begin{frame}{Seção}
     \begin{block}{Estimação}
       \Huge  Filtro de Partículas
@@ -1285,9 +1241,266 @@ $$
 
 \end{frame}
 
+
+
+\section{Stochastic Volatility Models}
+\begin{frame}{Estimação}
+    \begin{block}{ }
+      \Huge  Stochastic Volatility Models (SVM)
+    \end{block}
+\end{frame}
+
+
+
+
+
+\begin{frame}{SVM}
+Assim como a maioria das modelagens probabilísticas em finanças, os modelos de SV foram inicialmente formulados com variáveis de ruído e perturbação com distribuição gaussiana, tais como em \cite{HULL1987}. Recentemente, os trabalhos tem se concentrado em lidar de maneira menos analítica para tratar das fontes de variações sistêmicas e distribuições de caudas pesadas como e misturas de normais foram apresentadas como novas abordagens para os SV \citep{Virbickaite2016}.
+
+Uma possível formulação para o modelo SV é:
+\begin{eqnarray}
+y_t = exp\left(\frac{x_t}{2}\right)\varepsilon_t \nonumber \\
+x_t = \alpha +  \beta x_{t-1} + w_t
+\end{eqnarray}
+
+
+\end{frame}
+
+
+\begin{frame}{SVM}
+É possível realizar a linearização proposta por \cite{Kim1998} $r_t = log(y_t^2)$, permitindo que SV possa ser tratado via modelos dinâmicos. Nesse caso, o modelo seria formado pelas sequintes equações de observação e sistema:
+
+\begin{eqnarray}
+r_t = x_t + v_t  \nonumber \\
+x_t = \beta x_{t-1} + w_t
+\label{eq:svm_basico}
+\end{eqnarray}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}{SVM}
+É importante destacar que a distribuição de $v_t$ não é gaussiana. Caso $\varepsilon_t \sim N(0,1)$ a distribuição exata é $log(\chi^2)$, sendo $\chi^2$ uma variável com distribuição Qui-Quadrado que pode ser aproximada pela mistura de 7 normais com os seguintes parâmetros \citep{Kim1998}:
+
+\begin{equation}
+v_t \sim log(\chi^2) \approx \sum_{i=1}^7 \pi_i f_N(\mu_i,\sigma^2)
+\label{eq:mixnormal}
+\end{equation}
+
+\end{frame}
+
+
+
+\begin{frame}{SVM}
+
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Thu Oct 26 09:42:40 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{ccc}
+   \hline
+  \hline
+$\pi_i$ & $\mu_i$ & $\sigma_i$ \\ 
+  \hline
+0.00730 & -11.40039 & 2.40748 \\ 
+  0.10556 & -5.24321 & 1.61669 \\ 
+  0.00002 & -9.83726 & 2.27585 \\ 
+  0.04395 & 1.50746 & 0.40908 \\ 
+  0.34001 & -0.65098 & 0.80006 \\ 
+  0.24556 & 0.52478 & 0.58329 \\ 
+  0.25760 & -2.35859 & 1.12366 \\ 
+   \hline
+      \hline
+\end{tabular}
+      \caption{\scriptsize{ Parâmetros aproximação de erros por mistura de normais \citep{Kim1998}.}}
+\label{tab:mixnormal}
+\end{table}
+
+\end{frame}
+
+
+\begin{frame}{SVM}
+
+Considere o modelo SV básico com parâmetros 
+\begin{enumerate}
+\item $\tau^2=0.1$
+\item $\beta=-0.2$ 
+\item $\alpha=0.5$ 
+\item simulado para um período de $T=1000$
+\item $M=5000$ partículas
+\end{enumerate}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{SVM}
+
+
+\begin{figure}
+\begin{center}
+ \includegraphics[height=7cm,width =10cm]{processo_1_01_02_05.pdf}
+ \end{center}
+\caption{Volatilidade estimada pelo modelo SV simulado entre $t \in [100 ;200]$. A região em cinza representa o intervalo de credibilidade ao nível de $95\%$ e em vermelho os valores verdadeiros.} 
+\end{figure}
+
+ \end{frame}
+ 
+ 
+ \begin{frame}{SVM}
+
+ 
+ \begin{figure}
+\begin{center}
+ \includegraphics[height=7cm,width =10cm]{tau_1_01_02_05.pdf}
+ \end{center}
+\caption{ Estimativas dinâmicas para o parâmetro $\tau^2$.} 
+\end{figure}
+
+ \end{frame}
+ 
+
+
+
+\begin{frame}{SVM}
+
+
+ \begin{figure}
+\begin{center}
+ \includegraphics[height=7cm,width =10cm]{beta_1_01_02_05.pdf}
+ \end{center}
+\caption{Estimativas dinâmicas para o parâmetro $\beta$ } 
+\end{figure}
+
+ 
+ \end{frame}
+ 
+ 
+ \begin{frame}{SVM}
+
+
+ \begin{figure}
+\begin{center}
+ \includegraphics[height=7cm,width =10cm]{alpha_1_01_02_05.pdf}
+ \end{center}
+\caption{Estimativas dinâmicas para o parâmetro $\alpha$ } 
+\end{figure}
+
+ \end{frame}
+ 
+ 
+ \begin{frame}{SVM}
+
+
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Tue Oct 31 22:24:28 2017
+\begin{table}[ht]
+\centering
+\tiny
+\begin{tabular}{c|cccc|cccc|cccc}
+ \hline
+  \hline
+ & \multicolumn{4}{c|}{$\tau=\sqrt{0.1}=0.31$} &  \multicolumn{4}{c|}{$\beta=-0.2$} &  \multicolumn{4}{c}{$\alpha=0.5$} \\
+ \hline
+  & $\bar{\tau}$ & $\tilde{\tau}$ & $q_{5\%}$ & $q_{95\%}$ & $\bar{\beta}$ & $\tilde{\beta}$ & $q_{5\%}$ & $q_{95\%}$ & $\bar{\alpha}$ & $\tilde{\alpha}$ & $q_{5\%}$ & $q_{95\%}$\\ 
+  \hline
+Simulação & 0.34 & 0.24 & 0.21 & 0.45 & -0.23 & -0.23 & -0.29 & -0.17 & 0.34 & 0.34 & 0.29 & 0.44 \\ 
+   \hline
+    \hline
+\end{tabular}
+\caption[\scriptsize{Distribuição a posteriori de $\tau$, $\beta$ e $\alpha$}]{\scriptsize{Distribuição a posteriori dos hiperparâmetros nos modelos SV simulado com $M=5000$.}}
+\label{tab:hiperest1000simula}
+\end{table}
+
+\end{frame}
+
+
+
+ 
+\subsection{Ibovespa}
+
+
+ 
+ \begin{frame}{Simulação}
+
+
+Aplicação de R\$ $1000$ baseado nos dados $2008-2017$ dos ativos:
+\vspace{.25cm}
+\begin{itemize}
+\item IFN:  índice setor financeiro
+\item IMOB: índice do setor imobiliário
+\item ICON: índice de consumo
+\item IEE:  índice de energia
+\item INDX: índice da indústria
+\item IBOV: índice geral da bolsa de São Paulo
+\item LTN: Letra do Tesouro Nacional
+\end{itemize}
+\vspace{.25cm}
+
+Ajustar um modelo SV para cada série individualmente.
+\end{frame}
+
+\begin{frame}{IBOVESPA}
+
+
+
+\begin{enumerate}
+\item simulação de $10000$ carteiras aleatórias
+\item $10000$ cenários
+\item utilizando os parâmetros estimados para o modelo SV
+\item $252$ períodos
+\end{enumerate}
+
+
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Thu Nov 02 00:12:41 2017
+\begin{table}[ht]
+\centering
+\tiny
+\begin{tabular}{ccccccc|cccc}
+   \hline
+  \hline
+ \multicolumn{7}{c|}{Alocação no ativo ($\%$)} &  \multicolumn{4}{c}{Valor final da carteira}\\
+ \hline
+ICON & IEE & IFN & IMOB & INDX & IBOV & LTN & $VaR_{99\%}$ & $VaR_{95\%}$ & $\bar{R}$  & $\sigma(W)$ \\ 
+  \hline
+11.21 & 2.67 & 11.81 & 1.27 & 35.79 & 9.16 & 28.09 & 624.84 & 711.95 & 7.50 & 241.79 \\ 
+  34.27 & 2.89 & 11.98 & 16.57 & 2.97 & 1.78 & 29.54 & 597.63 & 733.85 & 8.34 & 242.06 \\ 
+  34.35 & 0.66 & 7.85 & 2.53 & 0.79 & 25.12 & 28.71 & 633.07 & 728.82 & 8.08 & 249.42 \\ 
+  17.78 & 0.86 & 10.60 & 15.77 & 23.91 & 5.93 & 25.14 & 607.13 & 711.50 & 6.27 & 251.81 \\ 
+  20.13 & 2.77 & 5.07 & 13.93 & 6.28 & 20.94 & 30.89 & 611.37 & 701.44 & 7.00 & 254.07 \\ 
+   \hline
+      \hline
+\end{tabular}
+      \caption{\scriptsize{Informações das $5$ melhores carteiras no modelo SV independente. Análise de $10000$ carteiras, simuladas em $10000$ cenários de $252$ períodos.}}
+\label{tab:carteirasim}
+\end{table}
+
+\end{frame}
+
+
+ \begin{frame}{IBOVESPA}
+
+
+\begin{itemize}
+\item retorno médio esperado de $7.5\%$
+\item \textit{VaR} ao nível $99\%$  de R\$ $624.84$
+\item \textit{VaR} ao nível $95\%$ de R\$ $711.95$
+\item pelo menos $25\%$ dos recursos alocados no ativo livre de risco.
+\end{itemize}
+
+\end{frame}
+
+
+
+
 \begin{frame}[allowframebreaks]%in case more than 1 slide needed
     {\tiny
-    \bibliographystyle{apalike}
     \bibliography{bibli}
     }
 \end{frame}

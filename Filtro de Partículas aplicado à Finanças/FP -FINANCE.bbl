@@ -1,0 +1,74 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\astroncite{Consigli and Dempster}{1998}]{Consigli1998}
+Consigli, G. \& Dempster, M. a.~H. (1998).
+\newblock {\em Annals of Operations Research}, 81(October):131 -- 161.
+
+\bibitem[\protect\astroncite{Doucet and Johansen}{2008}]{doucet2}
+Doucet, A. \& Johansen, A.~M. (2008).
+\newblock A tutorial on particle filtering and smoothing:fifteen years later.
+\newblock {\em Technical report (Department of Statistics, University of
+  British Columbia)}.
+
+\bibitem[\protect\astroncite{Ferstl and Weissensteiner}{2011}]{Ferstl2011}
+Ferstl, R. \& Weissensteiner, A. (2011).
+\newblock {Asset-liability management under time-varying investment
+  opportunities}.
+\newblock {\em Journal of Banking and Finance}, 35(1):182--192.
+
+\bibitem[\protect\astroncite{Gordon et~al.}{1993}]{gordon}
+Gordon, N.~J., Salmond, D.~J., \& Smith, A. F.~M. (1993).
+\newblock Novel approach to nonlinear/non-gaussian bayesian state estimation.
+\newblock {\em IEEE Proceedings F on Radar and Signal Processing},
+  (140):107--113.
+
+\bibitem[\protect\astroncite{Hull and White}{1987}]{HULL1987}
+Hull, J. \& White, A. (1987).
+\newblock {The Pricing of Options on Assets with Stochastic Volatilities}.
+\newblock {\em The Journal of Finance}.
+
+\bibitem[\protect\astroncite{Johannes et~al.}{2014}]{Johannes2014}
+Johannes, M., Korteweg, A., \& Polson, N. (2014).
+\newblock {Sequential learning, predictability, and optimal portfolio returns}.
+\newblock {\em Journal of Finance}, 69(2):611--644.
+
+\bibitem[\protect\astroncite{Kim et~al.}{1998}]{Kim1998}
+Kim, S., Shepherd, N., \& Chib, S. (1998).
+\newblock {Stochastic Volatility: Likelihood Inference and Comparison with ARCH
+  Models}.
+\newblock {\em Review of Economic Studies}, 65(3):361--393.
+
+\bibitem[\protect\astroncite{Kouwenberg and Zenios}{2008}]{Kouwenberg2008}
+Kouwenberg, R. \& Zenios, S.~A. (2008).
+\newblock {Stochastic Programming Models for Asset Liability Management}.
+\newblock In: {\em Handbook of Asset and Liability Management - Set}, volume~1,
+  pages 253--303. incollection.
+
+\bibitem[\protect\astroncite{Laloux et~al.}{1999}]{Laloux1999}
+Laloux, L., Cizeau, P., Bouchaud, J.~P., \& Potters, M. (1999).
+\newblock Noise dressing of financial correlation matrices.
+\newblock {\em Physical Review Letters}, 83(7):1467--1470.
+
+\bibitem[\protect\astroncite{Markowitz}{1952}]{mkv}
+Markowitz, H.~M. (1952).
+\newblock Portfolio selection.
+\newblock {\em The Journal of Finance}.
+
+\bibitem[\protect\astroncite{Petris et~al.}{2009}]{petris}
+Petris, G., Petrone, S., \& Campagnoli, P. (2009).
+\newblock {\em Dynamic Linear Models with R}.
+\newblock Springer.
+
+\bibitem[\protect\astroncite{Quaranta and Zaffaroni}{2008}]{Quaranta2008}
+Quaranta, A.~G. \& Zaffaroni, A. (2008).
+\newblock {Robust optimization of conditional value at risk and portfolio
+  selection}.
+\newblock {\em Journal of Banking and Finance}, 32(10):2046--2056.
+
+\bibitem[\protect\astroncite{Virbickaite et~al.}{2016}]{Virbickaite2016}
+Virbickaite, A., Lopes, H.~F., Aus{\'i}n, M.~C., \& Galeano, P. (2016).
+\newblock {Particle Leaning for Bayesian Non-Parametric Markov Switching
+  Stochastic Volatility Model}.
+\newblock {\em R{\&}R Bayesian Analysis}, 2(1):1--28.
+
+\end{thebibliography}

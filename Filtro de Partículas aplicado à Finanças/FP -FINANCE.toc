@@ -1,0 +1,14 @@
+\select@language {portuguese}
+\beamer@sectionintoc {1}{Introdu\IeC {\c c}\IeC {\~a}o}{2}{0}{1}
+\beamer@sectionintoc {2}{Stochastic Dynamic Programming}{19}{0}{2}
+\beamer@sectionintoc {3}{Amostragem aleat\IeC {\'o}ria}{26}{0}{3}
+\beamer@sectionintoc {4}{Modelos Din\IeC {\^a}micos}{36}{0}{4}
+\beamer@sectionintoc {5}{M\IeC {\'e}todos num\IeC {\'e}ricos}{44}{0}{5}
+\beamer@subsectionintoc {5}{1}{Monte Carlo}{44}{0}{5}
+\beamer@subsectionintoc {5}{2}{Amostragem de Import\IeC {\^a}ncia - AI}{53}{0}{5}
+\beamer@subsectionintoc {5}{3}{Amostragem de Import\IeC {\^a}ncia Sequencial - (AIS)}{71}{0}{5}
+\beamer@subsectionintoc {5}{4}{Reamostragem}{87}{0}{5}
+\beamer@sectionintoc {6}{Filtro de Part\IeC {\'\i }culas}{98}{0}{6}
+\beamer@subsectionintoc {6}{1}{Filtro Bootstrap}{104}{0}{6}
+\beamer@sectionintoc {7}{Stochastic Volatility Models}{123}{0}{7}
+\beamer@subsectionintoc {7}{1}{Ibovespa}{134}{0}{7}
