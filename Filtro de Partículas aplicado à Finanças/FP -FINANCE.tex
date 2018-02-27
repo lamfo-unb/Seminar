@@ -650,16 +650,12 @@ $$\pi(\theta_{1:n}|y_{1:n}) =  \frac{\pi(\theta_{1:n},y_{1:n})}{\pi(y_{1:n})} $$
 
 
 
-\section{Amostragem aleatória (Formal)}
-
-
-
 \subsection{Monte Carlo}
 
 \begin{frame}{Amostragem aleatória}
 
     \begin{block}{}
-      \Huge  Monte Carlo
+      \Huge  Monte Carlo (formal)
     \end{block}
 
 
@@ -1324,16 +1320,7 @@ x_t = \beta x_{t-1} + w_t
 \end{eqnarray}
 
 
-\end{frame}
-
-
-
-\begin{frame}{SVM}
-
-
-Caso $\varepsilon_t \sim N(0,1)$ a distribuição exata é $log(\chi^2)$, sendo $\chi^2$ distribuição Qui-Quadrado. 
-
-Aproximação com mistura de normais com os seguintes parâmetros \citep{Kim1998}:
+Caso $\varepsilon_t \sim N(0,1)$ a distribuição exata é $log(\chi^2)$, sendo $\chi^2$ distribuição Qui-Quadrado. Aproximação com mistura de normais com os seguintes parâmetros:
 
 \begin{equation}
 v_t \sim log(\chi^2) \approx \sum_{i=1}^7 \pi_i f_N(\mu_i,\sigma^2)
@@ -1344,32 +1331,32 @@ v_t \sim log(\chi^2) \approx \sum_{i=1}^7 \pi_i f_N(\mu_i,\sigma^2)
 
 
 
-\begin{frame}{SVM}
-
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Oct 26 09:42:40 2017
-\begin{table}[ht]
-\centering
-\begin{tabular}{ccc}
-   \hline
-  \hline
-$\pi_i$ & $\mu_i$ & $\sigma_i$ \\ 
-  \hline
-0.00730 & -11.40039 & 2.40748 \\ 
-  0.10556 & -5.24321 & 1.61669 \\ 
-  0.00002 & -9.83726 & 2.27585 \\ 
-  0.04395 & 1.50746 & 0.40908 \\ 
-  0.34001 & -0.65098 & 0.80006 \\ 
-  0.24556 & 0.52478 & 0.58329 \\ 
-  0.25760 & -2.35859 & 1.12366 \\ 
-   \hline
-      \hline
-\end{tabular}
-      \caption{\scriptsize{ Parâmetros aproximação de erros por mistura de normais \citep{Kim1998}.}}
-\label{tab:mixnormal}
-\end{table}
-
-\end{frame}
+%\begin{frame}{SVM}
+%
+%% latex table generated in R 3.3.2 by xtable 1.8-2 package
+%% Thu Oct 26 09:42:40 2017
+%\begin{table}[ht]
+%\centering
+%\begin{tabular}{ccc}
+%   \hline
+%  \hline
+%$\pi_i$ & $\mu_i$ & $\sigma_i$ \\ 
+%  \hline
+%0.00730 & -11.40039 & 2.40748 \\ 
+%  0.10556 & -5.24321 & 1.61669 \\ 
+%  0.00002 & -9.83726 & 2.27585 \\ 
+%  0.04395 & 1.50746 & 0.40908 \\ 
+%  0.34001 & -0.65098 & 0.80006 \\ 
+%  0.24556 & 0.52478 & 0.58329 \\ 
+%  0.25760 & -2.35859 & 1.12366 \\ 
+%   \hline
+%      \hline
+%\end{tabular}
+%      \caption{\scriptsize{ Parâmetros aproximação de erros por mistura de normais \citep{Kim1998}.}}
+%\label{tab:mixnormal}
+%\end{table}
+%
+%\end{frame}
 
 
 \begin{frame}{Simulação}
